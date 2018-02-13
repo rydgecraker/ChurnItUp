@@ -164,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="26B-4v-a3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3349.5999999999999" y="667.91604197901052"/>
+            <point key="canvasLocation" x="3350" y="668"/>
         </scene>
         <!--UpgradeScreen-->
         <scene sceneID="SyP-2i-hqn">
@@ -189,6 +189,10 @@
             <point key="canvasLocation" x="2488.8000000000002" y="-577.06146926536735"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="VA6-2H-v76"/>
+        <segue reference="E4p-tN-ElZ"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="pasture" width="1280" height="989"/>
     </resources>
