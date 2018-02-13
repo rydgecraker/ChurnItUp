@@ -66,6 +66,7 @@
 				2996AED0202CFC5200610639 /* LaunchScreen.storyboard */,
 				2996AED3202CFC5200610639 /* Info.plist */,
 				2996AECB202CFC5200610639 /* ChurnItUp_Real.xcdatamodeld */,
+				DCAFEF402033859800F20AA7 /* MainScreenViewController.swift */,
 			);
 			path = ChurnItUp_Real;
 			sourceTree = "<group>";
@@ -143,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2996AEC7202CFC5200610639 /* ViewController.swift in Sources */,
+				DCAFEF412033859800F20AA7 /* MainScreenViewController.swift in Sources */,
 				2996AECD202CFC5200610639 /* ChurnItUp_Real.xcdatamodeld in Sources */,
 				29FAD79A2033874500BFF7A5 /* GetLocationViewController.swift in Sources */,
 				2996AEC5202CFC5200610639 /* AppDelegate.swift in Sources */,
