@@ -71,6 +71,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--InfoScreen-->
+        <scene sceneID="KZj-MY-FpN">
+            <objects>
+                <viewController title="InfoScreen" id="S6R-AP-QMs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hjt-s3-Wfw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="8mM-Uc-Lk6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dyq-YF-5aI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1036" y="745"/>
+        </scene>
         <!--MainScreen-->
         <scene sceneID="cZY-S2-kgy">
             <objects>
@@ -84,21 +99,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3P-HK-pyg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4474" y="134"/>
+            <point key="canvasLocation" x="1566" y="32"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="CY6-9S-ssj">
+        <!--LocationScreen-->
+        <scene sceneID="pcY-an-OZI">
             <objects>
-                <viewController id="sGs-Jf-z3R" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vW7-7e-vcM">
+                <viewController title="LocationScreen" id="izU-HC-8OM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0mM-kf-GuD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="NTP-vq-8mP"/>
+                        <viewLayoutGuide key="safeArea" id="VyM-o8-KTx"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XiL-dz-52u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zbr-vW-tkV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2442" y="672"/>
+        </scene>
+        <!--CowCaptureScreen-->
+        <scene sceneID="aKN-Fe-gP5">
+            <objects>
+                <viewController title="CowCaptureScreen" id="BPI-a4-f2H" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ptp-9L-w8D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="mqR-S5-FKV"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="26B-4v-a3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3350" y="668"/>
+        </scene>
+        <!--UpgradeScreen-->
+        <scene sceneID="SyP-2i-hqn">
+            <objects>
+                <viewController title="UpgradeScreen" id="hQv-dg-VQG" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ld2-th-kHY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="jnk-zz-ShP"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h0D-FZ-OKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2489" y="-577"/>
         </scene>
     </scenes>
 </document>
