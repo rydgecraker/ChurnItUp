@@ -123,13 +123,19 @@
                     <view key="view" contentMode="scaleToFill" id="ptp-9L-w8D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pasture" translatesAutoresizingMaskIntoConstraints="NO" id="i8S-eq-f3k">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="mqR-S5-FKV"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="26B-4v-a3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3350" y="668"/>
+            <point key="canvasLocation" x="3349.5999999999999" y="667.91604197901052"/>
         </scene>
         <!--UpgradeScreen-->
         <scene sceneID="SyP-2i-hqn">
@@ -147,4 +153,7 @@
             <point key="canvasLocation" x="2489" y="-577"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pasture" width="1280" height="989"/>
+    </resources>
 </document>
