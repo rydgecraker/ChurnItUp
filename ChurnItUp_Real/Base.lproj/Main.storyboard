@@ -68,13 +68,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="pressStartButton" destination="dcQ-25-FzA" id="J1G-n1-Pcg"/>
                         <segue destination="NoT-JL-Z3P" kind="presentation" id="iBn-Jr-cJP"/>
                         <segue destination="S6R-AP-QMs" kind="show" id="jDa-D1-YEh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="494" y="15"/>
         </scene>
         <!--InfoScreen-->
         <scene sceneID="KZj-MY-FpN">
@@ -127,7 +127,7 @@
         <!--LocationScreen-->
         <scene sceneID="pcY-an-OZI">
             <objects>
-                <viewController title="LocationScreen" id="izU-HC-8OM" sceneMemberID="viewController">
+                <viewController title="LocationScreen" id="izU-HC-8OM" customClass="GetLocationViewController" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0mM-kf-GuD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -189,11 +189,10 @@
             <point key="canvasLocation" x="2488.8000000000002" y="-577.06146926536735"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="VA6-2H-v76"/>
-        <segue reference="E4p-tN-ElZ"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="pasture" width="1280" height="989"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="iBn-Jr-cJP"/>
+    </inferredMetricsTieBreakers>
 </document>

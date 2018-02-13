@@ -13,6 +13,7 @@
 		2996AECD202CFC5200610639 /* ChurnItUp_Real.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2996AECB202CFC5200610639 /* ChurnItUp_Real.xcdatamodeld */; };
 		2996AECF202CFC5200610639 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2996AECE202CFC5200610639 /* Assets.xcassets */; };
 		2996AED2202CFC5200610639 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2996AED0202CFC5200610639 /* LaunchScreen.storyboard */; };
+		29FAD79A2033874500BFF7A5 /* GetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FAD7992033874500BFF7A5 /* GetLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2996AECE202CFC5200610639 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2996AED1202CFC5200610639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2996AED3202CFC5200610639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29FAD7992033874500BFF7A5 /* GetLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		2996AEC3202CFC5200610639 /* ChurnItUp_Real */ = {
 			isa = PBXGroup;
 			children = (
+				29FAD7992033874500BFF7A5 /* GetLocationViewController.swift */,
 				2996AEC4202CFC5200610639 /* AppDelegate.swift */,
 				2996AEC6202CFC5200610639 /* ViewController.swift */,
 				2996AEC8202CFC5200610639 /* Main.storyboard */,
@@ -141,6 +144,7 @@
 			files = (
 				2996AEC7202CFC5200610639 /* ViewController.swift in Sources */,
 				2996AECD202CFC5200610639 /* ChurnItUp_Real.xcdatamodeld in Sources */,
+				29FAD79A2033874500BFF7A5 /* GetLocationViewController.swift in Sources */,
 				2996AEC5202CFC5200610639 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
