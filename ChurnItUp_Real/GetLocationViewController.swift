@@ -47,7 +47,7 @@ class GetLocationViewController: UIViewController {
     }
     
     func plopCow(){
-        print("CurrentLocation \(longitude) long and lat \(latitude)")
+        print("CurrentLocation \(longitude) long and \(latitude) lat")
     }
     
     
