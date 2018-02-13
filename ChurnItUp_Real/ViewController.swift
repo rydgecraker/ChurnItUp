@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let SegueMainScreenViewController = "MainScreenViewController"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,11 +19,31 @@ class ViewController: UIViewController {
     
     @IBAction func PressedStartButton(_ sender: Any) {
         
+        
+        self.performSegue(withIdentifier: "MainScreenViewController", sender: sender)
+      
+        
+        //performSegue(withIdentifier: SegueMainScreenViewController, sender: self)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // Use this area to do anything that you want before you go to the new screen
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        // First, check if the segue's identifier is what we expect it to be
+        if segue.identifier == SegueMainScreenViewController {
+            let destinationViewController = segue.destination as! MainScreenViewController
+ 
+            }
+            
+        
     }
 
 

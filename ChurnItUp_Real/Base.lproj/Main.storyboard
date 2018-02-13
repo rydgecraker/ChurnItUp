@@ -29,6 +29,7 @@
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="PressedStartButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iiF-IG-rtk"/>
+                                    <segue destination="NoT-JL-Z3P" kind="show" identifier="MainScreenViewController" id="4SV-uA-oOe"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Churn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEe-Kh-c4W">
@@ -63,10 +64,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <outlet property="pressStartButton" destination="dcQ-25-FzA" id="J1G-n1-Pcg"/>
-                        <segue destination="NoT-JL-Z3P" kind="presentation" id="iBn-Jr-cJP"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -89,7 +86,7 @@
         <!--MainScreen-->
         <scene sceneID="cZY-S2-kgy">
             <objects>
-                <viewController title="MainScreen" id="NoT-JL-Z3P" sceneMemberID="viewController">
+                <viewController title="MainScreen" id="NoT-JL-Z3P" customClass="MainScreenViewController" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bRP-yk-kyx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
