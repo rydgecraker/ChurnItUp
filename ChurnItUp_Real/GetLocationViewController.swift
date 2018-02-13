@@ -16,8 +16,10 @@ class GetLocationViewController: UIViewController {
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     
+    //69 Miles per degree of Latitude, 1609m per mile results in this. (rounded)
     let oneMeterInLatitudeDegrees = 0.000009
     
+    //Because longitude changes with latitude, the distance between longitude lines must be calculated on the spot. with cos(latitudeDegrees) * mileDistance at the equator (69.172 miles between each line)
     func getOneMeterInLongitudeDegrees(latitudeDegrees: CGFloat) -> CGFloat{
         let oneMileDegrees = cos(latitudeDegrees) * 69.172
         return oneMileDegrees / 1069.34
@@ -52,9 +54,11 @@ class GetLocationViewController: UIViewController {
 
 }
 
+
+//Info.plist notification is needed to get user's location along with the CLLocationDelgate.
 extension GetLocationViewController: CLLocationManagerDelegate {
     
-    
+    //This fuction updates whenever the user's location updates and stores the lat and long values into the variables.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         latitude = locValue.latitude
