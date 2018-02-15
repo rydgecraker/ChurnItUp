@@ -154,10 +154,8 @@
 				2996AEC7202CFC5200610639 /* ViewController.swift in Sources */,
 				DCAFEF412033859800F20AA7 /* MainScreenViewController.swift in Sources */,
 				2996AECD202CFC5200610639 /* ChurnItUp_Real.xcdatamodeld in Sources */,
-<<<<<<< HEAD
 				DCC069B82036339200FE4797 /* UpgradeScreenViewController.swift in Sources */,
-=======
->>>>>>> 7bcb91785279b9ff6a9b24daec205e3f8dccfc67
+
 				7CE3F6E520350CB9006839ED /* MainGameScene.swift in Sources */,
 				29FAD79A2033874500BFF7A5 /* GetLocationViewController.swift in Sources */,
 				2996AEC5202CFC5200610639 /* AppDelegate.swift in Sources */,
