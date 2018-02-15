@@ -28,8 +28,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
-                                    <action selector="PressedStartButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iiF-IG-rtk"/>
-                                    <segue destination="NoT-JL-Z3P" kind="show" identifier="MainScreenViewController" id="4SV-uA-oOe"/>
+                                    <action selector="StartButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="njD-FQ-3Qk"/>
+                                    <segue destination="NoT-JL-Z3P" kind="show" identifier="MainScreenViewController" id="VxE-94-DfO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Churn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEe-Kh-c4W">
@@ -69,7 +69,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <segue destination="NoT-JL-Z3P" kind="presentation" id="iBn-Jr-cJP"/>
                         <segue destination="S6R-AP-QMs" kind="show" id="jDa-D1-YEh"/>
                     </connections>
                 </viewController>
@@ -96,14 +95,10 @@
         <scene sceneID="cZY-S2-kgy">
             <objects>
                 <viewController title="MainScreen" id="NoT-JL-Z3P" customClass="MainScreenViewController" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bRP-yk-kyx">
+                    <view key="view" contentMode="scaleToFill" id="bRP-yk-kyx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barn" translatesAutoresizingMaskIntoConstraints="NO" id="HmE-KR-iHh">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghl-uf-NKt">
                                 <rect key="frame" x="16" y="617" width="95" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -115,14 +110,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Upgrades"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="barn" translatesAutoresizingMaskIntoConstraints="NO" id="HmE-KR-iHh">
+                                <rect key="frame" x="0.0" y="-20" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="q1Z-HL-Qm9"/>
                     </view>
-                    <connections>
-                        <segue destination="izU-HC-8OM" kind="show" id="VA6-2H-v76"/>
-                        <segue destination="hQv-dg-VQG" kind="show" id="3de-oe-bm6"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3P-HK-pyg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -162,9 +157,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="mqR-S5-FKV"/>
                     </view>
-                    <connections>
-                        <segue destination="NoT-JL-Z3P" kind="show" id="E4p-tN-ElZ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="26B-4v-a3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -197,7 +189,4 @@
         <image name="barn" width="1280" height="1254"/>
         <image name="pasture" width="1280" height="989"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="4SV-uA-oOe"/>
-    </inferredMetricsTieBreakers>
 </document>
