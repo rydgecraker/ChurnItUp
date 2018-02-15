@@ -99,16 +99,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghl-uf-NKt">
-                                <rect key="frame" x="16" y="617" width="95" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Find Cows"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wST-CK-oIO">
                                 <rect key="frame" x="271" y="20" width="88" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Upgrades"/>
+                                <connections>
+                                    <segue destination="hQv-dg-VQG" kind="show" identifier="Upgrades" id="gTd-qq-tqd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghl-uf-NKt" userLabel="Find Cows">
+                                <rect key="frame" x="16" y="617" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Find Cows"/>
+                                <connections>
+                                    <segue destination="izU-HC-8OM" kind="show" identifier="FindCows" id="tOE-pP-iFO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -161,7 +167,7 @@
         <!--UpgradeScreen-->
         <scene sceneID="SyP-2i-hqn">
             <objects>
-                <viewController title="UpgradeScreen" id="hQv-dg-VQG" sceneMemberID="viewController">
+                <viewController title="UpgradeScreen" id="hQv-dg-VQG" customClass="UpgradeScreenViewController" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ld2-th-kHY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,6 +176,15 @@
                                 <rect key="frame" x="241" y="20" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Get More Butter"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OfP-ry-QAc" userLabel="Back">
+                                <rect key="frame" x="29" y="20" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Back"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="NoT-JL-Z3P" kind="show" id="cuy-3a-ZYi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,4 +199,7 @@
     <resources>
         <image name="pasture" width="1280" height="989"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cuy-3a-ZYi"/>
+    </inferredMetricsTieBreakers>
 </document>

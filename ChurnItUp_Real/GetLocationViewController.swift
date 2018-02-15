@@ -13,8 +13,31 @@ import CoreLocation
 class GetLocationViewController: UIViewController {
 
     
-    var latitude: Double = 0.0
+    var findingCow: Bool = true
+    var latChanged: Bool = false
+    var lonChanged: Bool = false
+    
+    var latitude: Double = 0.0 {
+        
+        didSet {
+            
+            if latChanged && lonChanged {
+                latChanged = false;
+                lonChanged = false;
+                locationUpdated();
+            }
+            
+        }
+        
+    }
+    
     var longitude: Double = 0.0
+    
+    var cowLat: Double = 0.0
+    var cowLon: Double = 0.0
+    
+    var distanceXtoCow: Double = 0.0
+    var distanceYtoCow: Double = 0.0
     
     //69 Miles per degree of Latitude, 1609m per mile results in this. (rounded)
     let oneMeterInLatitudeDegrees = 0.000009
@@ -23,6 +46,16 @@ class GetLocationViewController: UIViewController {
     func getOneMeterInLongitudeDegrees(latitudeDegrees: Double) -> Double{
         let oneMileDegrees = cos(latitudeDegrees) * 69.172
         return oneMileDegrees / 1069.34
+    }
+    
+    func locationUpdated() {
+        calculateCowDistance()
+        print("The cow is \(distanceXtoCow) degrees X away (longitude), the cow is \(distanceYtoCow) degrees Y away (latitude)")
+    }
+    
+    func calculateCowDistance() {
+        distanceYtoCow = cowLat - latitude
+        distanceXtoCow = cowLon - longitude
     }
     
     let locationManager = CLLocationManager()
@@ -38,7 +71,7 @@ class GetLocationViewController: UIViewController {
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
         
@@ -49,9 +82,9 @@ class GetLocationViewController: UIViewController {
     func plopCow(){
         print("CurrentLocation: \(longitude) long and \(latitude) lat")
         let cowLatChangeInMeters = convert0to60toNeg30to30(Double (arc4random_uniform(60)) + 1.0)
-        let cowLat = getCowLatitude(cowLatChangeInMeters: cowLatChangeInMeters)
+        cowLat = getCowLatitude(cowLatChangeInMeters: cowLatChangeInMeters)
         let cowLonChangeInMeters = convert0to60toNeg30to30(Double (arc4random_uniform(60)) + 1.0)
-        let cowLon = getCowLongitude(cowLonChangeInMeters: cowLonChangeInMeters, cowLat: cowLat)
+        cowLon = getCowLongitude(cowLonChangeInMeters: cowLonChangeInMeters, cowLat: cowLat)
         print("Cow is going to be \(cowLonChangeInMeters) meters lat and \(cowLonChangeInMeters) meters lon")
         print("That means the cow will be \(cowLat) degrees lat and \(cowLon) degrees lon")
     }
@@ -82,8 +115,34 @@ extension GetLocationViewController: CLLocationManagerDelegate {
     //This fuction updates whenever the user's location updates and stores the lat and long values into the variables.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        latChanged = true
+        lonChanged = true
         latitude = locValue.latitude
         longitude = locValue.longitude
+    }
+    
+    // If we have been deined access give the user the option to change it
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if(status == CLAuthorizationStatus.denied) {
+            showLocationDisabledPopUp()
+        }
+    }
+    
+    // Show the popup to the user if we have been deined access
+    func showLocationDisabledPopUp() {
+        let alertController = UIAlertController(title: "Background Location Access Disabled", message: "In order to help you find cows, we need your location!", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
+            if let url = URL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        alertController.addAction(openAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }
