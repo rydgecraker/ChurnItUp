@@ -7,13 +7,24 @@
 //
 
 import UIKit
+import SpriteKit
+import GameplayKit
 
 class MainScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let skView = self.view as! SKView
+        
+        let scene = MainGameScene(size: skView.bounds.size)
+        
+        scene.scaleMode = .aspectFill
+        
+        skView.presentScene(scene)
 
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
