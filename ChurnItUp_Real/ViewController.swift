@@ -23,11 +23,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func StartButtonPressed(_ sender: Any) {
+  @IBAction func StartButtonPressed(_ sender: Any) {
         
-        self.performSegue(withIdentifier: "MainScreenViewController", sender: self)
+       
     }
-    
+    /*  
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     // Use this area to do anything that you want before you go to the new screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
             
         
     }
-
+*/
 
 }
 
