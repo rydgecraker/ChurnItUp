@@ -67,9 +67,9 @@
 			isa = PBXGroup;
 			children = (
 				DCAFEF402033859800F20AA7 /* MainScreenViewController.swift */,
+				29FAD7992033874500BFF7A5 /* GetLocationViewController.swift */,
 				7CE3F6E420350CB9006839ED /* MainGameScene.swift */,
 				7CE95C47203CB62F00D690E7 /* FindCowsScene.swift */,
-				29FAD7992033874500BFF7A5 /* GetLocationViewController.swift */,
 				2996AEC4202CFC5200610639 /* AppDelegate.swift */,
 				2996AEC6202CFC5200610639 /* ViewController.swift */,
 				2996AEC8202CFC5200610639 /* Main.storyboard */,
