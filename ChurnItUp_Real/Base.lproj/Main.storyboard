@@ -78,9 +78,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1O-OM-60h" userLabel="Info Button">
-                                <rect key="frame" x="337" y="625" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1O-OM-60h" userLabel="Info Button">
+                                <rect key="frame" x="337" y="625" width="18" height="22"/>
                                 <connections>
                                     <segue destination="S6R-AP-QMs" kind="show" identifier="InfoScreen" id="yfc-XO-k9x"/>
                                 </connections>
@@ -91,11 +90,14 @@
                             <constraint firstItem="aP7-zb-25S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0zT-As-4BJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dcQ-25-FzA" secondAttribute="bottom" constant="100" id="Fv2-ST-Uld"/>
                             <constraint firstItem="dcQ-25-FzA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Knm-Cx-EVJ"/>
+                            <constraint firstItem="v1O-OM-60h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="337" id="Omm-jn-xYY"/>
                             <constraint firstItem="KEe-Kh-c4W" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ZU4-aJ-KeD"/>
                             <constraint firstItem="nPt-5Y-ecH" firstAttribute="top" secondItem="aP7-zb-25S" secondAttribute="bottom" constant="50" id="gGI-no-OsN"/>
                             <constraint firstItem="KEe-Kh-c4W" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mQR-IG-DhD"/>
                             <constraint firstItem="nPt-5Y-ecH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pia-vP-Csl"/>
                             <constraint firstItem="aP7-zb-25S" firstAttribute="top" secondItem="KEe-Kh-c4W" secondAttribute="bottom" constant="50" id="s9G-2d-ind"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="v1O-OM-60h" secondAttribute="trailing" constant="20" id="vpf-8k-Rcx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="v1O-OM-60h" secondAttribute="bottom" constant="20" id="wjy-Qr-TbI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
