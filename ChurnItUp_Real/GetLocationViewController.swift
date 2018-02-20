@@ -59,6 +59,16 @@ class GetLocationViewController: UIViewController {
         }
         calculateCowDistance()
         print("The cow is \(distanceXtoCow) degrees X away (longitude), the cow is \(distanceYtoCow) degrees Y away (latitude)")
+        
+        let distXMeters = getOneMeterInLongitudeDegrees(latitudeDegrees: latitude) * distanceXtoCow
+        let distYMeters = oneMeterInLatitudeDegrees * distanceYtoCow
+        
+        let distance = ((distYMeters * distYMeters) + (distXMeters * distXMeters)).squareRoot()
+        
+        if(distance < 5){
+            print("Distance less than 5")
+        }
+        
     }
     
     func calculateCowDistance() {
