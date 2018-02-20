@@ -108,17 +108,36 @@
         <!--INFO-->
         <scene sceneID="KZj-MY-FpN">
             <objects>
-                <viewController title="INFO" id="S6R-AP-QMs" sceneMemberID="viewController">
+                <viewController title="INFO" id="S6R-AP-QMs" customClass="InfoViewController" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hjt-s3-Wfw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0S-gf-bfL">
+                                <rect key="frame" x="16" y="84" width="343" height="541"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8mM-Uc-Lk6" firstAttribute="bottom" secondItem="O0S-gf-bfL" secondAttribute="bottom" constant="42" id="3zY-ko-zsd"/>
+                            <constraint firstItem="O0S-gf-bfL" firstAttribute="top" secondItem="8mM-Uc-Lk6" secondAttribute="top" constant="20" id="7e7-dv-LYS"/>
+                            <constraint firstItem="O0S-gf-bfL" firstAttribute="leading" secondItem="8mM-Uc-Lk6" secondAttribute="leading" constant="16" id="AsR-kV-3Rh"/>
+                            <constraint firstItem="O0S-gf-bfL" firstAttribute="centerX" secondItem="8mM-Uc-Lk6" secondAttribute="centerX" id="T5l-3O-fmU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8mM-Uc-Lk6"/>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="O0S-gf-bfL" id="g3q-kX-M5X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dyq-YF-5aI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="645"/>
+            <point key="canvasLocation" x="992.79999999999995" y="644.52773613193403"/>
         </scene>
         <!--HOME-->
         <scene sceneID="cZY-S2-kgy">

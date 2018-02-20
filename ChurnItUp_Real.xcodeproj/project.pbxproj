@@ -14,6 +14,9 @@
 		2996AECF202CFC5200610639 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2996AECE202CFC5200610639 /* Assets.xcassets */; };
 		2996AED2202CFC5200610639 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2996AED0202CFC5200610639 /* LaunchScreen.storyboard */; };
 		29FAD79A2033874500BFF7A5 /* GetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FAD7992033874500BFF7A5 /* GetLocationViewController.swift */; };
+		373390DF203CBCB500D64E4E /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373390DE203CBCB500D64E4E /* PlayerClass.swift */; };
+		373390E1203CC10400D64E4E /* info.html in Resources */ = {isa = PBXBuildFile; fileRef = 373390E0203CC10400D64E4E /* info.html */; };
+		373390E3203CC71A00D64E4E /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373390E2203CC71A00D64E4E /* InfoViewController.swift */; };
 		7CE3F6E520350CB9006839ED /* MainGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE3F6E420350CB9006839ED /* MainGameScene.swift */; };
 		7CE95C48203CB62F00D690E7 /* FindCowsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE95C47203CB62F00D690E7 /* FindCowsScene.swift */; };
 		DCAFEF412033859800F20AA7 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAFEF402033859800F20AA7 /* MainScreenViewController.swift */; };
@@ -30,6 +33,9 @@
 		2996AED1202CFC5200610639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2996AED3202CFC5200610639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29FAD7992033874500BFF7A5 /* GetLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationViewController.swift; sourceTree = "<group>"; };
+		373390DE203CBCB500D64E4E /* PlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerClass.swift; sourceTree = "<group>"; };
+		373390E0203CC10400D64E4E /* info.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = info.html; sourceTree = "<group>"; };
+		373390E2203CC71A00D64E4E /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		7CE3F6E420350CB9006839ED /* MainGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameScene.swift; sourceTree = "<group>"; };
 		7CE95C47203CB62F00D690E7 /* FindCowsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCowsScene.swift; sourceTree = "<group>"; };
 		DCAFEF402033859800F20AA7 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
@@ -73,11 +79,14 @@
 				2996AEC4202CFC5200610639 /* AppDelegate.swift */,
 				2996AEC6202CFC5200610639 /* ViewController.swift */,
 				2996AEC8202CFC5200610639 /* Main.storyboard */,
+				373390DE203CBCB500D64E4E /* PlayerClass.swift */,
 				2996AECE202CFC5200610639 /* Assets.xcassets */,
 				2996AED0202CFC5200610639 /* LaunchScreen.storyboard */,
 				2996AED3202CFC5200610639 /* Info.plist */,
 				2996AECB202CFC5200610639 /* ChurnItUp_Real.xcdatamodeld */,
 				DCC069B72036339200FE4797 /* UpgradeScreenViewController.swift */,
+				373390E0203CC10400D64E4E /* info.html */,
+				373390E2203CC71A00D64E4E /* InfoViewController.swift */,
 			);
 			path = ChurnItUp_Real;
 			sourceTree = "<group>";
@@ -141,6 +150,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				373390E1203CC10400D64E4E /* info.html in Resources */,
 				2996AED2202CFC5200610639 /* LaunchScreen.storyboard in Resources */,
 				2996AECF202CFC5200610639 /* Assets.xcassets in Resources */,
 				2996AECA202CFC5200610639 /* Main.storyboard in Resources */,
@@ -154,9 +164,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				373390DF203CBCB500D64E4E /* PlayerClass.swift in Sources */,
 				2996AEC7202CFC5200610639 /* ViewController.swift in Sources */,
 				7CE95C48203CB62F00D690E7 /* FindCowsScene.swift in Sources */,
 				DCAFEF412033859800F20AA7 /* MainScreenViewController.swift in Sources */,
+				373390E3203CC71A00D64E4E /* InfoViewController.swift in Sources */,
 				2996AECD202CFC5200610639 /* ChurnItUp_Real.xcdatamodeld in Sources */,
 				DCC069B82036339200FE4797 /* UpgradeScreenViewController.swift in Sources */,
 				7CE3F6E520350CB9006839ED /* MainGameScene.swift in Sources */,
