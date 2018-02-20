@@ -9,8 +9,11 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import CoreMotion
 
 class MainScreenViewController: UIViewController {
+    
+    var motionManager = CMMotionManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +33,21 @@ class MainScreenViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        motionManager.accelerometerUpdateInterval = 0.2
+        
+        motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
+            if let shakeData = data {
+                print("Phone Still")
+                
+                if shakeData.acceleration.x > 2 {
+                    print("Phone Shaken")
+                }
+            }
+        }
     }
     
 
