@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import SpriteKit
+import GameplayKit
 
 class GetLocationViewController: UIViewController {
 
@@ -80,6 +82,17 @@ class GetLocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let skView = self.view as! SKView
+        
+        let findCowScene = FindCowsScene(size: skView.bounds.size)
+        
+        findCowScene.scaleMode = .aspectFill
+        
+        findCowScene.backgroundColor = SKColor.white
+        
+        skView.presentScene(findCowScene)
+        
         dontKnowLocationYet = true
         // Ask for Authorisation from the User.
         self.locationManager.requestAlwaysAuthorization()
