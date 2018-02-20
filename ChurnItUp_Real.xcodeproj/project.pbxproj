@@ -15,6 +15,7 @@
 		2996AED2202CFC5200610639 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2996AED0202CFC5200610639 /* LaunchScreen.storyboard */; };
 		29FAD79A2033874500BFF7A5 /* GetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FAD7992033874500BFF7A5 /* GetLocationViewController.swift */; };
 		7CE3F6E520350CB9006839ED /* MainGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE3F6E420350CB9006839ED /* MainGameScene.swift */; };
+		7CE95C48203CB62F00D690E7 /* FindCowsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE95C47203CB62F00D690E7 /* FindCowsScene.swift */; };
 		DCAFEF412033859800F20AA7 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAFEF402033859800F20AA7 /* MainScreenViewController.swift */; };
 		DCC069B82036339200FE4797 /* UpgradeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC069B72036339200FE4797 /* UpgradeScreenViewController.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		2996AED3202CFC5200610639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29FAD7992033874500BFF7A5 /* GetLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationViewController.swift; sourceTree = "<group>"; };
 		7CE3F6E420350CB9006839ED /* MainGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameScene.swift; sourceTree = "<group>"; };
+		7CE95C47203CB62F00D690E7 /* FindCowsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCowsScene.swift; sourceTree = "<group>"; };
 		DCAFEF402033859800F20AA7 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		DCC069B72036339200FE4797 /* UpgradeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +68,7 @@
 			children = (
 				DCAFEF402033859800F20AA7 /* MainScreenViewController.swift */,
 				7CE3F6E420350CB9006839ED /* MainGameScene.swift */,
+				7CE95C47203CB62F00D690E7 /* FindCowsScene.swift */,
 				29FAD7992033874500BFF7A5 /* GetLocationViewController.swift */,
 				2996AEC4202CFC5200610639 /* AppDelegate.swift */,
 				2996AEC6202CFC5200610639 /* ViewController.swift */,
@@ -152,10 +155,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2996AEC7202CFC5200610639 /* ViewController.swift in Sources */,
+				7CE95C48203CB62F00D690E7 /* FindCowsScene.swift in Sources */,
 				DCAFEF412033859800F20AA7 /* MainScreenViewController.swift in Sources */,
 				2996AECD202CFC5200610639 /* ChurnItUp_Real.xcdatamodeld in Sources */,
 				DCC069B82036339200FE4797 /* UpgradeScreenViewController.swift in Sources */,
-
 				7CE3F6E520350CB9006839ED /* MainGameScene.swift in Sources */,
 				29FAD79A2033874500BFF7A5 /* GetLocationViewController.swift in Sources */,
 				2996AEC5202CFC5200610639 /* AppDelegate.swift in Sources */,
