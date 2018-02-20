@@ -41,7 +41,7 @@ class MainScreenViewController: UIViewController {
         
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
             if let shakeData = data {
-                print(shakeData.acceleration.y)
+               // print(shakeData.acceleration.y)
                 if shakeData.acceleration.y > -0.5 {
                     //Make the butter churn, churn once.
                 } else {

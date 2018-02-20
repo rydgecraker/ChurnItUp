@@ -64,7 +64,7 @@ class GetLocationViewController: UIViewController {
         let distYMeters = oneMeterInLatitudeDegrees * distanceYtoCow
         
         let distance = ((distYMeters * distYMeters) + (distXMeters * distXMeters)).squareRoot()
-        
+        print("distance: \(distance)")
         if(distance < 5){
             print("Distance less than 5")
         }
@@ -100,9 +100,21 @@ class GetLocationViewController: UIViewController {
     
     func plopCow(){
         print("CurrentLocation: \(longitude) long and \(latitude) lat")
-        let cowLatChangeInMeters = convert0to60toNeg30to30(Double (arc4random_uniform(60)) + 1.0)
+        var cowLatChangeInMeters = convert0to60toNeg30to30(Double (arc4random_uniform(60)) + 1.0)
+        if(cowLatChangeInMeters < 10 && cowLatChangeInMeters > 0){
+            cowLatChangeInMeters += 10
+        }
+        if(cowLatChangeInMeters > -10 && cowLatChangeInMeters < 0){
+            cowLatChangeInMeters -= 10
+        }
         cowLat = getCowLatitude(cowLatChangeInMeters: cowLatChangeInMeters)
-        let cowLonChangeInMeters = convert0to60toNeg30to30(Double (arc4random_uniform(60)) + 1.0)
+        var cowLonChangeInMeters = convert0to60toNeg30to30(Double (arc4random_uniform(60)) + 1.0)
+        if(cowLonChangeInMeters < 10 && cowLonChangeInMeters > 0){
+            cowLonChangeInMeters += 10
+        }
+        if(cowLonChangeInMeters > -10 && cowLonChangeInMeters < 0){
+            cowLonChangeInMeters -= 10
+        }
         cowLon = getCowLongitude(cowLonChangeInMeters: cowLonChangeInMeters, cowLat: cowLat)
         print("Cow is going to be \(cowLonChangeInMeters) meters lat and \(cowLonChangeInMeters) meters lon")
         print("That means the cow will be \(cowLat) degrees lat and \(cowLon) degrees lon")
@@ -152,7 +164,7 @@ extension GetLocationViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         
         facingAngleRadians = toRadians(newHeading.trueHeading)
-        print("facing \(facingAngleRadians)")
+        //print("facing \(facingAngleRadians)")
         //self.imageView.transform = CGAffineTransform(rotationAngle: angle) // rotate the picture
     }
     
