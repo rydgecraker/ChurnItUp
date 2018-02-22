@@ -64,18 +64,24 @@ class GetLocationViewController: UIViewController {
         
         calculateCowDistance()
         compass.zRotation = CGFloat(atan2(distanceYtoCow, distanceXtoCow) + facingAngleRadians)
-        print("latitude \(latitude) - longitude \(longitude)")
         let distXMeters = distanceXtoCow / getOneMeterInLongitudeDegrees(latitudeDegrees: latitude)
         let distYMeters = distanceYtoCow / oneMeterInLatitudeDegrees
-        print("DISTANCE X \(distXMeters)" + " DISTANCE Y \(distYMeters)")
         
-        let distance = ((distYMeters * distYMeters) + (distXMeters * distXMeters)).squareRoot()
-        print("distance: \(distance)")
+        var distance = ((distYMeters * distYMeters) + (distXMeters * distXMeters)).squareRoot()
+        
+        //TODO: Remove this
+        distance = 0
+        
         if(distance < 5){
-            print("Distance less than 5")
+            performSegue(withIdentifier: "CowCapture", sender: self)
         }
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     func calculateCowDistance() {
         distanceYtoCow = cowLat - latitude
