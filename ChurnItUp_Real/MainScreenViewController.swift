@@ -14,9 +14,12 @@ import CoreMotion
 class MainScreenViewController: UIViewController {
     
     var motionManager = CMMotionManager()
-
+    var numShakes: Int = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         let skView = self.view as! SKView
         
@@ -26,8 +29,8 @@ class MainScreenViewController: UIViewController {
         
         skView.presentScene(mainScene)
 
-        // Do any additional setup after loading the view.
-        
+        // Check status of game
+        gameStatus()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,14 +39,22 @@ class MainScreenViewController: UIViewController {
     }
     
     
-    override func viewDidAppear(_ animated: Bool) {
+    func churnButter() {
+
         motionManager.accelerometerUpdateInterval = 0.2
         
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
             if let shakeData = data {
                // print(shakeData.acceleration.y)
                 if shakeData.acceleration.y > -0.5 {
-                    //Make the butter churn, churn once.
+                    
+                    self.numShakes += 1
+                    // Make the butter churn, churn once.
+                    
+                    if (self.numShakes < 50) {
+                        
+                    }
+                    
                 } else {
                     //Ignore this.
                 }
@@ -52,6 +63,33 @@ class MainScreenViewController: UIViewController {
     }
     
 
+    func gameStatus() {
+        
+        print("game status")
+        
+        let fileName = Bundle.main.url(forResource: "gameStats", withExtension: "txt")!
+            
+            print(fileName)
+            
+            do {
+                
+                let fileContent = try String(contentsOf: fileName, encoding: String.Encoding.utf8)
+                let gameStats = fileContent.components(separatedBy: "\n")
+                print(gameStats)
+                
+                if(fileContent == "") {
+                    
+                }
+                
+            } catch {
+                print("Unable to open file")
+            }
+
+    }
+    
+    
+    
+    
     
     // MARK: - Navigation
 
