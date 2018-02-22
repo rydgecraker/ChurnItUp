@@ -63,8 +63,7 @@ class GetLocationViewController: UIViewController {
         }
         
         calculateCowDistance()
-        print("The cow is \(distanceXtoCow) degrees X away (longitude), the cow is \(distanceYtoCow) degrees Y away (latitude)")
-        
+        print("latitude \(latitude) - longitude \(longitude)")
         let distXMeters = distanceXtoCow / getOneMeterInLongitudeDegrees(latitudeDegrees: latitude)
         let distYMeters = distanceYtoCow / oneMeterInLatitudeDegrees
         print("DISTANCE X \(distXMeters)" + " DISTANCE Y \(distYMeters)")
@@ -164,8 +163,8 @@ extension GetLocationViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         
-        facingAngleRadians = toRadians(newHeading.trueHeading)
-        let rot = CGFloat(atan2(distanceYtoCow, distanceXtoCow) + facingAngleRadians)
+        facingAngleRadians = toRadians(newHeading.trueHeading) + .pi
+        let rot = CGFloat(atan2(distanceXtoCow, distanceYtoCow) + facingAngleRadians)
         compass.zRotation = rot
         //print("facing \(facingAngleRadians)")
         //self.imageView.transform = CGAffineTransform(rotationAngle: angle) // rotate the picture
