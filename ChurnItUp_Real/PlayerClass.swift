@@ -24,6 +24,7 @@ class Player {
         efficiencyLevel = efficiencyVal
         churnsDone = churnsDoneVal
         
+        
     }
 
 }
