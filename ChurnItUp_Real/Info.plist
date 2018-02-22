@@ -41,7 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Churn it up needs to know your location even when you&apos;re not in the app screen to tell you if you&apos;re near cows!</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Churn it up needs to know your location in order to function properly.</string>
+	<string>Churn it up needs to know your location to help you find cows!</string>
 </dict>
 </plist>

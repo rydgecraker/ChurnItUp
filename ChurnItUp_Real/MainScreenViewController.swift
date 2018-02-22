@@ -20,11 +20,11 @@ class MainScreenViewController: UIViewController {
         
         let skView = self.view as! SKView
         
-        let scene = MainGameScene(size: skView.bounds.size)
+        let mainScene = MainGameScene(size: skView.bounds.size)
         
-        scene.scaleMode = .aspectFill
+        mainScene.scaleMode = .aspectFill
         
-        skView.presentScene(scene)
+        skView.presentScene(mainScene)
 
         // Do any additional setup after loading the view.
         
@@ -41,10 +41,11 @@ class MainScreenViewController: UIViewController {
         
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
             if let shakeData = data {
-                print("Phone Still")
-                
-                if shakeData.acceleration.x > 2 {
-                    print("Phone Shaken")
+               // print(shakeData.acceleration.y)
+                if shakeData.acceleration.y > -0.5 {
+                    //Make the butter churn, churn once.
+                } else {
+                    //Ignore this.
                 }
             }
         }

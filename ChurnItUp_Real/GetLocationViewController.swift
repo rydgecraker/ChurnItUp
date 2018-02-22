@@ -9,9 +9,13 @@
 import UIKit
 import MapKit
 import CoreLocation
+import SpriteKit
+import GameplayKit
 
 class GetLocationViewController: UIViewController {
 
+    
+    var dontKnowLocationYet: Bool = true
     
     var findingCow: Bool = true
     var latChanged: Bool = false
@@ -22,9 +26,9 @@ class GetLocationViewController: UIViewController {
         didSet {
             
             if latChanged && lonChanged {
-                latChanged = false;
-                lonChanged = false;
-                locationUpdated();
+                latChanged = false
+                lonChanged = false
+                locationUpdated()
             }
             
         }
@@ -32,6 +36,8 @@ class GetLocationViewController: UIViewController {
     }
     
     var longitude: Double = 0.0
+    
+    var facingAngleRadians: Double = 0.0
     
     var cowLat: Double = 0.0
     var cowLon: Double = 0.0
@@ -49,8 +55,22 @@ class GetLocationViewController: UIViewController {
     }
     
     func locationUpdated() {
+        if dontKnowLocationYet {
+            dontKnowLocationYet = false
+            plopCow()
+        }
         calculateCowDistance()
         print("The cow is \(distanceXtoCow) degrees X away (longitude), the cow is \(distanceYtoCow) degrees Y away (latitude)")
+        
+        let distXMeters = getOneMeterInLongitudeDegrees(latitudeDegrees: latitude) * distanceXtoCow
+        let distYMeters = oneMeterInLatitudeDegrees * distanceYtoCow
+        
+        let distance = ((distYMeters * distYMeters) + (distXMeters * distXMeters)).squareRoot()
+        print("distance: \(distance)")
+        if(distance < 5){
+            print("Distance less than 5")
+        }
+        
     }
     
     func calculateCowDistance() {
@@ -62,7 +82,18 @@ class GetLocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let skView = self.view as! SKView
+        
+        let findCowScene = FindCowsScene(size: skView.bounds.size)
+        
+        findCowScene.scaleMode = .aspectFill
+        
+        findCowScene.backgroundColor = SKColor.white
+        
+        skView.presentScene(findCowScene)
+        
+        dontKnowLocationYet = true
         // Ask for Authorisation from the User.
         self.locationManager.requestAlwaysAuthorization()
         
@@ -73,6 +104,7 @@ class GetLocationViewController: UIViewController {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
+            locationManager.startUpdatingHeading()
         }
         
         plopCow()
@@ -81,9 +113,21 @@ class GetLocationViewController: UIViewController {
     
     func plopCow(){
         print("CurrentLocation: \(longitude) long and \(latitude) lat")
-        let cowLatChangeInMeters = convert0to60toNeg30to30(Double (arc4random_uniform(60)) + 1.0)
+        var cowLatChangeInMeters = convert0to60toNeg30to30(Double (arc4random_uniform(60)) + 1.0)
+        if(cowLatChangeInMeters < 10 && cowLatChangeInMeters > 0){
+            cowLatChangeInMeters += 10
+        }
+        if(cowLatChangeInMeters > -10 && cowLatChangeInMeters < 0){
+            cowLatChangeInMeters -= 10
+        }
         cowLat = getCowLatitude(cowLatChangeInMeters: cowLatChangeInMeters)
-        let cowLonChangeInMeters = convert0to60toNeg30to30(Double (arc4random_uniform(60)) + 1.0)
+        var cowLonChangeInMeters = convert0to60toNeg30to30(Double (arc4random_uniform(60)) + 1.0)
+        if(cowLonChangeInMeters < 10 && cowLonChangeInMeters > 0){
+            cowLonChangeInMeters += 10
+        }
+        if(cowLonChangeInMeters > -10 && cowLonChangeInMeters < 0){
+            cowLonChangeInMeters -= 10
+        }
         cowLon = getCowLongitude(cowLonChangeInMeters: cowLonChangeInMeters, cowLat: cowLat)
         print("Cow is going to be \(cowLonChangeInMeters) meters lat and \(cowLonChangeInMeters) meters lon")
         print("That means the cow will be \(cowLat) degrees lat and \(cowLon) degrees lon")
@@ -96,7 +140,7 @@ class GetLocationViewController: UIViewController {
     
     func getCowLongitude(cowLonChangeInMeters: Double, cowLat: Double) -> Double {
         let cowLonChangeInDegrees = getOneMeterInLongitudeDegrees(latitudeDegrees: cowLat) * cowLonChangeInMeters
-        return longitude * cowLonChangeInDegrees
+        return longitude + cowLonChangeInDegrees
     }
     
     func convert0to60toNeg30to30(_ number: Double) -> Double {
@@ -119,6 +163,8 @@ extension GetLocationViewController: CLLocationManagerDelegate {
         lonChanged = true
         latitude = locValue.latitude
         longitude = locValue.longitude
+        latChanged = true
+        lonChanged = true
     }
     
     // If we have been deined access give the user the option to change it
@@ -126,6 +172,13 @@ extension GetLocationViewController: CLLocationManagerDelegate {
         if(status == CLAuthorizationStatus.denied) {
             showLocationDisabledPopUp()
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        
+        facingAngleRadians = toRadians(newHeading.trueHeading)
+        //print("facing \(facingAngleRadians)")
+        //self.imageView.transform = CGAffineTransform(rotationAngle: angle) // rotate the picture
     }
     
     // Show the popup to the user if we have been deined access
@@ -143,6 +196,14 @@ extension GetLocationViewController: CLLocationManagerDelegate {
         alertController.addAction(openAction)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func toRadians(_ degrees: Double) -> Double {
+        return degrees * (.pi / 180)
+    }
+    
+    func toDegrees(_ radians: Double) -> Double {
+        return radians * (180 / .pi)
     }
     
 }
