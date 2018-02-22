@@ -20,10 +20,22 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Churn it up needs to know your location even when you're not in the app screen to tell you if you're near cows!</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Churn it up needs to know your location to help you find cows!</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Churn it up needst to detect your phones motion to function properly.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -31,19 +43,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array/>
-	<key>NSMotionUsageDescription</key>
-	<string>Churn it up needst to detect your phones motion to function properly.</string>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Churn it up needs to know your location even when you&apos;re not in the app screen to tell you if you&apos;re near cows!</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Churn it up needs to know your location to help you find cows!</string>
 </dict>
 </plist>

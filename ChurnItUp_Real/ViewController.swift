@@ -16,6 +16,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        //Use the passed in values here
+        let player = Player.init(14, 2, 1, 1,40)
+        print(player.milk)
     }
     
     override func didReceiveMemoryWarning() {

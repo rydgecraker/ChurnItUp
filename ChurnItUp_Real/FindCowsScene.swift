@@ -31,9 +31,6 @@ class FindCowsScene: SKScene {
         compass.name = CompassNodeName
         addChild(compass)
         
-        
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

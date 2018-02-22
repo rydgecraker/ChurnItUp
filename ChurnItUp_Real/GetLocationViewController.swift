@@ -21,6 +21,8 @@ class GetLocationViewController: UIViewController {
     var latChanged: Bool = false
     var lonChanged: Bool = false
     
+    var compass: SKSpriteNode!
+    
     var latitude: Double = 0.0 {
         
         didSet {
@@ -42,15 +44,15 @@ class GetLocationViewController: UIViewController {
     var cowLat: Double = 0.0
     var cowLon: Double = 0.0
     
-    var distanceXtoCow: Double = 0.0
-    var distanceYtoCow: Double = 0.0
+    var distanceXtoCow: Double = 0.0 //Longitude
+    var distanceYtoCow: Double = 0.0 //Latitude
     
     //69 Miles per degree of Latitude, 1609m per mile results in this. (rounded)
     let oneMeterInLatitudeDegrees = 0.000009
     
     //Because longitude changes with latitude, the distance between longitude lines must be calculated on the spot. with cos(latitudeDegrees) * mileDistance at the equator (69.172 miles between each line)
     func getOneMeterInLongitudeDegrees(latitudeDegrees: Double) -> Double{
-        let oneMileDegrees = cos(latitudeDegrees) * 69.172
+        let oneMileDegrees = cos((latitudeDegrees * .pi ) / 180) * 69.172
         return oneMileDegrees / 1069.34
     }
     
@@ -59,19 +61,27 @@ class GetLocationViewController: UIViewController {
             dontKnowLocationYet = false
             plopCow()
         }
+        
         calculateCowDistance()
-        print("The cow is \(distanceXtoCow) degrees X away (longitude), the cow is \(distanceYtoCow) degrees Y away (latitude)")
+        compass.zRotation = CGFloat(atan2(distanceYtoCow, distanceXtoCow) + facingAngleRadians)
+        let distXMeters = distanceXtoCow / getOneMeterInLongitudeDegrees(latitudeDegrees: latitude)
+        let distYMeters = distanceYtoCow / oneMeterInLatitudeDegrees
         
-        let distXMeters = getOneMeterInLongitudeDegrees(latitudeDegrees: latitude) * distanceXtoCow
-        let distYMeters = oneMeterInLatitudeDegrees * distanceYtoCow
+        var distance = ((distYMeters * distYMeters) + (distXMeters * distXMeters)).squareRoot()
         
-        let distance = ((distYMeters * distYMeters) + (distXMeters * distXMeters)).squareRoot()
-        print("distance: \(distance)")
+        //TODO: Remove this
+        distance = 0
+        
         if(distance < 5){
-            print("Distance less than 5")
+            performSegue(withIdentifier: "CowCapture", sender: self)
         }
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     func calculateCowDistance() {
         distanceYtoCow = cowLat - latitude
@@ -92,6 +102,7 @@ class GetLocationViewController: UIViewController {
         findCowScene.backgroundColor = SKColor.white
         
         skView.presentScene(findCowScene)
+        compass = findCowScene.children[0] as! SKSpriteNode
         
         dontKnowLocationYet = true
         // Ask for Authorisation from the User.
@@ -107,30 +118,13 @@ class GetLocationViewController: UIViewController {
             locationManager.startUpdatingHeading()
         }
         
-        plopCow()
-        
     }
     
     func plopCow(){
-        print("CurrentLocation: \(longitude) long and \(latitude) lat")
-        var cowLatChangeInMeters = convert0to60toNeg30to30(Double (arc4random_uniform(60)) + 1.0)
-        if(cowLatChangeInMeters < 10 && cowLatChangeInMeters > 0){
-            cowLatChangeInMeters += 10
-        }
-        if(cowLatChangeInMeters > -10 && cowLatChangeInMeters < 0){
-            cowLatChangeInMeters -= 10
-        }
+        let cowLatChangeInMeters = Double(arc4random_uniform(30) + 30) * getNegOneOrOne()
         cowLat = getCowLatitude(cowLatChangeInMeters: cowLatChangeInMeters)
-        var cowLonChangeInMeters = convert0to60toNeg30to30(Double (arc4random_uniform(60)) + 1.0)
-        if(cowLonChangeInMeters < 10 && cowLonChangeInMeters > 0){
-            cowLonChangeInMeters += 10
-        }
-        if(cowLonChangeInMeters > -10 && cowLonChangeInMeters < 0){
-            cowLonChangeInMeters -= 10
-        }
+        let cowLonChangeInMeters = Double(arc4random_uniform(30) + 30) * getNegOneOrOne()
         cowLon = getCowLongitude(cowLonChangeInMeters: cowLonChangeInMeters, cowLat: cowLat)
-        print("Cow is going to be \(cowLonChangeInMeters) meters lat and \(cowLonChangeInMeters) meters lon")
-        print("That means the cow will be \(cowLat) degrees lat and \(cowLon) degrees lon")
     }
     
     func getCowLatitude(cowLatChangeInMeters: Double) -> Double {
@@ -142,14 +136,16 @@ class GetLocationViewController: UIViewController {
         let cowLonChangeInDegrees = getOneMeterInLongitudeDegrees(latitudeDegrees: cowLat) * cowLonChangeInMeters
         return longitude + cowLonChangeInDegrees
     }
-    
-    func convert0to60toNeg30to30(_ number: Double) -> Double {
-        if(number > 30){
-            return number - 61 //Will never return 0. Returns [-30, -1] and [1, 30]
-        }
-        return number
-    }
 
+}
+
+func getNegOneOrOne() -> Double {
+    let num = arc4random_uniform(2)
+    if num == 0 {
+        return -1
+    } else {
+        return 1
+    }
 }
 
 
@@ -159,8 +155,6 @@ extension GetLocationViewController: CLLocationManagerDelegate {
     //This fuction updates whenever the user's location updates and stores the lat and long values into the variables.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        latChanged = true
-        lonChanged = true
         latitude = locValue.latitude
         longitude = locValue.longitude
         latChanged = true
@@ -177,6 +171,7 @@ extension GetLocationViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         
         facingAngleRadians = toRadians(newHeading.trueHeading)
+        compass.zRotation = CGFloat(atan2(distanceYtoCow, distanceXtoCow) + facingAngleRadians)
         //print("facing \(facingAngleRadians)")
         //self.imageView.transform = CGAffineTransform(rotationAngle: angle) // rotate the picture
     }
@@ -199,7 +194,7 @@ extension GetLocationViewController: CLLocationManagerDelegate {
     }
     
     func toRadians(_ degrees: Double) -> Double {
-        return degrees * (.pi / 180)
+        return (degrees * .pi) / 180
     }
     
     func toDegrees(_ radians: Double) -> Double {
