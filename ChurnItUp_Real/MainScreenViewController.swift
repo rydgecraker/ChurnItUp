@@ -48,6 +48,7 @@ class MainScreenViewController: UIViewController {
                // print(shakeData.acceleration.y)
                 if shakeData.acceleration.y > -0.5 {
                     
+                    // MainGameScene.shake()
                     self.numShakes += 1
                     // Make the butter churn, churn once.
                     
