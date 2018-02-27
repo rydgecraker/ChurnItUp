@@ -10,10 +10,10 @@ import UIKit
 
 class Cow {
 
-    var milk: Int = 0
+    var milk: Double = 0
     var cowType: String = ""
     
-    init(milkAmt: Int, typeOfCow: String){
+    init(milkAmt: Double, typeOfCow: String){
         cowType = typeOfCow
         milk = milkAmt
         
