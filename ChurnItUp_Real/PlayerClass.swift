@@ -51,7 +51,7 @@ class Player {
     
     func addMilk(_ milk: Int){
         self.milk += milk
-        if(self.milk >= maxMilk){
+        if(self.milk > maxMilk){
             self.milk = maxMilk
         }
     }
