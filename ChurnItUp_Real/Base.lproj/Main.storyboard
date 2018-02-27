@@ -215,7 +215,7 @@
         <!--CAPTURE COWS!-->
         <scene sceneID="aKN-Fe-gP5">
             <objects>
-                <viewController title="CAPTURE COWS!" id="BPI-a4-f2H" sceneMemberID="viewController">
+                <viewController title="CAPTURE COWS!" id="BPI-a4-f2H" customClass="CaptureCows" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ptp-9L-w8D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -229,6 +229,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Cow"/>
                                 <connections>
+                                    <action selector="cowButtonPressed:" destination="BPI-a4-f2H" eventType="touchUpInside" id="5vx-dd-n0V"/>
                                     <segue destination="NoT-JL-Z3P" kind="show" identifier="cowToHome" id="b3X-62-VTS"/>
                                 </connections>
                             </button>

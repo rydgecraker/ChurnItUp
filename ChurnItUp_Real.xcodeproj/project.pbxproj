@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29341A542045E0AE00E7AD2B /* CaptureCows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29341A532045E0AE00E7AD2B /* CaptureCows.swift */; };
+		29341A562045E15B00E7AD2B /* Cow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29341A552045E15B00E7AD2B /* Cow.swift */; };
 		2996AEC5202CFC5200610639 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2996AEC4202CFC5200610639 /* AppDelegate.swift */; };
 		2996AEC7202CFC5200610639 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2996AEC6202CFC5200610639 /* ViewController.swift */; };
 		2996AECA202CFC5200610639 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2996AEC8202CFC5200610639 /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		29341A532045E0AE00E7AD2B /* CaptureCows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureCows.swift; sourceTree = "<group>"; };
+		29341A552045E15B00E7AD2B /* Cow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cow.swift; sourceTree = "<group>"; };
 		2996AEC1202CFC5200610639 /* ChurnItUp_Real.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChurnItUp_Real.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2996AEC4202CFC5200610639 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2996AEC6202CFC5200610639 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 			children = (
 				DCAFEF402033859800F20AA7 /* MainScreenViewController.swift */,
 				DC737ADD203F5AAD0041871A /* gameStats.plist */,
+				29341A532045E0AE00E7AD2B /* CaptureCows.swift */,
+				29341A552045E15B00E7AD2B /* Cow.swift */,
 				29FAD7992033874500BFF7A5 /* GetLocationViewController.swift */,
 				7CE3F6E420350CB9006839ED /* MainGameScene.swift */,
 				7CE95C47203CB62F00D690E7 /* FindCowsScene.swift */,
@@ -173,7 +179,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				373390DF203CBCB500D64E4E /* PlayerClass.swift in Sources */,
+				29341A562045E15B00E7AD2B /* Cow.swift in Sources */,
 				2996AEC7202CFC5200610639 /* ViewController.swift in Sources */,
+				29341A542045E0AE00E7AD2B /* CaptureCows.swift in Sources */,
 				7CE95C48203CB62F00D690E7 /* FindCowsScene.swift in Sources */,
 				DCAFEF412033859800F20AA7 /* MainScreenViewController.swift in Sources */,
 				373390E3203CC71A00D64E4E /* InfoViewController.swift in Sources */,
