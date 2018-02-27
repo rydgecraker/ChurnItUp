@@ -11,20 +11,48 @@ class Player {
     var milk: Int = 10
     var butter: Int = 0
     //Upgrades
-    var luckLevel: Int = 0//.1 per upgrade
-    var efficiencyLevel: Int = 0 //.1 per upgrade
+    var luckLevel: Double = 0//.1 per upgrade
+    var efficiencyLevel: Double = 0 //.1 per upgrade
+    var maxMilk: Int = 10 //+10 per upgrade
     
     //Progress
     var churnsDone: Int = 0
     
-    init(_ milkVal: Int, _ butterVal:Int, _ luckLevelVal:Int, _ efficiencyVal:Int, _ churnsDoneVal:Int){
+    init(_ milkVal: Int, _ butterVal:Int, _ luckLevelVal:Double, _ efficiencyVal:Double, _ churnsDoneVal:Int, _ maximumMilk: Int){
         milk = milkVal
         butter = butterVal
         luckLevel = luckLevelVal
         efficiencyLevel = efficiencyVal
         churnsDone = churnsDoneVal
-        
-        
+        maxMilk = maximumMilk
+    }
+    
+    func upgradeLuck(){
+        luckLevel += 0.1
+        if(luckLevel > 0.5){
+            luckLevel = 0.5;
+        }
+    }
+    
+    func upgradeMilkCapacity(){
+        maxMilk += 10
+        if(maxMilk > 100){
+            maxMilk = 100
+        }
+    }
+    
+    func upgradeEfficiencyLevel(){
+        efficiencyLevel += 0.1
+        if(efficiencyLevel > 1.0){
+            efficiencyLevel = 1.0
+        }
+    }
+    
+    func addMilk(_ milk: Int){
+        self.milk += milk
+        if(self.milk >= maxMilk){
+            self.milk = maxMilk
+        }
     }
 
 }

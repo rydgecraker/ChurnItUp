@@ -10,10 +10,12 @@ import UIKit
 
 class CaptureCows: UIViewController {
 
+    var player: Player!
+    var cow: Cow!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        cow = Cow.generateCow(luckValueMultiplier: player.luckLevel)
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,17 +26,7 @@ class CaptureCows: UIViewController {
     
     
     @IBAction func cowButtonPressed(_ sender: Any) {
-        //Add amount of milk to player
+        player.addMilk(cow.milk)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
