@@ -35,8 +35,26 @@ class Cow {
         } else {
             return Cow.init(milkAmt: 100, typeOfCow: "C")
         }
-        
-        
+    }
+    
+    func getCowImage() -> UIImage {
+        switch cowType {
+        case "L":
+            let lgd = arc4random_uniform(2)
+            if lgd == 0 {
+                return #imageLiteral(resourceName: "goldCow")
+            } else {
+                return #imageLiteral(resourceName: "almondCow")
+            }
+        case "R":
+            return #imageLiteral(resourceName: "almondCow")
+        case "U" :
+            return #imageLiteral(resourceName: "chocolateCow")
+        case "C":
+            return #imageLiteral(resourceName: "basicCow")
+        default:
+            return #imageLiteral(resourceName: "basicCow")
+        }
     }
     
 }

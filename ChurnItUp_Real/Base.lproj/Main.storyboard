@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -186,6 +187,7 @@
                             <constraint firstItem="wST-CK-oIO" firstAttribute="top" secondItem="q1Z-HL-Qm9" secondAttribute="top" constant="115" id="OQy-Nt-RkD"/>
                             <constraint firstItem="ghl-uf-NKt" firstAttribute="top" secondItem="q1Z-HL-Qm9" secondAttribute="top" constant="115" id="VOE-KG-coF"/>
                             <constraint firstItem="q1Z-HL-Qm9" firstAttribute="trailing" secondItem="wST-CK-oIO" secondAttribute="trailing" constant="12" id="aQp-e3-hyM"/>
+                            <constraint firstItem="wST-CK-oIO" firstAttribute="leading" secondItem="ghl-uf-NKt" secondAttribute="trailing" constant="129" id="xbl-Rl-keG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q1Z-HL-Qm9"/>
                     </view>
@@ -223,9 +225,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pasture" translatesAutoresizingMaskIntoConstraints="NO" id="i8S-eq-f3k">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvF-VQ-I8R">
-                                <rect key="frame" x="141" y="297" width="93" height="73"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvF-VQ-I8R">
+                                <rect key="frame" x="38" y="270" width="321" height="277"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wvF-VQ-I8R" secondAttribute="height" multiplier="321:277" id="mkG-4a-vNv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" backgroundImage="basicCow"/>
                                 <connections>
@@ -237,11 +241,17 @@
                         <constraints>
                             <constraint firstItem="i8S-eq-f3k" firstAttribute="top" secondItem="ptp-9L-w8D" secondAttribute="top" id="4Hk-fe-iAB"/>
                             <constraint firstItem="i8S-eq-f3k" firstAttribute="leading" secondItem="mqR-S5-FKV" secondAttribute="leading" id="I7O-IC-MzI"/>
+                            <constraint firstItem="mqR-S5-FKV" firstAttribute="bottom" secondItem="wvF-VQ-I8R" secondAttribute="bottom" constant="120" id="NFd-Lf-Yei"/>
+                            <constraint firstItem="mqR-S5-FKV" firstAttribute="trailing" secondItem="wvF-VQ-I8R" secondAttribute="trailing" constant="16" id="PqP-PQ-kKc"/>
                             <constraint firstItem="i8S-eq-f3k" firstAttribute="bottom" secondItem="mqR-S5-FKV" secondAttribute="bottom" id="c3a-GR-TCb"/>
                             <constraint firstItem="i8S-eq-f3k" firstAttribute="trailing" secondItem="mqR-S5-FKV" secondAttribute="trailing" id="fuK-K3-zek"/>
+                            <constraint firstItem="wvF-VQ-I8R" firstAttribute="leading" secondItem="mqR-S5-FKV" secondAttribute="leading" constant="38" id="iaS-tf-NW7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mqR-S5-FKV"/>
                     </view>
+                    <connections>
+                        <outlet property="cowButton" destination="wvF-VQ-I8R" id="bLm-ra-WCa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="26B-4v-a3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -275,6 +285,7 @@
         <image name="pasture" width="1280" height="989"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Eik-6Z-WLI"/>
         <segue reference="b3X-62-VTS"/>
     </inferredMetricsTieBreakers>
 </document>

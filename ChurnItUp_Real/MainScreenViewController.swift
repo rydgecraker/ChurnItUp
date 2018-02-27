@@ -20,6 +20,8 @@ class MainScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        
         let skView = self.view as! SKView
         
         let mainScene = MainGameScene(size: skView.bounds.size)
