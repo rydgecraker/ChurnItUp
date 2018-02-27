@@ -15,16 +15,17 @@ class MainScreenViewController: UIViewController {
     
     var motionManager = CMMotionManager()
     var numShakes: Int = 0
-    
+    var player: Player!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.setHidesBackButton(true, animated: false)
         
         let skView = self.view as! SKView
         
         let mainScene = MainGameScene(size: skView.bounds.size)
-        
+        mainScene.start(player: self.player)
         mainScene.scaleMode = .aspectFill
         
         skView.presentScene(mainScene)
@@ -38,6 +39,20 @@ class MainScreenViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is GetLocationViewController
+        {
+            let glvc = segue.destination as? GetLocationViewController
+            glvc?.player = self.player
+        }
+        
+        if segue.destination is UpgradeScreenViewController
+        {
+            let usvc = segue.destination as? UpgradeScreenViewController
+            usvc?.player = self.player
+        }
+        
+    }
     
     func churnButter() {
 
@@ -45,7 +60,6 @@ class MainScreenViewController: UIViewController {
         
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
             if let shakeData = data {
-               // print(shakeData.acceleration.y)
                 if shakeData.acceleration.y > -0.5 {
                     
                     // MainGameScene.shake()
@@ -66,38 +80,23 @@ class MainScreenViewController: UIViewController {
 
     func gameStatus() {
         
-        print("game status")
-        
         let fileName = Bundle.main.url(forResource: "gameStats", withExtension: "txt")!
-            
-            print(fileName)
             
             do {
                 
                 let fileContent = try String(contentsOf: fileName, encoding: String.Encoding.utf8)
                 let gameStats = fileContent.components(separatedBy: "\n")
-                print(gameStats)
                 
                 if(fileContent == "") {
-                    
+                    // Create file
                 }
                 
+                //load the file
+                
             } catch {
-                print("Unable to open file")
+                print("ERROR - Unable to open file")
             }
 
-    }
-    
-    
-    
-    
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
 
 }

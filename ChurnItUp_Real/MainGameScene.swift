@@ -14,11 +14,17 @@ class MainGameScene: SKScene {
     private let ChurnStaffNodeName = "staff"
     private let ChurnBaseNodeName = "base"
     private let BackgroundNodeName = "background"
-    
+    private let MilkNodeName = "milk"
+    private let JarNodeName = "jar"
+    private let staffIsUp = true
+    var player: Player!
     
     override init(size: CGSize) {
         super.init(size: size)
-        
+    }
+    
+    func start(player: Player) {
+        self.player = player
         let background = SKSpriteNode()
         background.position = CGPoint(x: size.width/2.0, y: size.height/2.0)
         //background.size = CGSize(width: size.width, height: size.height)
@@ -28,11 +34,11 @@ class MainGameScene: SKScene {
         background.name = BackgroundNodeName
         addChild(background)
         
-        let baseSize = CGSize(width: size.width/2.0, height: size.height/2.0)
+        // let baseSize = CGSize(width: size.width/2.0, height: size.height/2.0)
         let base = SKSpriteNode(imageNamed: "churnBase.png")
         base.position = CGPoint(x: size.width/2.0, y: size.height/4.0)
-        //base.size = CGSize(width: size.width/2.0, height: 91.50)
-        base.aspectFillToSize(fillSize: baseSize)
+        base.size = CGSize(width: size.width/3.0, height: (size.width/3.0)*1.93)
+        //base.aspectFillToSize(fillSize: baseSize)
         base.zPosition = 2.0
         base.name = ChurnBaseNodeName
         addChild(base)
@@ -46,11 +52,34 @@ class MainGameScene: SKScene {
         staff.name = ChurnStaffNodeName
         addChild(staff)
         
+        let oneHundredPercent = CGFloat((size.width / 5) * 1.33)
+        
+        let milk = SKSpriteNode(imageNamed: "Milk.png")
+        milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * player.getMilkPercent())
+        milk.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+        milk.position = CGPoint(x: milk.size.width, y: size.height/2.0)
+        addChild(milk)
+        
+        let jar = SKSpriteNode(imageNamed: "MilkJar.png")
+        jar.size = CGSize(width: size.width/5.0, height: (size.width/5.0)*1.33)
+        jar.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+        jar.position = CGPoint(x: jar.size.width, y: size.height/2.0)
+        //jar.zPosition = 3.0
+        addChild(jar)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func moveStaff() {
+        
+        if staffIsUp {
+            //self.ChurnStaffNodeName
+        }
+        
+    }
+    
 }
 
 extension SKSpriteNode {
