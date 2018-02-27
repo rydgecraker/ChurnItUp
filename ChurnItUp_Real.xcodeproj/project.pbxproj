@@ -82,6 +82,7 @@
 			children = (
 				DCAFEF402033859800F20AA7 /* MainScreenViewController.swift */,
 				DC737ADD203F5AAD0041871A /* gameStats.plist */,
+				DCC069B72036339200FE4797 /* UpgradeScreenViewController.swift */,
 				29341A532045E0AE00E7AD2B /* CaptureCows.swift */,
 				29341A552045E15B00E7AD2B /* Cow.swift */,
 				29FAD7992033874500BFF7A5 /* GetLocationViewController.swift */,
@@ -95,7 +96,6 @@
 				2996AED0202CFC5200610639 /* LaunchScreen.storyboard */,
 				2996AED3202CFC5200610639 /* Info.plist */,
 				2996AECB202CFC5200610639 /* ChurnItUp_Real.xcdatamodeld */,
-				DCC069B72036339200FE4797 /* UpgradeScreenViewController.swift */,
 				373390E0203CC10400D64E4E /* info.html */,
 				373390E2203CC71A00D64E4E /* InfoViewController.swift */,
 				DC737ADB203F35410041871A /* gameStats.txt */,

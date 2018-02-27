@@ -285,7 +285,6 @@
         <image name="pasture" width="1280" height="989"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Eik-6Z-WLI"/>
         <segue reference="b3X-62-VTS"/>
     </inferredMetricsTieBreakers>
 </document>

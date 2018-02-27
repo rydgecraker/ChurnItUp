@@ -6,6 +6,8 @@
 //  Copyright © 2018 Craker, Rydge. All rights reserved.
 //
 
+import UIKit
+
 class Player {
         //Inventory
     var milk: Double = 10
@@ -57,6 +59,10 @@ class Player {
         if(self.milk > maxMilk){
             self.milk = maxMilk
         }
+    }
+    
+    func getMilkPercent() -> CGFloat {
+        return CGFloat(milk / maxMilk)
     }
 
 }
