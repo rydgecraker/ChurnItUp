@@ -227,7 +227,7 @@
                                 <rect key="frame" x="141" y="297" width="93" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Cow"/>
+                                <state key="normal" backgroundImage="basicCow"/>
                                 <connections>
                                     <segue destination="NoT-JL-Z3P" kind="show" identifier="cowToHome" id="b3X-62-VTS"/>
                                 </connections>
@@ -271,6 +271,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="basicCow" width="696" height="425"/>
         <image name="pasture" width="1280" height="989"/>
     </resources>
     <inferredMetricsTieBreakers>
