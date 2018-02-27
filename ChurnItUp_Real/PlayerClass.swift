@@ -8,18 +8,19 @@
 
 class Player {
         //Inventory
-    var milk: Int = 10
+    var milk: Double = 10
     var butter: Int = 0
     
     //Upgrades
     var luckLevel: Double = 0//.1 per upgrade //Max 0.5
+    var luckUpgrade: Int = 0
     var efficiencyLevel: Double = 0 //.1 per upgrade //Max 1.0
-    var maxMilk: Int = 10 //+10 per upgrade //Max 100
+    var maxMilk: Double = 10.0 //+10 per upgrade //Max 100
     
     //Progress
     var churnsDone: Int = 0
     
-    init(milkVal: Int, butterVal:Int, luckLevelVal:Double, efficiencyVal:Double, churnsDoneVal:Int, maximumMilk: Int){
+    init(milkVal: Double, butterVal:Int, luckLevelVal:Double, efficiencyVal:Double, churnsDoneVal:Int, maximumMilk: Double){
         milk = milkVal
         butter = butterVal
         luckLevel = luckLevelVal
@@ -30,8 +31,10 @@ class Player {
     
     func upgradeLuck(){
         luckLevel += 0.1
+        luckUpgrade += 1
         if(luckLevel > 0.5){
             luckLevel = 0.5;
+            luckUpgrade = 5
         }
     }
     
