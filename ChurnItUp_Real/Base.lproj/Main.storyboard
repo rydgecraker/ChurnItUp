@@ -215,7 +215,7 @@
         <!--CAPTURE COWS!-->
         <scene sceneID="aKN-Fe-gP5">
             <objects>
-                <viewController title="CAPTURE COWS!" id="BPI-a4-f2H" sceneMemberID="viewController">
+                <viewController title="CAPTURE COWS!" id="BPI-a4-f2H" customClass="CaptureCows" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ptp-9L-w8D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

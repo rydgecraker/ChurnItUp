@@ -17,6 +17,7 @@ class MainGameScene: SKScene {
     private let MilkNodeName = "milk"
     private let JarNodeName = "jar"
     private let staffIsUp = true
+    var player: Player!
     
     override init(size: CGSize) {
         super.init(size: size)
