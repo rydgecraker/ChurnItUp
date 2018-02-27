@@ -10,10 +10,11 @@ class Player {
         //Inventory
     var milk: Int = 10
     var butter: Int = 0
+    
     //Upgrades
-    var luckLevel: Double = 0//.1 per upgrade
-    var efficiencyLevel: Double = 0 //.1 per upgrade
-    var maxMilk: Int = 10 //+10 per upgrade
+    var luckLevel: Double = 0//.1 per upgrade //Max 0.5
+    var efficiencyLevel: Double = 0 //.1 per upgrade //Max 1.0
+    var maxMilk: Int = 10 //+10 per upgrade //Max 100
     
     //Progress
     var churnsDone: Int = 0
