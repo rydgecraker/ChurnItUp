@@ -12,13 +12,14 @@ class ViewController: UIViewController {
     
     let SegueMainScreenViewController = "MainScreenViewController"
 
+    var player: Player!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         //Use the passed in values here
-        let player = Player.init(14, 2, 1, 1,40)
-        print(player.milk)
+        player = Player.init(milkVal: 10, butterVal: 0, luckLevelVal: 0.0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 100)
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,26 +27,18 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-  @IBAction func StartButtonPressed(_ sender: Any) {
-        
-       
-    }
-    /*  
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    // Use this area to do anything that you want before you go to the new screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
-        // First, check if the segue's identifier is what we expect it to be
-        if segue.identifier == SegueMainScreenViewController {
-            let destinationViewController = segue.destination as! MainScreenViewController
- 
-            }
-            
-        
+        if segue.destination is MainScreenViewController
+        {
+            let msvc = segue.destination as? MainScreenViewController
+            msvc?.player = self.player
+        }
     }
-*/
+    
+  @IBAction func StartButtonPressed(_ sender: Any) {
+    
+    }
+
 
 }
 

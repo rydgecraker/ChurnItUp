@@ -229,7 +229,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Cow"/>
                                 <connections>
-                                    <action selector="cowButtonPressed:" destination="BPI-a4-f2H" eventType="touchUpInside" id="5vx-dd-n0V"/>
                                     <segue destination="NoT-JL-Z3P" kind="show" identifier="cowToHome" id="b3X-62-VTS"/>
                                 </connections>
                             </button>

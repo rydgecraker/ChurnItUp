@@ -19,7 +19,7 @@ class Player {
     //Progress
     var churnsDone: Int = 0
     
-    init(_ milkVal: Int, _ butterVal:Int, _ luckLevelVal:Double, _ efficiencyVal:Double, _ churnsDoneVal:Int, _ maximumMilk: Int){
+    init(milkVal: Int, butterVal:Int, luckLevelVal:Double, efficiencyVal:Double, churnsDoneVal:Int, maximumMilk: Int){
         milk = milkVal
         butter = butterVal
         luckLevel = luckLevelVal

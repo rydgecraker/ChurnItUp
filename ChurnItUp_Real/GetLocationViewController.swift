@@ -20,8 +20,10 @@ class GetLocationViewController: UIViewController {
     var findingCow: Bool = true
     var latChanged: Bool = false
     var lonChanged: Bool = false
-    
+    var performingSegue: Bool = false
     var compass: SKSpriteNode!
+    
+    var player: Player!
     
     var latitude: Double = 0.0 {
         
@@ -72,13 +74,20 @@ class GetLocationViewController: UIViewController {
         //TODO: Remove this
         distance = 0
         
-        if(distance < 5){
+        if(distance < 5 && !performingSegue){
+            performingSegue = true
             performSegue(withIdentifier: "CowCapture", sender: self)
         }
         
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is CaptureCows
+        {
+            let cc = segue.destination as? CaptureCows
+            cc?.player = self.player
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -172,7 +181,6 @@ extension GetLocationViewController: CLLocationManagerDelegate {
         
         facingAngleRadians = toRadians(newHeading.trueHeading)
         compass.zRotation = CGFloat(atan2(distanceYtoCow, distanceXtoCow) + facingAngleRadians)
-        //print("facing \(facingAngleRadians)")
         //self.imageView.transform = CGAffineTransform(rotationAngle: angle) // rotate the picture
     }
     

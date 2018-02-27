@@ -23,10 +23,13 @@ class CaptureCows: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    @IBAction func cowButtonPressed(_ sender: Any) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         player.addMilk(cow.milk)
+        if segue.destination is MainScreenViewController
+        {
+            let msvc = segue.destination as? MainScreenViewController
+            msvc?.player = self.player
+        }
     }
 
 }

@@ -15,6 +15,7 @@ class MainGameScene: SKScene {
     private let ChurnBaseNodeName = "base"
     private let BackgroundNodeName = "background"
     
+    var player: Player!
     
     override init(size: CGSize) {
         super.init(size: size)
