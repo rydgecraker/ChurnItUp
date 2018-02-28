@@ -15,7 +15,6 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
             super.viewDidLoad()
             
-            //Find the Bullseye.html file in our project by getting the url to it...
             if let url = Bundle.main.url(forResource: "info", withExtension: "html"){
                 if let htmlData = try? Data(contentsOf: url){
                     let baseURL = URL(fileURLWithPath: Bundle.main.bundlePath)

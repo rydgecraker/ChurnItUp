@@ -21,7 +21,10 @@ class MainGameScene: SKScene {
     
     override init(size: CGSize) {
         super.init(size: size)
-        
+    }
+    
+    func start(player: Player) {
+        self.player = player
         let background = SKSpriteNode()
         background.position = CGPoint(x: size.width/2.0, y: size.height/2.0)
         //background.size = CGSize(width: size.width, height: size.height)
@@ -49,8 +52,10 @@ class MainGameScene: SKScene {
         staff.name = ChurnStaffNodeName
         addChild(staff)
         
+        let oneHundredPercent = CGFloat((size.width / 5) * 1.33)
+        
         let milk = SKSpriteNode(imageNamed: "Milk.png")
-        milk.size = CGSize(width: size.width/5.0, height: (size.width/5.0))//*1.33)
+        milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * player.getMilkPercent())
         milk.anchorPoint = CGPoint(x: 0.5, y: 0.0)
         milk.position = CGPoint(x: milk.size.width, y: size.height/2.0)
         addChild(milk)
@@ -61,8 +66,6 @@ class MainGameScene: SKScene {
         jar.position = CGPoint(x: jar.size.width, y: size.height/2.0)
         //jar.zPosition = 3.0
         addChild(jar)
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

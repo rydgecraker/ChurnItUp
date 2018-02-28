@@ -27,13 +27,13 @@ class Cow {
         let randRoll = (Double(arc4random_uniform(100)) + 1.0) * (1 + luckValueMultiplier)
         
         if(randRoll > rareMax){
-            return Cow.init(milkAmt: 1, typeOfCow: "L")
+            return Cow.init(milkAmt: 100, typeOfCow: "L")
         } else if(randRoll > unCommonMax){
-            return Cow.init(milkAmt: 10, typeOfCow: "R")
+            return Cow.init(milkAmt: 25, typeOfCow: "R")
         } else if(randRoll > commonMax){
-            return Cow.init(milkAmt: 25, typeOfCow: "U")
+            return Cow.init(milkAmt: 10, typeOfCow: "U")
         } else {
-            return Cow.init(milkAmt: 100, typeOfCow: "C")
+            return Cow.init(milkAmt: 1, typeOfCow: "C")
         }
     }
     

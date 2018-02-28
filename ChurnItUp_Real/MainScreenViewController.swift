@@ -25,7 +25,7 @@ class MainScreenViewController: UIViewController {
         let skView = self.view as! SKView
         
         let mainScene = MainGameScene(size: skView.bounds.size)
-        
+        mainScene.start(player: self.player)
         mainScene.scaleMode = .aspectFill
         
         skView.presentScene(mainScene)
@@ -45,6 +45,13 @@ class MainScreenViewController: UIViewController {
             let glvc = segue.destination as? GetLocationViewController
             glvc?.player = self.player
         }
+        
+        if segue.destination is UpgradeScreenViewController
+        {
+            let usvc = segue.destination as? UpgradeScreenViewController
+            usvc?.player = self.player
+        }
+        
     }
     
     func churnButter() {
