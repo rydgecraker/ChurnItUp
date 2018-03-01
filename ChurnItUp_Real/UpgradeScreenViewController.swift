@@ -37,9 +37,12 @@ class UpgradeScreenViewController: UIViewController {
         efficiencyLevel.text = String(efficiency)
         milkCanLevel.text = String(Int(player.maxMilk))
         butterLevel.text = String(player.butter)
+        self.navigationItem.setHidesBackButton(true, animated: false)
         //Function for button enabling and image change
 
     }
+  
+  
     func getStats(){
         //creates local Levels from player object's double values
         luck = Int(player.luckLevel * 10)
@@ -139,5 +142,6 @@ class UpgradeScreenViewController: UIViewController {
             msvc?.player = self.player
             
         }
+        self.navigationController?.popViewController(animated: true)
     }
 }

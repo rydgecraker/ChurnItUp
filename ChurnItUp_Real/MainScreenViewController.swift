@@ -19,10 +19,13 @@ class MainScreenViewController: UIViewController {
     var player: Player!
     var mainScene: MainGameScene!
     
-    let player2 = [AnyObject]()
+    static var splayer: Player!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(UserDefaults.standard.getMilkVal());
+        print("Playa \(player.milk)")
         
         self.navigationItem.setHidesBackButton(true, animated: false)
         
@@ -33,12 +36,10 @@ class MainScreenViewController: UIViewController {
         mainScene.scaleMode = .aspectFill
         
         skView.presentScene(mainScene)
-
-        print("MilkValue getMilkVal() : \(UserDefaults.standard.getMilkVal())")
-        print("MilkValue getMaxMilkVal() : \(UserDefaults.standard.getMaximunMilkVal())")
+        
         
         // Check status of game
-        
+        MainScreenViewController.splayer = player
         churnButter()
 
     }
@@ -65,6 +66,8 @@ class MainScreenViewController: UIViewController {
             usvc?.mainScene = self.mainScene
         }
         
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     func churnButter() {
@@ -74,32 +77,37 @@ class MainScreenViewController: UIViewController {
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
             if let shakeData = data {
                 if shakeData.acceleration.y > 0.5 {
-                    print("here")
-                    // MainGameScene.shake()
-                    //MARK: Got rid of numShakes since we needed the churnsDone for all other calcs. -JV
-                    self.player.churnsDone += 1
-                    //MARK: changed this to use player churnsDone and churnsNeeded, instead of hardcoded, max value and numshakes
-                    // Make the butter churn, churn once
-                    if (self.player.churnsDone < self.player.churnsNeeded) {
-                        // print("Current Number of Shakes \(self.numShakes)")
-                        print("ChurnsDone \(self.player.churnsDone)")
-                        self.mainScene.moveStaff()
+                    if(self.player.milk > 0){
+                      // MainGameScene.shake()
+                      //MARK: Got rid of numShakes since we needed the churnsDone for all other calcs. -JV
+                      self.player.churnsDone += 1
+                      //MARK: changed this to use player churnsDone and churnsNeeded, instead of hardcoded, max value and numshakes
+                      // Make the butter churn, churn once
+                      if (self.player.churnsDone < self.player.churnsNeeded) {
+                          // print("Current Number of Shakes \(self.numShakes)")
+                          print("ChurnsDone \(self.player.churnsDone)")
+                          self.mainScene.moveStaff()
+
+                      } else {
+                          //MARK: I added subtract milk (previous milk  -JV
+                          self.player.milk -= 1
+                          self.player.churnsDone = 0
+                          self.player.butter += 1
+                          self.mainScene.moveStaff()
+                          self.mainScene.updateHUD()
+                          print("Shakes over \(self.player.churnsNeeded): Current Churns Done \(self.player.churnsDone)")
+                          print("Shakes over \(self.player.churnsNeeded): Current Number of Butter \(self.player.butter)")
                         
                     } else {
-                        //MARK: I added subtract milk (previous milk  -JV
-                        self.player.milk -= 1
-                        self.player.churnsDone = 0
-                        self.player.butter += 1
-                        self.mainScene.moveStaff()
-                        self.mainScene.updateHUD()
-                        print("Shakes over \(self.player.churnsNeeded): Current Churns Done \(self.player.churnsDone)")
-                        print("Shakes over \(self.player.churnsNeeded): Current Number of Butter \(self.player.butter)")
+                        // You don't have milk. you cant make butter!
+                        let alert = UIAlertController(title: "OUT OF MILK!" , message: "Go find some cows to continue!", preferredStyle: .alert)
                         
+                        let alertAction = UIAlertAction(title: "Continue", style: .default, handler: nil)
                         
+                        alert.addAction(alertAction)
+                        
+                        self.present(alert, animated: true, completion: nil)
                     }
-                    //FIXME: Will code be added here? if not, IFs don't need to have an else. -JV
-                } else {
-                    //Ignore this.
                 }
             }
         }
