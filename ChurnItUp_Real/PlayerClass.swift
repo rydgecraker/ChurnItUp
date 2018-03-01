@@ -24,7 +24,7 @@ class Player {
     var churnsNeeded: Int = 0
     
     //Constants
-    let initialChurns: Int = 3
+    let initialChurns: Int = 50
     let maxLuckLevel = 5
     let maxEfficiencyLevel = 10
     let maxMilkLevel = 9

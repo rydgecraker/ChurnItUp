@@ -271,10 +271,10 @@
                                 <rect key="frame" x="0.0" y="47" width="375" height="620"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="130" translatesAutoresizingMaskIntoConstraints="NO" id="ztj-tO-jpC">
-                                <rect key="frame" x="16" y="76" width="344" height="340"/>
+                                <rect key="frame" x="16" y="32" width="344" height="340"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="4UI-k0-bFh" userLabel="Top Stack">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="220" translatesAutoresizingMaskIntoConstraints="NO" id="4UI-k0-bFh" userLabel="Top Stack">
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FmY-Sl-K43">
                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="50"/>
@@ -294,6 +294,17 @@
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBw-d2-vVt">
+                                                <rect key="frame" x="292" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="Lis-MJ-Ac8"/>
+                                                    <constraint firstAttribute="width" constant="50" id="x9F-S2-8Jg"/>
+                                                </constraints>
+                                                <state key="normal" title="Back"/>
+                                                <connections>
+                                                    <segue destination="NoT-JL-Z3P" kind="show" id="ler-uE-rGQ"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="kNW-o4-5ok" userLabel="Upgrades Stack">
@@ -457,26 +468,15 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBw-d2-vVt">
-                                <rect key="frame" x="313" y="26" width="46" height="144"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="NoT-JL-Z3P" kind="show" id="ler-uE-rGQ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ztj-tO-jpC" firstAttribute="top" secondItem="jnk-zz-ShP" secondAttribute="top" constant="12" id="0qr-5t-k7H"/>
                             <constraint firstItem="6BW-Gg-n1z" firstAttribute="trailing" secondItem="jnk-zz-ShP" secondAttribute="trailing" id="FN7-Za-g8A"/>
-                            <constraint firstItem="zBw-d2-vVt" firstAttribute="top" secondItem="Ld2-th-kHY" secondAttribute="top" constant="26" id="GS7-yC-sd3"/>
                             <constraint firstItem="6BW-Gg-n1z" firstAttribute="leading" secondItem="jnk-zz-ShP" secondAttribute="leading" id="Mbe-0A-MHd"/>
                             <constraint firstItem="6BW-Gg-n1z" firstAttribute="top" secondItem="Ld2-th-kHY" secondAttribute="top" constant="47" id="PL9-QT-zqA"/>
-                            <constraint firstItem="jnk-zz-ShP" firstAttribute="bottom" secondItem="zBw-d2-vVt" secondAttribute="bottom" constant="497" id="dYy-cY-sZa"/>
                             <constraint firstItem="ztj-tO-jpC" firstAttribute="centerX" secondItem="Ld2-th-kHY" secondAttribute="centerX" id="dh3-dy-Nks"/>
-                            <constraint firstItem="jnk-zz-ShP" firstAttribute="trailing" secondItem="zBw-d2-vVt" secondAttribute="trailing" constant="16" id="nI5-dl-Y7Q"/>
                             <constraint firstItem="6BW-Gg-n1z" firstAttribute="bottom" secondItem="jnk-zz-ShP" secondAttribute="bottom" id="sMk-66-jZC"/>
-                            <constraint firstItem="zBw-d2-vVt" firstAttribute="leading" secondItem="jnk-zz-ShP" secondAttribute="leading" constant="313" id="t2p-93-iNF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jnk-zz-ShP"/>
                     </view>
@@ -506,6 +506,6 @@
         <image name="upgradePlusActive" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GWR-w5-g7B"/>
+        <segue reference="ler-uE-rGQ"/>
     </inferredMetricsTieBreakers>
 </document>
