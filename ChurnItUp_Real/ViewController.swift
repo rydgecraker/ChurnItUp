@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         //Use the passed in values here
-        player = Player.init(milkVal: 0.0, butterVal: 0, luckLevelVal: 0.0, luckUpgradeVal: 0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 10.0)
+        player = Player.init(milkVal: 10.0, butterVal: 0, luckLevelVal: 0.0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 10.0)
         
         
     }
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
        
     } else {
         
-        UserDefaults.standard.setAllValues(player)
+        UserDefaults.standard.setAllValues(player: player)
         
     }
 }

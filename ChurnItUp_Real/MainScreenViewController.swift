@@ -97,7 +97,7 @@ class MainScreenViewController: UIViewController {
                           self.mainScene.updateHUD()
                           print("Shakes over \(self.player.churnsNeeded): Current Churns Done \(self.player.churnsDone)")
                           print("Shakes over \(self.player.churnsNeeded): Current Number of Butter \(self.player.butter)")
-                        
+                      }
                     } else {
                         // You don't have milk. you cant make butter!
                         let alert = UIAlertController(title: "OUT OF MILK!" , message: "Go find some cows to continue!", preferredStyle: .alert)
@@ -112,5 +112,5 @@ class MainScreenViewController: UIViewController {
             }
         }
     }
-    
+
 }

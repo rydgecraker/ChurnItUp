@@ -15,7 +15,7 @@ class UpgradeScreenViewController: UIViewController {
     var luck = 0
     var efficiency = 0
     var milkCan = 0
-    let butterNeeded = [7,15,30,60,125,250,375,500,750,1000,0]
+    let butterNeeded = [7, 15, 30, 60, 125, 250, 375, 500, 750, 1000, 0]
     
     @IBOutlet weak var luckLevel: UILabel!
     @IBOutlet weak var efficiencyLevel: UILabel!
@@ -140,7 +140,6 @@ class UpgradeScreenViewController: UIViewController {
             let msvc = segue.destination as? MainScreenViewController
             msvc?.mainScene = self.mainScene
             msvc?.player = self.player
-            
         }
         self.navigationController?.popViewController(animated: true)
     }
