@@ -16,29 +16,34 @@ class Player {
     
     //Upgrades
     var luckLevel: Double = 0//.1 per upgrade //Max 0.5
-    var luckUpgrade: Int = 0
     var efficiencyLevel: Double = 0 //.1 per upgrade //Max 1.0
     var maxMilk: Double = 0.0 //+10 per upgrade //Max 100
     
     //Progress
     var churnsDone: Int = 0
+    var churnsNeeded: Int = 0
     
-    init(milkVal: Double, butterVal: Int, luckLevelVal: Double, luckUpgradeVal: Int, efficiencyVal: Double, churnsDoneVal: Int, maximumMilk: Double){
+    //Constants
+    let initialChurns: Int = 50
+    let maxLuckLevel = 5
+    let maxEfficiencyLevel = 10
+    let maxMilkLevel = 9
+    
+    init(milkVal: Double, butterVal: Int, luckLevelVal: Double, efficiencyVal: Double, churnsDoneVal: Int, maximumMilk: Double){
         milk = milkVal
         butter = butterVal
         luckLevel = luckLevelVal
-        luckUpgrade = luckUpgradeVal
         efficiencyLevel = efficiencyVal
         churnsDone = churnsDoneVal
         maxMilk = maximumMilk
+        //MARK: This (below) does not need to be saved to the userdefaults since it is being calculated from a constant
+        churnsNeeded = initialChurns - Int(Double(initialChurns) * efficiencyLevel)
     }
     
     func upgradeLuck(){
         luckLevel += 0.1
-        luckUpgrade += 1
         if(luckLevel > 0.5){
-            luckLevel = 0.5;
-            luckUpgrade = 5
+            luckLevel = 0.5
         }
     }
     
@@ -53,6 +58,13 @@ class Player {
         efficiencyLevel += 0.1
         if(efficiencyLevel > 1.0){
             efficiencyLevel = 1.0
+        }
+        churnsNeeded = initialChurns - Int(Double(initialChurns) * efficiencyLevel)
+        // if increased efficiency creates a butter reset churns, add butter, subtract milk
+        if churnsDone >= churnsNeeded {
+            butter += 1
+            churnsDone = 0
+            milk -= 1
         }
     }
     
@@ -100,14 +112,7 @@ extension UserDefaults {
         return double(forKey: UserDefaultsKeys.luckLevel.rawValue)
     }
     
-    func setLuckUpgradeVal(_ luckUpgrade: Int) {
-        set(luckUpgrade, forKey: UserDefaultsKeys.luckUpgrade.rawValue)
-    }
-    
     // Get Value
-    func getLuckUpgradeVal() -> Int{
-        return integer(forKey: UserDefaultsKeys.luckUpgrade.rawValue)
-    }
     
     func setEfficiencyVal(_ efficiency: Double) {
         set(efficiency, forKey: UserDefaultsKeys.efficiency.rawValue)
@@ -147,7 +152,6 @@ enum UserDefaultsKeys : String {
     case milk
     case butter
     case luckLevel
-    case luckUpgrade
     case efficiency
     case churnsDone
     case maximumMilk

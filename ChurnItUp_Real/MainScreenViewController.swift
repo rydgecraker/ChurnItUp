@@ -14,7 +14,8 @@ import CoreMotion
 class MainScreenViewController: UIViewController {
     
     var motionManager = CMMotionManager()
-    var numShakes: Int = 0
+    //MARK: removed all uses of numShakes replaces with player.churnsDone.
+    //var numShakes: Int = 0
     var player: Player!
     var mainScene: MainGameScene!
     
@@ -61,6 +62,7 @@ class MainScreenViewController: UIViewController {
         {
             let usvc = segue.destination as? UpgradeScreenViewController
             usvc?.player = self.player
+            usvc?.mainScene = self.mainScene
         }
         
     }
@@ -74,28 +76,28 @@ class MainScreenViewController: UIViewController {
                 if shakeData.acceleration.y > 0.5 {
                     print("here")
                     // MainGameScene.shake()
-                    self.numShakes += 1
-                    // Make the butter churn, churn once.
-                    
-                    if (self.numShakes < 25) {
-                        
-                        self.player.churnsDone = self.numShakes
+                    //MARK: Got rid of numShakes since we needed the churnsDone for all other calcs. -JV
+                    self.player.churnsDone += 1
+                    //MARK: changed this to use player churnsDone and churnsNeeded, instead of hardcoded, max value and numshakes
+                    // Make the butter churn, churn once
+                    if (self.player.churnsDone < self.player.churnsNeeded) {
                         // print("Current Number of Shakes \(self.numShakes)")
                         print("ChurnsDone \(self.player.churnsDone)")
                         self.mainScene.moveStaff()
                         
                     } else {
-                        
-                        self.numShakes = 0
+                        //MARK: I added subtract milk (previous milk  -JV
+                        self.player.milk -= 1
+                        self.player.churnsDone = 0
                         self.player.butter += 1
                         self.mainScene.moveStaff()
                         self.mainScene.updateHUD()
-                        print("Shakes over 25: Current Churns Done \(self.player.churnsDone)")
-                        print("Shakes over 25: Current Number of Butter \(self.player.butter)")
+                        print("Shakes over \(self.player.churnsNeeded): Current Churns Done \(self.player.churnsDone)")
+                        print("Shakes over \(self.player.churnsNeeded): Current Number of Butter \(self.player.butter)")
                         
                         
                     }
-                    
+                    //FIXME: Will code be added here? if not, IFs don't need to have an else. -JV
                 } else {
                     //Ignore this.
                 }
