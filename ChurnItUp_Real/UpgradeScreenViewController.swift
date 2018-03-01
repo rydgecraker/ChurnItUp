@@ -63,5 +63,11 @@ class UpgradeScreenViewController: UIViewController {
     
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is MainScreenViewController
+        {
+            let cc = segue.destination as? MainScreenViewController
+            cc?.player = self.player
+        }
+    }
 }
