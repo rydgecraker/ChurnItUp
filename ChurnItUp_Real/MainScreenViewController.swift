@@ -75,7 +75,6 @@ class MainScreenViewController: UIViewController {
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
             if let shakeData = data {
                 if shakeData.acceleration.y > 0.5 {
-                    print("here")
                     if(self.player.milk > 0){
                         // MainGameScene.shake()
                         self.numShakes += 1
@@ -103,7 +102,7 @@ class MainScreenViewController: UIViewController {
                         
                     } else {
                         // You don't have milk. you cant make butter!
-                        let alert = UIAlertController(title: self.title , message: "You are out of milk! Go find some cows to continue!", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "OUT OF MILK!" , message: "Go find some cows to continue!", preferredStyle: .alert)
                         
                         let alertAction = UIAlertAction(title: "Continue", style: .default, handler: nil)
                         
