@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         //Use the passed in values here
-        player = Player.init(milkVal: 0.0, butterVal: 0, luckLevelVal: 0.0, luckUpgradeVal: 0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 0.0)
+        player = Player.init(milkVal: 0.0, butterVal: 0, luckLevelVal: 0.0, luckUpgradeVal: 0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 10.0)
         
         
     }
@@ -42,20 +42,6 @@ class ViewController: UIViewController {
     }
     
     
-    
-
-   /*
-    applicationDidEnterBackground(_ application: UIApplication) {
-        writeStatsToPlist(milkVal: 5, butterVal: 4, luckLevelVal: player.luckLevel, luckUpgradeVal: player.luckUpgrade, efficiencyVal: player.efficiencyLevel, churnsDoneVal: 25)
-
-        print("app entered background")
-    }
-*/
-    func applicationDidEnterForeground(_ application: UIApplication) {
-
-    }
-    
-    
 @IBAction func StartButtonPressed(_ sender: Any) {
 //    checkForGameStatsFile()
     
@@ -68,17 +54,7 @@ class ViewController: UIViewController {
        
     } else {
         
-        player.milk = 10
-        player.maxMilk = 10
-        
-        print("MilkValue setMilkVal(): \(UserDefaults.standard.setMilkVal(player.milk))")
-        UserDefaults.standard.setMilkVal(player.milk)
-        
-        print("MilkValue setMaxMilkVal(): \(UserDefaults.standard.setMaximunMilkVal(player.maxMilk))")
-        UserDefaults.standard.setMilkVal(player.maxMilk)
-    
-        print("Via set \(player.milk)")
-        print("Via set \(player.maxMilk)")
+        UserDefaults.standard.setAllValues(player)
         
     }
 }
@@ -143,9 +119,6 @@ class ViewController: UIViewController {
 //                        player.luckLevel = value as! Double
 //                        print(key,value)
 //
-//                    case "LuckUpgrade":
-//                        player.luckUpgrade = value as! Int
-//                        print(key,value)
 //
 //                    case "EfficiencyLevel":
 //                        player.efficiencyLevel = value as! Double
@@ -166,7 +139,7 @@ class ViewController: UIViewController {
 //    }
 //
 //
-//    func writeStatsToPlist(milkVal: Double, butterVal: Int, luckLevelVal: Double, luckUpgradeVal: Int, efficiencyVal: Double, churnsDoneVal: Int) {
+//    func writeStatsToPlist(milkVal: Double, butterVal: Int, luckLevelVal: Double, efficiencyVal: Double, churnsDoneVal: Int) {
 //
 //        let path = NSHomeDirectory()+"/Documents/gameStats.plist"
 //
@@ -178,7 +151,6 @@ class ViewController: UIViewController {
 //            gameStatsDict["Milk"] = milkVal
 //            gameStatsDict["Butter"] = butterVal
 //            gameStatsDict["LuckLevel"] = luckLevelVal
-//            gameStatsDict["LuckUpgrade"] = luckUpgradeVal
 //            gameStatsDict["EfficiencyLevel"] = efficiencyVal
 //            gameStatsDict["ChurnsDone"] = churnsDoneVal
 //

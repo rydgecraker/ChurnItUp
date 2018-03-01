@@ -14,7 +14,8 @@ import CoreMotion
 class MainScreenViewController: UIViewController {
     
     var motionManager = CMMotionManager()
-    var numShakes: Int = 0
+    //MARK: removed all uses of numShakes replaces with player.churnsDone.
+    //var numShakes: Int = 0
     var player: Player!
     var mainScene: MainGameScene!
     
@@ -62,6 +63,7 @@ class MainScreenViewController: UIViewController {
         {
             let usvc = segue.destination as? UpgradeScreenViewController
             usvc?.player = self.player
+            usvc?.mainScene = self.mainScene
         }
         
         self.navigationController?.popViewController(animated: true)
@@ -76,29 +78,25 @@ class MainScreenViewController: UIViewController {
             if let shakeData = data {
                 if shakeData.acceleration.y > 0.5 {
                     if(self.player.milk > 0){
-                        // MainGameScene.shake()
-                        self.numShakes += 1
-                        // Make the butter churn, churn once.
-                        
-                        if (self.numShakes < 3) {
-                            
-                            self.player.churnsDone = self.numShakes
-                            // print("Current Number of Shakes \(self.numShakes)")
-                            print("ChurnsDone \(self.player.churnsDone)")
-                            self.mainScene.moveStaff()
-                            
-                        } else {
-                            
-                            self.numShakes = 0
-                            self.player.butter += 1
-                            self.player.milk -= 1
-                            self.mainScene.moveStaff()
-                            self.mainScene.updateHUD()
-                            print("Shakes over 25: Current Churns Done \(self.player.churnsDone)")
-                            print("Shakes over 25: Current Number of Butter \(self.player.butter)")
-                            
-                            
-                        }
+                      // MainGameScene.shake()
+                      //MARK: Got rid of numShakes since we needed the churnsDone for all other calcs. -JV
+                      self.player.churnsDone += 1
+                      //MARK: changed this to use player churnsDone and churnsNeeded, instead of hardcoded, max value and numshakes
+                      // Make the butter churn, churn once
+                      if (self.player.churnsDone < self.player.churnsNeeded) {
+                          // print("Current Number of Shakes \(self.numShakes)")
+                          print("ChurnsDone \(self.player.churnsDone)")
+                          self.mainScene.moveStaff()
+
+                      } else {
+                          //MARK: I added subtract milk (previous milk  -JV
+                          self.player.milk -= 1
+                          self.player.churnsDone = 0
+                          self.player.butter += 1
+                          self.mainScene.moveStaff()
+                          self.mainScene.updateHUD()
+                          print("Shakes over \(self.player.churnsNeeded): Current Churns Done \(self.player.churnsDone)")
+                          print("Shakes over \(self.player.churnsNeeded): Current Number of Butter \(self.player.butter)")
                         
                     } else {
                         // You don't have milk. you cant make butter!
@@ -110,10 +108,6 @@ class MainScreenViewController: UIViewController {
                         
                         self.present(alert, animated: true, completion: nil)
                     }
-
-                    
-                } else {
-                    //Ignore this.
                 }
             }
         }
