@@ -18,10 +18,13 @@ class MainScreenViewController: UIViewController {
     var player: Player!
     var mainScene: MainGameScene!
     
-    let player2 = [AnyObject]()
+    static var splayer: Player!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(UserDefaults.standard.getMilkVal());
+        print("Playa \(player.milk)")
         
         self.navigationItem.setHidesBackButton(true, animated: false)
         
@@ -32,12 +35,10 @@ class MainScreenViewController: UIViewController {
         mainScene.scaleMode = .aspectFill
         
         skView.presentScene(mainScene)
-
-        print("MilkValue getMilkVal() : \(UserDefaults.standard.getMilkVal())")
-        print("MilkValue getMaxMilkVal() : \(UserDefaults.standard.getMaximunMilkVal())")
+        
         
         // Check status of game
-        
+        MainScreenViewController.splayer = player
         churnButter()
 
     }
@@ -63,6 +64,8 @@ class MainScreenViewController: UIViewController {
             usvc?.player = self.player
         }
         
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     func churnButter() {
@@ -73,28 +76,42 @@ class MainScreenViewController: UIViewController {
             if let shakeData = data {
                 if shakeData.acceleration.y > 0.5 {
                     print("here")
-                    // MainGameScene.shake()
-                    self.numShakes += 1
-                    // Make the butter churn, churn once.
-                    
-                    if (self.numShakes < 25) {
+                    if(self.player.milk > 0){
+                        // MainGameScene.shake()
+                        self.numShakes += 1
+                        // Make the butter churn, churn once.
                         
-                        self.player.churnsDone = self.numShakes
-                        // print("Current Number of Shakes \(self.numShakes)")
-                        print("ChurnsDone \(self.player.churnsDone)")
-                        self.mainScene.moveStaff()
+                        if (self.numShakes < 3) {
+                            
+                            self.player.churnsDone = self.numShakes
+                            // print("Current Number of Shakes \(self.numShakes)")
+                            print("ChurnsDone \(self.player.churnsDone)")
+                            self.mainScene.moveStaff()
+                            
+                        } else {
+                            
+                            self.numShakes = 0
+                            self.player.butter += 1
+                            self.player.milk -= 1
+                            self.mainScene.moveStaff()
+                            self.mainScene.updateHUD()
+                            print("Shakes over 25: Current Churns Done \(self.player.churnsDone)")
+                            print("Shakes over 25: Current Number of Butter \(self.player.butter)")
+                            
+                            
+                        }
                         
                     } else {
+                        // You don't have milk. you cant make butter!
+                        let alert = UIAlertController(title: self.title , message: "You are out of milk! Go find some cows to continue!", preferredStyle: .alert)
                         
-                        self.numShakes = 0
-                        self.player.butter += 1
-                        self.mainScene.moveStaff()
-                        self.mainScene.updateHUD()
-                        print("Shakes over 25: Current Churns Done \(self.player.churnsDone)")
-                        print("Shakes over 25: Current Number of Butter \(self.player.butter)")
+                        let alertAction = UIAlertAction(title: "Continue", style: .default, handler: nil)
                         
+                        alert.addAction(alertAction)
                         
+                        self.present(alert, animated: true, completion: nil)
                     }
+
                     
                 } else {
                     //Ignore this.

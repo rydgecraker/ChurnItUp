@@ -457,15 +457,26 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBw-d2-vVt">
+                                <rect key="frame" x="313" y="26" width="46" height="144"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="NoT-JL-Z3P" kind="show" id="ler-uE-rGQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ztj-tO-jpC" firstAttribute="top" secondItem="jnk-zz-ShP" secondAttribute="top" constant="12" id="0qr-5t-k7H"/>
                             <constraint firstItem="6BW-Gg-n1z" firstAttribute="trailing" secondItem="jnk-zz-ShP" secondAttribute="trailing" id="FN7-Za-g8A"/>
+                            <constraint firstItem="zBw-d2-vVt" firstAttribute="top" secondItem="Ld2-th-kHY" secondAttribute="top" constant="26" id="GS7-yC-sd3"/>
                             <constraint firstItem="6BW-Gg-n1z" firstAttribute="leading" secondItem="jnk-zz-ShP" secondAttribute="leading" id="Mbe-0A-MHd"/>
                             <constraint firstItem="6BW-Gg-n1z" firstAttribute="top" secondItem="Ld2-th-kHY" secondAttribute="top" constant="47" id="PL9-QT-zqA"/>
+                            <constraint firstItem="jnk-zz-ShP" firstAttribute="bottom" secondItem="zBw-d2-vVt" secondAttribute="bottom" constant="497" id="dYy-cY-sZa"/>
                             <constraint firstItem="ztj-tO-jpC" firstAttribute="centerX" secondItem="Ld2-th-kHY" secondAttribute="centerX" id="dh3-dy-Nks"/>
+                            <constraint firstItem="jnk-zz-ShP" firstAttribute="trailing" secondItem="zBw-d2-vVt" secondAttribute="trailing" constant="16" id="nI5-dl-Y7Q"/>
                             <constraint firstItem="6BW-Gg-n1z" firstAttribute="bottom" secondItem="jnk-zz-ShP" secondAttribute="bottom" id="sMk-66-jZC"/>
+                            <constraint firstItem="zBw-d2-vVt" firstAttribute="leading" secondItem="jnk-zz-ShP" secondAttribute="leading" constant="313" id="t2p-93-iNF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jnk-zz-ShP"/>
                     </view>

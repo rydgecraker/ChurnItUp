@@ -47,7 +47,7 @@ class Cow {
                 return #imageLiteral(resourceName: "almondCow")
             }
         case "R":
-            return #imageLiteral(resourceName: "almondCow")
+            return #imageLiteral(resourceName: "strawberryCow")
         case "U" :
             return #imageLiteral(resourceName: "chocolateCow")
         case "C":
