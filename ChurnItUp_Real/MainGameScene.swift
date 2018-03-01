@@ -18,8 +18,12 @@ class MainGameScene: SKScene {
     private let JarNodeName = "jar"
     private let ButterImageNodeName = "butterImage"
     private let ButterValueNodeName = "butterValue"
-    private let staffIsUp = true
+    var staffIsUp = true
     var player: Player!
+    var butterText: SKLabelNode!
+    var milk: SKSpriteNode!
+    var oneHundredPercent: CGFloat!
+    var staff: SKSpriteNode!
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -27,6 +31,9 @@ class MainGameScene: SKScene {
     
     func start(player: Player) {
         self.player = player
+        
+        oneHundredPercent = CGFloat((size.width / 5) * 1.33)
+        
         let background = SKSpriteNode()
         background.position = CGPoint(x: size.width/2.0, y: size.height/2.0)
         //background.size = CGSize(width: size.width, height: size.height)
@@ -46,15 +53,13 @@ class MainGameScene: SKScene {
         addChild(base)
         
         //let staffSize = CGSize(width: ((size.width/2.0)/11.85), height: size.height/2.0)
-        let staff = SKSpriteNode(imageNamed: "churnStaff.png")
+        staff = SKSpriteNode(imageNamed: "churnStaff.png")
         staff.position = CGPoint(x: size.width/2.0, y: size.height/2.0)
         staff.size = CGSize(width: base.size.width/10.0, height: base.size.height*1.5)
         //staff.aspectFillToSize(fillSize: staffSize)
         staff.zPosition = 1.0
         staff.name = ChurnStaffNodeName
         addChild(staff)
-        
-        let oneHundredPercent = CGFloat((size.width / 5) * 1.33)
         
         let jar = SKSpriteNode(imageNamed: "MilkJar.png")
         jar.size = CGSize(width: size.width/5.0, height: (size.width/5.0)*1.33)
@@ -64,11 +69,12 @@ class MainGameScene: SKScene {
         jar.name = JarNodeName
         addChild(jar)
         
-        let milk = SKSpriteNode(imageNamed: "Milk.png")
+        milk = SKSpriteNode(imageNamed: "Milk.png")
         milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * player.getMilkPercent())
         milk.anchorPoint = CGPoint(x: 0.5, y: 0.0)
         milk.position = CGPoint(x: milk.size.width, y: (size.height*0.75)-jar.size.height/2)
         milk.zPosition = 3.0
+        milk.name = MilkNodeName
         addChild(milk)
         
         //let butterNode = SKNode()
@@ -81,10 +87,11 @@ class MainGameScene: SKScene {
         
         addChild(butter)
         
-        let butterText = SKLabelNode(fontNamed: "AvenirNext-Bold")
+        butterText = SKLabelNode(fontNamed: "AvenirNext-Bold")
         butterText.fontSize = 20.0
         butterText.position = CGPoint(x: size.width-butter.size.width, y: butter.position.y-(butter.size.height*1.5))
         butterText.text = String(player.butter)
+        butterText.name = ButterValueNodeName
         
         addChild(butterText)
         
@@ -94,12 +101,29 @@ class MainGameScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func moveStaff() {
+     func moveStaff() {
         
         if staffIsUp {
-            //self.ChurnStaffNodeName
+            
+            staff.size.height = staff.size.height/2
+            staffIsUp = false
+            
+        } else {
+            
+            staff.size.height = staff.size.height*2
+            staffIsUp = true
+            
         }
         
+    }
+    
+    func updateHUD() {
+    
+        
+        butterText.text = String(player.butter)
+        
+        milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * player.getMilkPercent())
+    
     }
     
 }
