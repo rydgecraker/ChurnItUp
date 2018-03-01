@@ -16,6 +16,7 @@ class MainScreenViewController: UIViewController {
     var motionManager = CMMotionManager()
     var numShakes: Int = 0
     var player: Player!
+    var mainScene: MainGameScene!
     
     let player2 = [AnyObject]()
     
@@ -26,7 +27,7 @@ class MainScreenViewController: UIViewController {
         
         let skView = self.view as! SKView
         
-        let mainScene = MainGameScene(size: skView.bounds.size)
+        mainScene = MainGameScene(size: skView.bounds.size)
         mainScene.start(player: self.player)
         mainScene.scaleMode = .aspectFill
         
@@ -81,12 +82,14 @@ class MainScreenViewController: UIViewController {
                         self.player.churnsDone = self.numShakes
                         // print("Current Number of Shakes \(self.numShakes)")
                         print("ChurnsDone \(self.player.churnsDone)")
+                        self.mainScene.moveStaff()
                         
                     } else {
                         
                         self.numShakes = 0
                         self.player.butter += 1
-                        
+                        self.mainScene.moveStaff()
+                        self.mainScene.updateHUD()
                         print("Shakes over 25: Current Churns Done \(self.player.churnsDone)")
                         print("Shakes over 25: Current Number of Butter \(self.player.butter)")
                         
