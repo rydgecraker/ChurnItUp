@@ -69,13 +69,24 @@ class MainGameScene: SKScene {
         milk.anchorPoint = CGPoint(x: 0.5, y: 0.0)
         milk.position = CGPoint(x: milk.size.width, y: (size.height*0.75)-jar.size.height/2)
         milk.zPosition = 3.0
-        
         addChild(milk)
+        
+        //let butterNode = SKNode()
         
         let butter = SKSpriteNode(imageNamed: "cuteButter.png")
         butter.size = CGSize(width: size.width/5.0, height: (size.width/5.0)*0.79)
         butter.anchorPoint = CGPoint(x: 0.5, y: 1.0)
-        //butter.position
+        butter.position = CGPoint(x: size.width-butter.size.width, y: jar.position.y+jar.size.height)
+        butter.zPosition = 3.0
+        
+        addChild(butter)
+        
+        let butterText = SKLabelNode(fontNamed: "AvenirNext-Bold")
+        butterText.fontSize = 20.0
+        butterText.position = CGPoint(x: size.width-butter.size.width, y: butter.position.y-(butter.size.height*1.5))
+        butterText.text = String(player.butter)
+        
+        addChild(butterText)
         
     }
     
