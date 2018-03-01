@@ -30,12 +30,12 @@ class CaptureCows: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         player.addMilk(cow.milk)
-        
         if segue.destination is MainScreenViewController
         {
             let msvc = segue.destination as? MainScreenViewController
             msvc?.player = self.player
         }
+        self.navigationController?.popViewController(animated: true)
     }
 
 }

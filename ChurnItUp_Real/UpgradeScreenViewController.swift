@@ -35,6 +35,7 @@ class UpgradeScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: false)
         luck = Int(player.luckLevel * 10)
         efficiency = Int(player.efficiencyLevel * 10)
         milkCan = Int((player.maxMilk - 10) / 10)
@@ -44,8 +45,6 @@ class UpgradeScreenViewController: UIViewController {
         efficiencyLevel.text = String(efficiency)
         milkCanLevel.text = String(milkCan)
         butterLevel.text = String(butter)
-        
-        
     }
 
     @IBAction func increaseEfficiency(_ sender: Any) {
@@ -69,5 +68,6 @@ class UpgradeScreenViewController: UIViewController {
             let cc = segue.destination as? MainScreenViewController
             cc?.player = self.player
         }
+        self.navigationController?.popViewController(animated: true)
     }
 }
