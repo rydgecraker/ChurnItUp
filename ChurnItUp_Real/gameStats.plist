@@ -2,18 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Player</key>
+	<key>Stats</key>
 	<dict>
 		<key>ChurnsDone</key>
 		<integer>0</integer>
-		<key>Efficiency</key>
+		<key>EfficiencyLevel</key>
+		<integer>0</integer>
+		<key>LuckUpgrade</key>
 		<integer>0</integer>
 		<key>LuckLevel</key>
 		<integer>0</integer>
 		<key>Butter</key>
 		<integer>0</integer>
 		<key>Milk</key>
-		<integer>0</integer>
+		<integer>10</integer>
 	</dict>
 </dict>
 </plist>
