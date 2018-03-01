@@ -17,6 +17,8 @@ class MainScreenViewController: UIViewController {
     var numShakes: Int = 0
     var player: Player!
     
+    let player2 = [AnyObject]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,14 +32,22 @@ class MainScreenViewController: UIViewController {
         
         skView.presentScene(mainScene)
 
+        print("MilkValue getMilkVal() : \(UserDefaults.standard.getMilkVal())")
+        print("MilkValue getMaxMilkVal() : \(UserDefaults.standard.getMaximunMilkVal())")
+        
         // Check status of game
-        gameStatus()
+        
+        churnButter()
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is GetLocationViewController
@@ -60,13 +70,26 @@ class MainScreenViewController: UIViewController {
         
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
             if let shakeData = data {
-                if shakeData.acceleration.y > -0.5 {
-                    
+                if shakeData.acceleration.y > 0.5 {
+                    print("here")
                     // MainGameScene.shake()
                     self.numShakes += 1
                     // Make the butter churn, churn once.
                     
-                    if (self.numShakes < 50) {
+                    if (self.numShakes < 25) {
+                        
+                        self.player.churnsDone = self.numShakes
+                        // print("Current Number of Shakes \(self.numShakes)")
+                        print("ChurnsDone \(self.player.churnsDone)")
+                        
+                    } else {
+                        
+                        self.numShakes = 0
+                        self.player.butter += 1
+                        
+                        print("Shakes over 25: Current Churns Done \(self.player.churnsDone)")
+                        print("Shakes over 25: Current Number of Butter \(self.player.butter)")
+                        
                         
                     }
                     
@@ -77,26 +100,4 @@ class MainScreenViewController: UIViewController {
         }
     }
     
-
-    func gameStatus() {
-        
-        let fileName = Bundle.main.url(forResource: "gameStats", withExtension: "txt")!
-            
-            do {
-                
-                let fileContent = try String(contentsOf: fileName, encoding: String.Encoding.utf8)
-                let gameStats = fileContent.components(separatedBy: "\n")
-                
-                if(fileContent == "") {
-                    // Create file
-                }
-                
-                //load the file
-                
-            } catch {
-                print("ERROR - Unable to open file")
-            }
-
-    }
-
 }
