@@ -16,6 +16,8 @@ class MainGameScene: SKScene {
     private let BackgroundNodeName = "background"
     private let MilkNodeName = "milk"
     private let JarNodeName = "jar"
+    private let ButterImageNodeName = "butterImage"
+    private let ButterValueNodeName = "butterValue"
     private let staffIsUp = true
     var player: Player!
     
@@ -54,18 +56,38 @@ class MainGameScene: SKScene {
         
         let oneHundredPercent = CGFloat((size.width / 5) * 1.33)
         
-        let milk = SKSpriteNode(imageNamed: "Milk.png")
-        milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * player.getMilkPercent())
-        milk.anchorPoint = CGPoint(x: 0.5, y: 0.0)
-        milk.position = CGPoint(x: milk.size.width, y: size.height/2.0)
-        addChild(milk)
-        
         let jar = SKSpriteNode(imageNamed: "MilkJar.png")
         jar.size = CGSize(width: size.width/5.0, height: (size.width/5.0)*1.33)
         jar.anchorPoint = CGPoint(x: 0.5, y: 0.0)
-        jar.position = CGPoint(x: jar.size.width, y: size.height/2.0)
-        //jar.zPosition = 3.0
+        jar.position = CGPoint(x: jar.size.width, y: (size.height*0.75)-jar.size.height/2)
+        jar.zPosition = 4.0
+        jar.name = JarNodeName
         addChild(jar)
+        
+        let milk = SKSpriteNode(imageNamed: "Milk.png")
+        milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * player.getMilkPercent())
+        milk.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+        milk.position = CGPoint(x: milk.size.width, y: (size.height*0.75)-jar.size.height/2)
+        milk.zPosition = 3.0
+        addChild(milk)
+        
+        //let butterNode = SKNode()
+        
+        let butter = SKSpriteNode(imageNamed: "cuteButter.png")
+        butter.size = CGSize(width: size.width/5.0, height: (size.width/5.0)*0.79)
+        butter.anchorPoint = CGPoint(x: 0.5, y: 1.0)
+        butter.position = CGPoint(x: size.width-butter.size.width, y: jar.position.y+jar.size.height)
+        butter.zPosition = 3.0
+        
+        addChild(butter)
+        
+        let butterText = SKLabelNode(fontNamed: "AvenirNext-Bold")
+        butterText.fontSize = 20.0
+        butterText.position = CGPoint(x: size.width-butter.size.width, y: butter.position.y-(butter.size.height*1.5))
+        butterText.text = String(player.butter)
+        
+        addChild(butterText)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
