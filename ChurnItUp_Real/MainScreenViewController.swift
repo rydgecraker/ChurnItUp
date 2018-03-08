@@ -20,54 +20,30 @@ class MainScreenViewController: UIViewController {
     var mainScene: MainGameScene!
     
     static var splayer: Player!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(UserDefaults.standard.getMilkVal());
-        print("Playa \(player.milk)")
+        print("df")
+        //print(UserDefaults.standard.getMilkVal());
+        //print("Playa \(player.milk)")
         
         self.navigationItem.setHidesBackButton(true, animated: false)
         
         let skView = self.view as! SKView
         
         mainScene = MainGameScene(size: skView.bounds.size)
-        mainScene.start(player: self.player)
+        mainScene.start()
         mainScene.scaleMode = .aspectFill
         
         skView.presentScene(mainScene)
         
         
         // Check status of game
-        MainScreenViewController.splayer = player
+        //MainScreenViewController.splayer = player
         churnButter()
 
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is GetLocationViewController
-        {
-            let glvc = segue.destination as? GetLocationViewController
-            glvc?.player = self.player
-        }
-        
-        if segue.destination is UpgradeScreenViewController
-        {
-            let usvc = segue.destination as? UpgradeScreenViewController
-            usvc?.player = self.player
-            usvc?.mainScene = self.mainScene
-        }
-        
-        self.navigationController?.popViewController(animated: true)
-        
     }
     
     func churnButter() {
@@ -77,6 +53,7 @@ class MainScreenViewController: UIViewController {
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
             if let shakeData = data {
                 if shakeData.acceleration.y > 0.5 {
+                    /*
                     if(self.player.milk > 0){
                       // MainGameScene.shake()
                       //MARK: Got rid of numShakes since we needed the churnsDone for all other calcs. -JV
@@ -108,6 +85,7 @@ class MainScreenViewController: UIViewController {
                         
                         self.present(alert, animated: true, completion: nil)
                     }
+                    */
                 }
             }
         }
