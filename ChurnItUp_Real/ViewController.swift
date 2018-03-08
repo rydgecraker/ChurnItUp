@@ -10,36 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let SegueMainScreenViewController = "MainScreenViewController"
-
-    var player: Player!
     
     var mainScreen = MainScreenViewController.self
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        //Use the passed in values here
-        player = Player.init(milkVal: 0.0, butterVal: 0, luckLevelVal: 0.0, luckUpgradeVal: 0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 0.0)
-        
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is MainScreenViewController
-        {
-            let msvc = segue.destination as? MainScreenViewController
-            msvc?.player = self.player
-            //print("Here? \(player.milk)")
-        }
-    }
     
     
     
@@ -55,9 +34,8 @@ class ViewController: UIViewController {
 
     }
     
-    
+    /*
 @IBAction func StartButtonPressed(_ sender: Any) {
-//    checkForGameStatsFile()
     
     if(UserDefaults.exists(key: UserDefaultsKeys.milk.rawValue)) {
         
@@ -81,6 +59,7 @@ class ViewController: UIViewController {
         print("Via set \(player.maxMilk)")
         
     }
+ */
 }
 
     
@@ -192,6 +171,4 @@ class ViewController: UIViewController {
 //
 //        }
 //    }
-
-}
 
