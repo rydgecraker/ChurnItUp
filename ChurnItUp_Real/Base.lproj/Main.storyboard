@@ -271,7 +271,7 @@
                                 <rect key="frame" x="0.0" y="47" width="375" height="620"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="130" translatesAutoresizingMaskIntoConstraints="NO" id="ztj-tO-jpC">
-                                <rect key="frame" x="16" y="32" width="344" height="340"/>
+                                <rect key="frame" x="16" y="76" width="344" height="340"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="220" translatesAutoresizingMaskIntoConstraints="NO" id="4UI-k0-bFh" userLabel="Top Stack">
                                         <rect key="frame" x="0.0" y="0.0" width="342" height="50"/>
@@ -506,6 +506,6 @@
         <image name="upgradePlusActive" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ler-uE-rGQ"/>
+        <segue reference="GWR-w5-g7B"/>
     </inferredMetricsTieBreakers>
 </document>
