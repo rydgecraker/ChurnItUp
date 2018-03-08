@@ -18,10 +18,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         
         //Use the passed in values here
-        player = Player.init(milkVal: 10, butterVal: 6347, luckLevelVal: 0.4, efficiencyVal: 0.0, churnsDoneVal: 49, maximumMilk: 10)
+        player = Player.init(milkVal: 0.0, butterVal: 0, luckLevelVal: 0.0, luckUpgradeVal: 0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 10.0)
         
         
     }
@@ -36,22 +37,9 @@ class ViewController: UIViewController {
         {
             let msvc = segue.destination as? MainScreenViewController
             msvc?.player = self.player
+            //print("Here? \(player.milk)")
         }
     }
-    
-    
-    
-
-    
-//    applicationDidEnterBackground(_ application: UIApplication) {
-//        writeStatsToPlist(milkVal: 5, butterVal: 4, luckLevelVal: player.luckLevel, efficiencyVal: player.efficiencyLevel, churnsDoneVal: 25)
-//
-//        print("app entered background")
-//    }
-//
-//    func applicationDidEnterForeground(_ application: UIApplication) {
-//
-//    }
     
     
 @IBAction func StartButtonPressed(_ sender: Any) {
@@ -59,25 +47,14 @@ class ViewController: UIViewController {
     
     if(UserDefaults.exists(key: UserDefaultsKeys.milk.rawValue)) {
         
-        player.milk = 10
-        player.maxMilk = 10
-       
-        print("MilkValue getMilkVal() : \(UserDefaults.standard.getMilkVal())")
-        UserDefaults.standard.getMilkVal()
-        
-        print("Via get \(player.milk)")
+        //print("MilkValue getMilkVal() : \(UserDefaults.standard.getMilkVal())")
+        player = UserDefaults.standard.loadAllValues()
+        //print("Via get \(player.milk)")
         
        
     } else {
         
-        print("MilkValue setMilkVal(): \(UserDefaults.standard.setMilkVal(player.milk))")
-        UserDefaults.standard.setMilkVal(player.milk)
-        
-        print("MilkValue setMaxMilkVal(): \(UserDefaults.standard.setMaximunMilkVal(player.maxMilk))")
-        UserDefaults.standard.setMilkVal(player.maxMilk)
-    
-        print("Via set \(player.milk)")
-        print("Via set \(player.maxMilk)")
+        UserDefaults.standard.setAllValues(player)
         
     }
 }
