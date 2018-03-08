@@ -3,12 +3,13 @@
     <entity name="Player" representedClassName="Player" syncable="YES" codeGenerationType="class">
         <attribute name="butter" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="churns_done" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="date_last_played" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="efficiency_level" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="luck_level" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="max_milk" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="milk" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Player" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Player" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>
