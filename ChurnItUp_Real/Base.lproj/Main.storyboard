@@ -102,7 +102,7 @@
                                 <rect key="frame" x="16" y="6" width="344" height="340"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="220" translatesAutoresizingMaskIntoConstraints="NO" id="4UI-k0-bFh" userLabel="Top Stack">
-                                        <rect key="frame" x="0.0" y="0.0" width="342" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FmY-Sl-K43">
                                                 <rect key="frame" x="0.0" y="0.0" width="72" height="50"/>
@@ -122,17 +122,6 @@
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBw-d2-vVt">
-                                                <rect key="frame" x="292" y="0.0" width="50" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="Lis-MJ-Ac8"/>
-                                                    <constraint firstAttribute="width" constant="50" id="x9F-S2-8Jg"/>
-                                                </constraints>
-                                                <state key="normal" title="Back"/>
-                                                <connections>
-                                                    <segue destination="NoT-JL-Z3P" kind="show" id="ler-uE-rGQ"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="kNW-o4-5ok" userLabel="Upgrades Stack">
@@ -300,22 +289,15 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBw-d2-vVt">
-                                <rect key="frame" x="313" y="0.0" width="46" height="144"/>
-                                <state key="normal" title="Back"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ztj-tO-jpC" firstAttribute="centerX" secondItem="DBg-E5-czK" secondAttribute="centerX" id="3jp-Ov-HJr"/>
-                            <constraint firstItem="zBw-d2-vVt" firstAttribute="trailing" secondItem="DBg-E5-czK" secondAttribute="trailingMargin" id="HEH-e2-vv0"/>
                             <constraint firstItem="4Xo-TK-l1Q" firstAttribute="bottom" secondItem="ztj-tO-jpC" secondAttribute="bottom" constant="272" id="HvY-Kc-Mh1"/>
                             <constraint firstItem="ztj-tO-jpC" firstAttribute="leading" secondItem="DBg-E5-czK" secondAttribute="leadingMargin" id="IBF-YW-vQ4"/>
                             <constraint firstItem="6BW-Gg-n1z" firstAttribute="centerX" secondItem="ztj-tO-jpC" secondAttribute="centerX" id="L87-Vd-qLu"/>
                             <constraint firstItem="6BW-Gg-n1z" firstAttribute="leading" secondItem="DBg-E5-czK" secondAttribute="leading" id="aeJ-J3-fWz"/>
-                            <constraint firstItem="zBw-d2-vVt" firstAttribute="top" secondItem="DBg-E5-czK" secondAttribute="top" id="e6J-wK-A1n"/>
                             <constraint firstItem="6BW-Gg-n1z" firstAttribute="top" secondItem="DBg-E5-czK" secondAttribute="top" constant="21" id="jEx-EX-qub"/>
-                            <constraint firstItem="zBw-d2-vVt" firstAttribute="leading" secondItem="4Xo-TK-l1Q" secondAttribute="leading" constant="313" id="jZg-w4-p1w"/>
                             <constraint firstAttribute="bottomMargin" secondItem="6BW-Gg-n1z" secondAttribute="bottom" constant="-23" id="l3T-S3-uB7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4Xo-TK-l1Q"/>
@@ -450,7 +432,7 @@
                     <tabBarItem key="tabBarItem" title="Find Cows" id="Fzb-IK-uvW"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="BPI-a4-f2H" kind="show" identifier="CowCapture" id="Eik-6Z-WLI"/>
+                        <segue destination="BPI-a4-f2H" kind="show" identifier="CowCapture" action="showDetailViewController:sender:" id="h02-qi-Z5b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbr-vW-tkV" userLabel="First Responder" sceneMemberID="firstResponder"/>

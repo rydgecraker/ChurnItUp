@@ -21,7 +21,6 @@ class MainGameScene: SKScene {
     private let ChurnsNumberNodeName = "churnsNumber"
     var staffIsUp = true
     var churnsNumber: SKLabelNode!
-    //var player: Player!
     var butterText: SKLabelNode!
     var milk: SKSpriteNode!
     var oneHundredPercent: CGFloat!
@@ -33,7 +32,6 @@ class MainGameScene: SKScene {
     }
     
     func start() {
-        //self.player = player
         
         oneHundredPercent = CGFloat((size.width / 5) * 1.33)
         

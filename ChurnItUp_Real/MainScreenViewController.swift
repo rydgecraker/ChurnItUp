@@ -16,18 +16,13 @@ class MainScreenViewController: UIViewController {
     var motionManager = CMMotionManager()
     //MARK: removed all uses of numShakes replaces with player.churnsDone.
     //var numShakes: Int = 0
-    var player: Player!
     var mainScene: MainGameScene!
-    
-    static var splayer: Player!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("df")
-        //print(UserDefaults.standard.getMilkVal());
-        //print("Playa \(player.milk)")
+        loadPlayerFromCoreData()
         
         self.navigationItem.setHidesBackButton(true, animated: false)
         
@@ -39,11 +34,31 @@ class MainScreenViewController: UIViewController {
         
         skView.presentScene(mainScene)
         
-        
-        // Check status of game
-        //MainScreenViewController.splayer = player
         churnButter()
 
+    }
+    
+    private func loadPlayerFromCoreData() {
+        let playerExistsInCoreData = doesPlayerExistInCoreData()
+        if(!playerExistsInCoreData) {
+            Player.player = Player(milkVal: 10.0, butterVal: 0, luckLevelVal: 0.0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 10.0)
+            savePlayerToCoreData()
+        } else {
+            //Load it from core data
+            loadPlayer()
+        }
+    }
+    
+    func doesPlayerExistInCoreData() -> Bool {
+        return false
+    }
+    
+    func savePlayerToCoreData(){
+        
+    }
+    
+    func loadPlayer(){
+        
     }
     
     func churnButter() {

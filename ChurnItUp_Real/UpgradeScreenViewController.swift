@@ -10,8 +10,6 @@ import UIKit
 
 class UpgradeScreenViewController: UIViewController {
 
-    var player: Player!
-    var mainScene: MainGameScene!
     var luck = 0
     var efficiency = 0
     var milkCan = 0
@@ -35,8 +33,8 @@ class UpgradeScreenViewController: UIViewController {
         checkUpgrades()
         luckLevel.text = String(luck)
         efficiencyLevel.text = String(efficiency)
-        milkCanLevel.text = String(Int(player.maxMilk))
-        butterLevel.text = String(player.butter)
+        milkCanLevel.text = String(Int(Player.player.maxMilk))
+        butterLevel.text = String(Player.player.butter)
         self.navigationItem.setHidesBackButton(true, animated: false)
         //Function for button enabling and image change
 
@@ -45,20 +43,20 @@ class UpgradeScreenViewController: UIViewController {
   
     func getStats(){
         //creates local Levels from player object's double values
-        luck = Int(player.luckLevel * 10)
-        efficiency = Int(player.efficiencyLevel * 10)
-        milkCan = Int((player.maxMilk - 10) / 10)
+        luck = Int(Player.player.luckLevel * 10)
+        efficiency = Int(Player.player.efficiencyLevel * 10)
+        milkCan = Int((Player.player.maxMilk - 10) / 10)
     }
 
     func checkUpgrades(){
         getStats()
         //Check luck
-        if luck == player.maxLuckLevel {
+        if luck == Player.player.maxLuckLevel {
             butterForLuck.text = "N/A"
             disableButton(luckButton)
         } else {
             butterForLuck.text = String(butterNeeded[luck])
-            if player.butter >= butterNeeded[luck] {
+            if Player.player.butter >= butterNeeded[luck] {
                 enableButton(luckButton)
             }else {
                 disableButton(luckButton)
@@ -66,12 +64,12 @@ class UpgradeScreenViewController: UIViewController {
         }
         
         //Check efficiency
-        if efficiency == player.maxEfficiencyLevel {
+        if efficiency == Player.player.maxEfficiencyLevel {
             butterForEfficiency.text = "N/A"
             disableButton(efficiencyButton)
         } else {
             butterForEfficiency.text = String(butterNeeded[efficiency])
-            if player.butter >= butterNeeded[efficiency] {
+            if Player.player.butter >= butterNeeded[efficiency] {
                 enableButton(efficiencyButton)
             }else {
                 disableButton(efficiencyButton)
@@ -79,12 +77,12 @@ class UpgradeScreenViewController: UIViewController {
         }
         
         //Check milk
-        if milkCan == player.maxMilkLevel {
+        if milkCan == Player.player.maxMilkLevel {
             butterForMilkCan.text = "N/A"
             disableButton(milkCanButton)
         } else {
             butterForMilkCan.text = String(butterNeeded[milkCan])
-            if player.butter >= butterNeeded[milkCan] {
+            if Player.player.butter >= butterNeeded[milkCan] {
                 enableButton(milkCanButton)
             }else {
                 disableButton(milkCanButton)
@@ -93,30 +91,27 @@ class UpgradeScreenViewController: UIViewController {
     }
     
     @IBAction func increaseLuck(_ sender: Any) {
-        player.butter -= butterNeeded[luck]
-        player.upgradeLuck()
+        Player.player.butter -= butterNeeded[luck]
+        Player.player.upgradeLuck()
         checkUpgrades()
-        butterLevel.text = String(player.butter)
+        butterLevel.text = String(Player.player.butter)
         luckLevel.text = String(luck)
-        mainScene.updateHUD()
     }
     
     @IBAction func increaseEfficiency(_ sender: Any) {
-        player.butter -= butterNeeded[efficiency]
-        player.upgradeEfficiencyLevel()
+        Player.player.butter -= butterNeeded[efficiency]
+        Player.player.upgradeEfficiencyLevel()
         checkUpgrades()
-        butterLevel.text = String(player.butter)
+        butterLevel.text = String(Player.player.butter)
         efficiencyLevel.text = String(efficiency)
-        mainScene.updateHUD()
     }
     
     @IBAction func increaseMilkCanSize(_ sender: Any) {
-        player.butter -= butterNeeded[milkCan]
-        player.upgradeMilkCapacity()
+        Player.player.butter -= butterNeeded[milkCan]
+        Player.player.upgradeMilkCapacity()
         checkUpgrades()
-        butterLevel.text = String(player.butter)
-        milkCanLevel.text = String(Int(player.maxMilk))
-        mainScene.updateHUD()
+        butterLevel.text = String(Player.player.butter)
+        milkCanLevel.text = String(Int(Player.player.maxMilk))
     }
     
 //helper functions
@@ -132,15 +127,5 @@ class UpgradeScreenViewController: UIViewController {
     
     func updateLabels(label: UILabel,value:Int){
 
-    }
-//Segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is MainScreenViewController
-        {
-            let msvc = segue.destination as? MainScreenViewController
-            msvc?.mainScene = self.mainScene
-            msvc?.player = self.player
-        }
-        self.navigationController?.popViewController(animated: true)
     }
 }

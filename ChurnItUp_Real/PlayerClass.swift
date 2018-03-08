@@ -10,6 +10,8 @@ import UIKit
 
 class Player {
     
+    public static var player: Player!
+    
     //Inventory
     var milk: Double = 0
     var butter: Int = 0
