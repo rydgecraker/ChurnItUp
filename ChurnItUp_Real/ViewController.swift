@@ -14,12 +14,8 @@ class ViewController: UIViewController {
     var mainScreen = MainScreenViewController.self
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
+        super.viewDidLoad()        
     }
-    
-    
     
     
 
@@ -46,17 +42,7 @@ class ViewController: UIViewController {
        
     } else {
         
-        player.milk = 10
-        player.maxMilk = 10
-        
-        print("MilkValue setMilkVal(): \(UserDefaults.standard.setMilkVal(player.milk))")
-        UserDefaults.standard.setMilkVal(player.milk)
-        
-        print("MilkValue setMaxMilkVal(): \(UserDefaults.standard.setMaximunMilkVal(player.maxMilk))")
-        UserDefaults.standard.setMilkVal(player.maxMilk)
-    
-        print("Via set \(player.milk)")
-        print("Via set \(player.maxMilk)")
+        UserDefaults.standard.setAllValues(player: player)
         
     }
  */
@@ -122,9 +108,6 @@ class ViewController: UIViewController {
 //                        player.luckLevel = value as! Double
 //                        print(key,value)
 //
-//                    case "LuckUpgrade":
-//                        player.luckUpgrade = value as! Int
-//                        print(key,value)
 //
 //                    case "EfficiencyLevel":
 //                        player.efficiencyLevel = value as! Double
@@ -145,7 +128,7 @@ class ViewController: UIViewController {
 //    }
 //
 //
-//    func writeStatsToPlist(milkVal: Double, butterVal: Int, luckLevelVal: Double, luckUpgradeVal: Int, efficiencyVal: Double, churnsDoneVal: Int) {
+//    func writeStatsToPlist(milkVal: Double, butterVal: Int, luckLevelVal: Double, efficiencyVal: Double, churnsDoneVal: Int) {
 //
 //        let path = NSHomeDirectory()+"/Documents/gameStats.plist"
 //
@@ -157,7 +140,6 @@ class ViewController: UIViewController {
 //            gameStatsDict["Milk"] = milkVal
 //            gameStatsDict["Butter"] = butterVal
 //            gameStatsDict["LuckLevel"] = luckLevelVal
-//            gameStatsDict["LuckUpgrade"] = luckUpgradeVal
 //            gameStatsDict["EfficiencyLevel"] = efficiencyVal
 //            gameStatsDict["ChurnsDone"] = churnsDoneVal
 //
