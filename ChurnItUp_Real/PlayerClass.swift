@@ -88,14 +88,13 @@ extension UserDefaults {
         setMilkVal(player.milk)
         setButterVal(player.butter)
         setLuckLevelVal(player.luckLevel)
-        setLuckUpgradeVal(player.luckUpgrade)
         setEfficiencyVal(player.efficiencyLevel)
         setChurnsDoneVal(player.churnsDone)
         setMaximunMilkVal(player.maxMilk)
     }
     
     func loadAllValues() -> Player {
-        return Player.init(milkVal: getMilkVal(), butterVal: getButterVal(), luckLevelVal: getLuckLevelVal(), luckUpgradeVal: getLuckUpgradeVal(), efficiencyVal: getEfficiencyVal(), churnsDoneVal: getChurnsDoneVal(), maximumMilk: getMaximunMilkVal())
+        return Player.init(milkVal: getMilkVal(), butterVal: getButterVal(), luckLevelVal: getLuckLevelVal(), efficiencyVal: getEfficiencyVal(), churnsDoneVal: getChurnsDoneVal(), maximumMilk: getMaximunMilkVal())
     }
     
     // Set Value
