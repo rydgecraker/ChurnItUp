@@ -20,8 +20,8 @@ class MainGameScene: SKScene {
     private let ButterValueNodeName = "butterValue"
     private let ChurnsNumberNodeName = "churnsNumber"
     var staffIsUp = true
-    var player: Player!
     var churnsNumber: SKLabelNode!
+    //var player: Player!
     var butterText: SKLabelNode!
     var milk: SKSpriteNode!
     var oneHundredPercent: CGFloat!
@@ -32,8 +32,8 @@ class MainGameScene: SKScene {
         super.init(size: size)
     }
     
-    func start(player: Player) {
-        self.player = player
+    func start() {
+        //self.player = player
         
         oneHundredPercent = CGFloat((size.width / 5) * 1.33)
         
@@ -73,7 +73,7 @@ class MainGameScene: SKScene {
         addChild(jar)
         
         milk = SKSpriteNode(imageNamed: "Milk.png")
-        milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * player.getMilkPercent())
+        //milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * player.getMilkPercent())
         milk.anchorPoint = CGPoint(x: 0.5, y: 0.0)
         milk.position = CGPoint(x: milk.size.width, y: (size.height*0.75)-jar.size.height/2)
         milk.zPosition = 3.0
@@ -93,7 +93,6 @@ class MainGameScene: SKScene {
         butterText = SKLabelNode(fontNamed: "AvenirNext-Bold")
         butterText.fontSize = 20.0
         butterText.position = CGPoint(x: size.width-butter.size.width, y: butter.position.y-(butter.size.height*1.5))
-        butterText.text = String(player.butter)
         //butterText.text = String(MainScreenViewController.player.butter)
         butterText.name = ButterValueNodeName
         
@@ -134,9 +133,9 @@ class MainGameScene: SKScene {
     func updateHUD() {
     
         
-        butterText.text = String(player.butter)
+        //butterText.text = String(player.butter)
         
-        milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * player.getMilkPercent())
+        //milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * player.getMilkPercent())
     
     }
     

@@ -10,40 +10,28 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let SegueMainScreenViewController = "MainScreenViewController"
-
-    var player: Player!
     
     var mainScreen = MainScreenViewController.self
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        //Use the passed in values here
-        player = Player.init(milkVal: 10.0, butterVal: 25, luckLevelVal: 0.0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 10.0)
-        
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is MainScreenViewController
-        {
-            let msvc = segue.destination as? MainScreenViewController
-            msvc?.player = self.player
-            //print("Here? \(player.milk)")
-        }
+        super.viewDidLoad()        
     }
     
     
+
+   /*
+    applicationDidEnterBackground(_ application: UIApplication) {
+        writeStatsToPlist(milkVal: 5, butterVal: 4, luckLevelVal: player.luckLevel, luckUpgradeVal: player.luckUpgrade, efficiencyVal: player.efficiencyLevel, churnsDoneVal: 25)
+
+        print("app entered background")
+    }
+*/
+    func applicationDidEnterForeground(_ application: UIApplication) {
+
+    }
+    
+    /*
 @IBAction func StartButtonPressed(_ sender: Any) {
-//    checkForGameStatsFile()
     
     if(UserDefaults.exists(key: UserDefaultsKeys.milk.rawValue)) {
         
@@ -57,6 +45,7 @@ class ViewController: UIViewController {
         UserDefaults.standard.setAllValues(player: player)
         
     }
+ */
 }
 
     
@@ -164,6 +153,4 @@ class ViewController: UIViewController {
 //
 //        }
 //    }
-
-}
 
