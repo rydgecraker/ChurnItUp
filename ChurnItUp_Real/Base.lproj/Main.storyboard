@@ -87,7 +87,7 @@
         <!--Upgrades-->
         <scene sceneID="AmL-kD-OGi">
             <objects>
-                <viewController id="RyT-A7-P77" sceneMemberID="viewController">
+                <viewController id="RyT-A7-P77" customClass="UpgradeScreenViewController" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DBg-E5-czK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -300,6 +300,18 @@
                         <viewLayoutGuide key="safeArea" id="4Xo-TK-l1Q"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Upgrades" id="y99-tN-ERv"/>
+                    <connections>
+                        <outlet property="butterForEfficiency" destination="RYS-ok-bDV" id="LP0-LH-jy9"/>
+                        <outlet property="butterForLuck" destination="BV0-0e-gLb" id="qgZ-Lm-A8H"/>
+                        <outlet property="butterForMilkCan" destination="Bvu-Ch-HFZ" id="7km-hl-RhZ"/>
+                        <outlet property="butterLevel" destination="cOj-hQ-AfN" id="Bf9-eM-luG"/>
+                        <outlet property="efficiencyButton" destination="4JJ-sD-JjL" id="VjT-aO-tTk"/>
+                        <outlet property="efficiencyLevel" destination="zGY-IE-BB7" id="fwn-za-2Uf"/>
+                        <outlet property="luckButton" destination="yeh-D9-XyB" id="cFa-Ds-rz1"/>
+                        <outlet property="luckLevel" destination="IeQ-Wh-nh3" id="Q54-2y-a2K"/>
+                        <outlet property="milkCanButton" destination="Jvi-fw-FcJ" id="D0D-Te-0Yo"/>
+                        <outlet property="milkCanLevel" destination="T5Y-RW-Afr" id="p4G-HN-wOf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxs-mG-arR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -449,6 +461,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gTw-OY-5qD"/>
-        <segue reference="w6F-4L-1uL"/>
+        <segue reference="7z8-MB-f8e"/>
     </inferredMetricsTieBreakers>
 </document>

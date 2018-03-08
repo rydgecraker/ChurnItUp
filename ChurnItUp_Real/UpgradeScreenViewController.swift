@@ -35,7 +35,6 @@ class UpgradeScreenViewController: UIViewController {
         efficiencyLevel.text = String(efficiency)
         milkCanLevel.text = String(Int(Player.player.maxMilk))
         butterLevel.text = String(Player.player.butter)
-        self.navigationItem.setHidesBackButton(true, animated: false)
         //Function for button enabling and image change
 
     }

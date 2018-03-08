@@ -24,8 +24,6 @@ class MainScreenViewController: UIViewController {
         
         loadPlayerFromCoreData()
         
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        
         let skView = self.view as! SKView
         
         mainScene = MainGameScene(size: skView.bounds.size)
@@ -33,6 +31,8 @@ class MainScreenViewController: UIViewController {
         mainScene.scaleMode = .aspectFill
         
         skView.presentScene(mainScene)
+        
+        mainScene.updateHUD()
         
         churnButter()
 

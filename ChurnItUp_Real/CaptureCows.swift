@@ -17,7 +17,6 @@ class CaptureCows: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated: false)
         cow = Cow.generateCow(luckValueMultiplier: Player.player.luckLevel)
         cowButton.setBackgroundImage(cow.getCowImage(), for: .normal)
     }
