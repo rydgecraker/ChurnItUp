@@ -69,6 +69,7 @@ class GetLocationViewController: UIViewController {
         
         var distance = ((distYMeters * distYMeters) + (distXMeters * distXMeters)).squareRoot()
         
+        
         //TODO: Remove this
         distance = 0
         
@@ -90,6 +91,7 @@ class GetLocationViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     
+    //TODO: Remove this
     override func viewDidAppear(_ bool: Bool) {
         super.viewDidAppear(bool)
         goToCowScreen()
