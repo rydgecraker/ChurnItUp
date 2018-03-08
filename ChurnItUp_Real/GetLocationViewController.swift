@@ -90,9 +90,14 @@ class GetLocationViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     
+    override func viewDidAppear(_ bool: Bool) {
+        super.viewDidAppear(bool)
+        goToCowScreen()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        goToCowScreen()
+        
         
         let skView = self.view as! SKView
         

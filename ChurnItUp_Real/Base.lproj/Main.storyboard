@@ -15,9 +15,6 @@
         <array key="Didot.ttc">
             <string>Didot</string>
         </array>
-        <array key="PingFang.ttc">
-            <string>PingFangSC-Regular</string>
-        </array>
     </customFonts>
     <scenes>
         <!--TitleScreen-->
@@ -315,47 +312,7 @@
                     <view key="view" contentMode="scaleToFill" id="3Ld-zw-6RZ" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wST-CK-oIO">
-                                <rect key="frame" x="254" y="201" width="109" height="40"/>
-                                <color key="backgroundColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="109" id="e1f-dq-SrB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="20"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="UPGRADES">
-                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghl-uf-NKt" userLabel="Find Cows">
-                                <rect key="frame" x="12" y="201" width="113" height="40"/>
-                                <color key="backgroundColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="20"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="FIND COWS">
-                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="izU-HC-8OM" kind="show" identifier="FindCows" id="P93-Zk-sO8"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ghl-uf-NKt" secondAttribute="trailing" constant="20" symbolic="YES" id="3If-r7-8rK"/>
-                            <constraint firstItem="wST-CK-oIO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3Ld-zw-6RZ" secondAttribute="leading" constant="20" symbolic="YES" id="Eul-gR-Wyz"/>
-                            <constraint firstItem="PZC-dO-vgc" firstAttribute="trailing" secondItem="wST-CK-oIO" secondAttribute="trailing" constant="12" id="Hzo-pU-que"/>
-                            <constraint firstItem="ghl-uf-NKt" firstAttribute="centerY" secondItem="3Ld-zw-6RZ" secondAttribute="centerY" constant="-112.5" id="cpX-2h-QxH"/>
-                            <constraint firstItem="ghl-uf-NKt" firstAttribute="leading" secondItem="PZC-dO-vgc" secondAttribute="leading" constant="12" id="wMc-0B-ddL"/>
-                            <constraint firstItem="wST-CK-oIO" firstAttribute="centerY" secondItem="3Ld-zw-6RZ" secondAttribute="centerY" constant="-112.5" id="zvV-aG-nCj"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PZC-dO-vgc"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Churn Butter" id="iLi-7X-lG6"/>
@@ -432,7 +389,7 @@
                     <tabBarItem key="tabBarItem" title="Find Cows" id="Fzb-IK-uvW"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="BPI-a4-f2H" kind="show" identifier="CowCapture" action="showDetailViewController:sender:" id="h02-qi-Z5b"/>
+                        <segue destination="BPI-a4-f2H" kind="showDetail" identifier="CowCapture" id="h02-qi-Z5b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbr-vW-tkV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -457,6 +414,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" backgroundImage="basicCow"/>
+                                <connections>
+                                    <segue destination="2Sr-r3-1Og" kind="showDetail" id="7z8-MB-f8e"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -488,7 +448,7 @@
         <image name="upgradePlusActive" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U7n-NX-bYi"/>
         <segue reference="gTw-OY-5qD"/>
+        <segue reference="w6F-4L-1uL"/>
     </inferredMetricsTieBreakers>
 </document>
