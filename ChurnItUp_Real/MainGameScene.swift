@@ -18,12 +18,15 @@ class MainGameScene: SKScene {
     private let JarNodeName = "jar"
     private let ButterImageNodeName = "butterImage"
     private let ButterValueNodeName = "butterValue"
+    private let ChurnsNumberNodeName = "churnsNumber"
     var staffIsUp = true
+    var churnsNumber: SKLabelNode!
     //var player: Player!
     var butterText: SKLabelNode!
     var milk: SKSpriteNode!
     var oneHundredPercent: CGFloat!
     var staff: SKSpriteNode!
+    
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -90,10 +93,20 @@ class MainGameScene: SKScene {
         butterText = SKLabelNode(fontNamed: "AvenirNext-Bold")
         butterText.fontSize = 20.0
         butterText.position = CGPoint(x: size.width-butter.size.width, y: butter.position.y-(butter.size.height*1.5))
-        //butterText.text = String(player.butter)
+        //butterText.text = String(MainScreenViewController.player.butter)
         butterText.name = ButterValueNodeName
         
         addChild(butterText)
+        
+        churnsNumber = SKLabelNode(fontNamed: "AvenirNext-Bold")
+        churnsNumber.fontSize = 20.0
+        churnsNumber.position = CGPoint(x: base.position.x, y: base.position.y)
+        churnsNumber.name = ChurnsNumberNodeName
+        churnsNumber.zPosition = 5.0
+        churnsNumber.text = "0"
+        
+        addChild(churnsNumber)
+        
         
     }
     
