@@ -68,27 +68,26 @@ class MainScreenViewController: UIViewController {
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
             if let shakeData = data {
                 if shakeData.acceleration.y > 0.5 {
-                    /*
-                    if(self.player.milk > 0){
+                    if(Player.player.milk > 0){
                       // MainGameScene.shake()
                       //MARK: Got rid of numShakes since we needed the churnsDone for all other calcs. -JV
-                      self.player.churnsDone += 1
+                      Player.player.churnsDone += 1
                       //MARK: changed this to use player churnsDone and churnsNeeded, instead of hardcoded, max value and numshakes
                       // Make the butter churn, churn once
-                      if (self.player.churnsDone < self.player.churnsNeeded) {
+                      if (Player.player.churnsDone < Player.player.churnsNeeded) {
                           // print("Current Number of Shakes \(self.numShakes)")
-                          print("ChurnsDone \(self.player.churnsDone)")
+                          print("ChurnsDone \(Player.player.churnsDone)")
                           self.mainScene.moveStaff()
 
                       } else {
                           //MARK: I added subtract milk (previous milk  -JV
-                          self.player.milk -= 1
-                          self.player.churnsDone = 0
-                          self.player.butter += 1
+                          Player.player.milk -= 1
+                          Player.player.churnsDone = 0
+                          Player.player.butter += 1
                           self.mainScene.moveStaff()
                           self.mainScene.updateHUD()
-                          print("Shakes over \(self.player.churnsNeeded): Current Churns Done \(self.player.churnsDone)")
-                          print("Shakes over \(self.player.churnsNeeded): Current Number of Butter \(self.player.butter)")
+                          print("Shakes over \(Player.player.churnsNeeded): Current Churns Done \(Player.player.churnsDone)")
+                          print("Shakes over \(Player.player.churnsNeeded): Current Number of Butter \(Player.player.butter)")
                       }
                     } else {
                         // You don't have milk. you cant make butter!
@@ -100,7 +99,6 @@ class MainScreenViewController: UIViewController {
                         
                         self.present(alert, animated: true, completion: nil)
                     }
-                    */
                 }
             }
         }
