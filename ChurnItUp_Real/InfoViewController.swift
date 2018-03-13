@@ -5,6 +5,7 @@
 //  Created by Jon Vollmer on 2/20/18.
 //  Copyright © 2018 Craker, Rydge. All rights reserved.
 //
+//This screen shows the Info html screen.
 
 import UIKit
 import WebKit

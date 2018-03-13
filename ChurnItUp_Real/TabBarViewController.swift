@@ -5,6 +5,7 @@
 //  Created by Jennifer Diederich on 3/8/18.
 //  Copyright © 2018 Craker, Rydge. All rights reserved.
 //
+// This class handles the tab bar view controller.
 
 import UIKit
 

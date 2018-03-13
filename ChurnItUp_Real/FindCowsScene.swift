@@ -5,6 +5,7 @@
 //  Created by Ben Rohland on 2/20/18.
 //  Copyright © 2018 Craker, Rydge. All rights reserved.
 //
+//The spriteKit that handles visuals for the GetLocationViewController.
 
 import SpriteKit
 import GameplayKit
@@ -17,17 +18,12 @@ class FindCowsScene: SKScene {
     
     var distanceValue: SKLabelNode!
     
-    // private let BackgroundNodeName = "background"
-    
     override init(size: CGSize) {
         super.init(size: size)
         
-        //self.backgroundColor = UIColor(cgColor: cgWhite)
-        
+        //Create the beardArrow and show it on the screen.
         let compass = SKSpriteNode(imageNamed: "bArrow.png")
         compass.position = CGPoint(x: size.width/2.0, y: size.height/2.0)
-        //compass.texture = SKTexture(imageNamed: "bArrow.png")
-        //compass.anchorPoint = CGPoint(x: size.width/2.0, y: size.height/2.0)
         if (size.width <= size.height) {
             compass.size = CGSize(width: size.width/2.0, height: size.width/2.0)
         } else {
