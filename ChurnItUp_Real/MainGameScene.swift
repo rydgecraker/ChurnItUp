@@ -18,19 +18,20 @@ class MainGameScene: SKScene {
     private let JarNodeName = "jar"
     private let ButterImageNodeName = "butterImage"
     private let ButterValueNodeName = "butterValue"
+    private let ChurnsNumberNodeName = "churnsNumber"
     var staffIsUp = true
-    //var player: Player!
+    var churnsNumber: SKLabelNode!
     var butterText: SKLabelNode!
     var milk: SKSpriteNode!
     var oneHundredPercent: CGFloat!
     var staff: SKSpriteNode!
+    
     
     override init(size: CGSize) {
         super.init(size: size)
     }
     
     func start() {
-        //self.player = player
         
         oneHundredPercent = CGFloat((size.width / 5) * 1.33)
         
@@ -70,7 +71,7 @@ class MainGameScene: SKScene {
         addChild(jar)
         
         milk = SKSpriteNode(imageNamed: "Milk.png")
-        //milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * player.getMilkPercent())
+        milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * Player.player.getMilkPercent())
         milk.anchorPoint = CGPoint(x: 0.5, y: 0.0)
         milk.position = CGPoint(x: milk.size.width, y: (size.height*0.75)-jar.size.height/2)
         milk.zPosition = 3.0
@@ -90,10 +91,20 @@ class MainGameScene: SKScene {
         butterText = SKLabelNode(fontNamed: "AvenirNext-Bold")
         butterText.fontSize = 20.0
         butterText.position = CGPoint(x: size.width-butter.size.width, y: butter.position.y-(butter.size.height*1.5))
-        //butterText.text = String(player.butter)
+        butterText.text = String(Player.player.butter)
         butterText.name = ButterValueNodeName
         
         addChild(butterText)
+        
+        churnsNumber = SKLabelNode(fontNamed: "AvenirNext-Bold")
+        churnsNumber.fontSize = 20.0
+        churnsNumber.position = CGPoint(x: base.position.x, y: base.position.y)
+        churnsNumber.name = ChurnsNumberNodeName
+        churnsNumber.zPosition = 5.0
+        churnsNumber.text = "0"
+        
+        addChild(churnsNumber)
+        
         
     }
     
@@ -120,10 +131,11 @@ class MainGameScene: SKScene {
     func updateHUD() {
     
         
+
+        butterText.text = String(Player.player.butter)
+
         
-        //butterText.text = String(player.butter)
-        
-        //milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * player.getMilkPercent())
+        milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * Player.player.getMilkPercent())
     
     }
     

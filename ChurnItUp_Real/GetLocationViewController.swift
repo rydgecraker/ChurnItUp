@@ -23,8 +23,6 @@ class GetLocationViewController: UIViewController {
     var performingSegue: Bool = false
     var compass: SKSpriteNode!
     
-    var player: Player!
-    
     var latitude: Double = 0.0 {
         
         didSet {
@@ -71,26 +69,20 @@ class GetLocationViewController: UIViewController {
         
         var distance = ((distYMeters * distYMeters) + (distXMeters * distXMeters)).squareRoot()
         
+        
         //TODO: Remove this
         distance = 0
         
         if(distance < 5 && !performingSegue){
-            performingSegue = true
-            performSegue(withIdentifier: "CowCapture", sender: self)
+            goToCowScreen()
         }
         
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is CaptureCows
-        {
-            let cc = segue.destination as? CaptureCows
-            cc?.player = self.player
-        }
-        self.navigationController?.popViewController(animated: true)
+    func goToCowScreen(){
+        performingSegue = true
+        performSegue(withIdentifier: "CowCapture", sender: self)
     }
-    
     
     func calculateCowDistance() {
         distanceYtoCow = cowLat - latitude
@@ -99,8 +91,15 @@ class GetLocationViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     
+    //TODO: Remove this
+    override func viewDidAppear(_ bool: Bool) {
+        super.viewDidAppear(bool)
+        goToCowScreen()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         let skView = self.view as! SKView
         
@@ -126,7 +125,6 @@ class GetLocationViewController: UIViewController {
             locationManager.startUpdatingLocation()
             locationManager.startUpdatingHeading()
         }
-        
     }
     
     func plopCow(){

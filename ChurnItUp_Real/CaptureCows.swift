@@ -10,7 +10,6 @@ import UIKit
 
 class CaptureCows: UIViewController {
 
-    var player: Player!
     var cow: Cow!
     
     @IBOutlet weak var cowButton: UIButton!
@@ -18,24 +17,13 @@ class CaptureCows: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        cow = Cow.generateCow(luckValueMultiplier: player.luckLevel)
+        cow = Cow.generateCow(luckValueMultiplier: Player.player.luckLevel)
         cowButton.setBackgroundImage(cow.getCowImage(), for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        player.addMilk(cow.milk)
-        if segue.destination is MainScreenViewController
-        {
-            let msvc = segue.destination as? MainScreenViewController
-            msvc?.player = self.player
-        }
-        self.navigationController?.popViewController(animated: true)
     }
 
 }
