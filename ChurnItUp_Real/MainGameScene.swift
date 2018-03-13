@@ -149,7 +149,9 @@ class MainGameScene: SKScene {
     
         churnsNumber.text = String(Player.player.churnsDone)
         
+
         butterText.text = String(Player.player.butter)
+
         
         milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * Player.player.getMilkPercent())
     
