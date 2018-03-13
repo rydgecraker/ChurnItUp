@@ -5,6 +5,7 @@
 //  Created by Craker, Rydge on 2/8/18.
 //  Copyright © 2018 Craker, Rydge. All rights reserved.
 //
+// This is the title screen that contains the start button
 
 import UIKit
 

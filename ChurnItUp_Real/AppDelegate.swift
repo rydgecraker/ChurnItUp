@@ -40,7 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         //UserDefaults.standard.setAllValues(player: MainScreenViewController.splayer)
-        
+        self.saveStats()
+
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -57,8 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
 
-    // MARK: - Core Data stack
-
+    
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -101,6 +101,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    func saveStats(){
+        var playerStats: PlayerStats!
+        playerStats = MainScreenViewController.playerLoaded
+        playerStats.player_name = "Player1"
+        playerStats.date_last_played = Date()
+        playerStats.butter = Int32(Player.player.butter)
+        playerStats.churns_done = Int16(Player.player.churnsDone)
+        playerStats.efficiency_level = Player.player.efficiencyLevel
+        playerStats.luck_level = Player.player.luckLevel
+        playerStats.milk = Player.player.milk
+        playerStats.max_milk = Int16(Player.player.maxMilk)
+        do {
+            try self.persistentContainer.viewContext.save()
+        } catch let error as NSError {
+            print("Could not save: \(error), \(error.userInfo)")
+        }
+    }
 
 }
+
 

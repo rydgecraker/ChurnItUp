@@ -239,6 +239,9 @@
                                                                 <state key="normal" image="upgradePlusActive">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="increaseLuck:" destination="RyT-A7-P77" eventType="touchUpInside" id="PZJ-df-rq6"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -270,6 +273,9 @@
                                                                 <state key="normal" image="upgradePlusActive">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="increaseEfficiency:" destination="RyT-A7-P77" eventType="touchUpInside" id="s7o-hU-qCB"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -302,6 +308,9 @@
                                                                 <state key="normal" image="upgradePlusActive">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="increaseMilkCanSize:" destination="RyT-A7-P77" eventType="touchUpInside" id="KDX-Vo-4zX"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -338,18 +347,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4Xo-TK-l1Q"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Upgrades" id="y99-tN-ERv"/>
+                    <tabBarItem key="tabBarItem" title="Upgrades" image="upgradeIcon" id="y99-tN-ERv"/>
                     <connections>
                         <outlet property="butterForEfficiency" destination="RYS-ok-bDV" id="LP0-LH-jy9"/>
-                        <outlet property="butterForLuck" destination="BV0-0e-gLb" id="qgZ-Lm-A8H"/>
+                        <outlet property="butterForLuck" destination="BV0-0e-gLb" id="L0S-4v-gHN"/>
                         <outlet property="butterForMilkCan" destination="Bvu-Ch-HFZ" id="7km-hl-RhZ"/>
-                        <outlet property="butterLevel" destination="cOj-hQ-AfN" id="Bf9-eM-luG"/>
+                        <outlet property="butterLevel" destination="cOj-hQ-AfN" id="4tT-nA-F0i"/>
                         <outlet property="efficiencyButton" destination="4JJ-sD-JjL" id="VjT-aO-tTk"/>
-                        <outlet property="efficiencyLevel" destination="zGY-IE-BB7" id="fwn-za-2Uf"/>
-                        <outlet property="luckButton" destination="yeh-D9-XyB" id="cFa-Ds-rz1"/>
-                        <outlet property="luckLevel" destination="IeQ-Wh-nh3" id="Q54-2y-a2K"/>
+                        <outlet property="efficiencyLevel" destination="zGY-IE-BB7" id="hAM-SN-b8v"/>
+                        <outlet property="luckButton" destination="yeh-D9-XyB" id="w8V-X2-QCL"/>
+                        <outlet property="luckLevel" destination="IeQ-Wh-nh3" id="qC1-59-88d"/>
                         <outlet property="milkCanButton" destination="Jvi-fw-FcJ" id="D0D-Te-0Yo"/>
-                        <outlet property="milkCanLevel" destination="T5Y-RW-Afr" id="p4G-HN-wOf"/>
+                        <outlet property="milkCanLevel" destination="T5Y-RW-Afr" id="HKC-5N-mON"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxs-mG-arR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -366,7 +375,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="PZC-dO-vgc"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Churn Butter" id="iLi-7X-lG6"/>
+                    <tabBarItem key="tabBarItem" title="Churn Butter" image="churnIcon" id="iLi-7X-lG6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZl-xf-9Jb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -418,7 +427,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8mM-Uc-Lk6"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Info" id="rga-ys-6Kt"/>
+                    <tabBarItem key="tabBarItem" title="Info" image="infoIcon" id="rga-ys-6Kt"/>
                     <connections>
                         <outlet property="webView" destination="O0S-gf-bfL" id="g3q-kX-M5X"/>
                     </connections>
@@ -437,7 +446,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="VyM-o8-KTx"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Find Cows" id="Fzb-IK-uvW"/>
+                    <tabBarItem key="tabBarItem" title="Find Cows" image="cowIcon" id="Fzb-IK-uvW"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="BPI-a4-f2H" kind="showDetail" identifier="CowCapture" id="h02-qi-Z5b"/>
@@ -493,12 +502,17 @@
     </scenes>
     <resources>
         <image name="basicCow" width="696" height="425"/>
+        <image name="churnIcon" width="24" height="24"/>
+        <image name="cowIcon" width="24" height="24"/>
         <image name="cuteButter" width="1280" height="1020"/>
+        <image name="infoIcon" width="24" height="24"/>
         <image name="pasture" width="1280" height="989"/>
         <image name="tool_shed" width="310" height="432"/>
+        <image name="upgradeIcon" width="24" height="24"/>
         <image name="upgradePlusActive" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="gTw-OY-5qD"/>
         <segue reference="w6F-4L-1uL"/>
     </inferredMetricsTieBreakers>
 </document>

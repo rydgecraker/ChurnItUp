@@ -5,11 +5,14 @@
 //  Created by Jennifer Diederich on 2/15/18.
 //  Copyright © 2018 Craker, Rydge. All rights reserved.
 //
+// This class controls the upgrades screen and allows the player to spend butter on upgrades.
 
 import UIKit
 
 class UpgradeScreenViewController: UIViewController {
 
+    //Set up a bunch of variables that will be used for storing data and/or referencing upgrade values.
+    
     var luck = 0
     var efficiency = 0
     var milkCan = 0
@@ -28,28 +31,32 @@ class UpgradeScreenViewController: UIViewController {
     @IBOutlet weak var efficiencyButton: UIButton!
     @IBOutlet weak var milkCanButton: UIButton!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkUpgrades()
+        
+        //Set the amount of butter needed for the next level of upgrades to show up in the UI
         luckLevel.text = String(luck)
         efficiencyLevel.text = String(efficiency)
         milkCanLevel.text = String(Int(Player.player.maxMilk))
         butterLevel.text = String(Player.player.butter)
-        //Function for button enabling and image change
 
     }
   
   
     func getStats(){
-        //creates local Levels from player object's double values
+        //creates local variables from player object's double values for ease of access.
         luck = Int(Player.player.luckLevel * 10)
         efficiency = Int(Player.player.efficiencyLevel * 10)
         milkCan = Int((Player.player.maxMilk - 10) / 10)
     }
 
     func checkUpgrades(){
+        //Get the player's current upgrade level for each stat and show the next upgrade level if avaliable. Also, enable the button if the player has enough butter to purchase it, otherwise disable the button.
         getStats()
-        //Check luck
+        
+        //Luck upgrades
         if luck == Player.player.maxLuckLevel {
             butterForLuck.text = "N/A"
             disableButton(luckButton)
@@ -62,7 +69,7 @@ class UpgradeScreenViewController: UIViewController {
             }
         }
         
-        //Check efficiency
+        //Efficiency upgrades
         if efficiency == Player.player.maxEfficiencyLevel {
             butterForEfficiency.text = "N/A"
             disableButton(efficiencyButton)
@@ -75,7 +82,7 @@ class UpgradeScreenViewController: UIViewController {
             }
         }
         
-        //Check milk
+        //Milk upgrades
         if milkCan == Player.player.maxMilkLevel {
             butterForMilkCan.text = "N/A"
             disableButton(milkCanButton)
@@ -87,9 +94,12 @@ class UpgradeScreenViewController: UIViewController {
                 disableButton(milkCanButton)
             }
         }
+        MainScreenViewController.mainScene.updateHUD()
     }
     
+    
     @IBAction func increaseLuck(_ sender: Any) {
+        //Called when the luck upgrade button is pressed. Upgrades player's luck level and updates the UI accordingly.
         Player.player.butter -= butterNeeded[luck]
         Player.player.upgradeLuck()
         checkUpgrades()
@@ -98,6 +108,7 @@ class UpgradeScreenViewController: UIViewController {
     }
     
     @IBAction func increaseEfficiency(_ sender: Any) {
+        //Called when the efficency upgrade button is pressed. Upgrades player's efficency level and updates the UI accordingly.
         Player.player.butter -= butterNeeded[efficiency]
         Player.player.upgradeEfficiencyLevel()
         checkUpgrades()
@@ -106,6 +117,7 @@ class UpgradeScreenViewController: UIViewController {
     }
     
     @IBAction func increaseMilkCanSize(_ sender: Any) {
+        //Called when the milk upgrade button is pressed. Upgrades player's max milk level and updates the UI accordingly.
         Player.player.butter -= butterNeeded[milkCan]
         Player.player.upgradeMilkCapacity()
         checkUpgrades()

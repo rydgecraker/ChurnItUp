@@ -5,6 +5,7 @@
 //  Created by Ben Rohland on 2/20/18.
 //  Copyright © 2018 Craker, Rydge. All rights reserved.
 //
+//The spriteKit that handles visuals for the GetLocationViewController.
 
 import SpriteKit
 import GameplayKit
@@ -12,17 +13,17 @@ import GameplayKit
 class FindCowsScene: SKScene {
     
     private let CompassNodeName = "compass"
-    // private let BackgroundNodeName = "background"
+    private let DistanceTextNodeName = "distanceText"
+    private let DistanceValNodeName = "distanceValue"
+    
+    var distanceValue: SKLabelNode!
     
     override init(size: CGSize) {
         super.init(size: size)
         
-        //self.backgroundColor = UIColor(cgColor: cgWhite)
-        
+        //Create the beardArrow and show it on the screen.
         let compass = SKSpriteNode(imageNamed: "bArrow.png")
         compass.position = CGPoint(x: size.width/2.0, y: size.height/2.0)
-        //compass.texture = SKTexture(imageNamed: "bArrow.png")
-        //compass.anchorPoint = CGPoint(x: size.width/2.0, y: size.height/2.0)
         if (size.width <= size.height) {
             compass.size = CGSize(width: size.width/2.0, height: size.width/2.0)
         } else {
@@ -30,6 +31,37 @@ class FindCowsScene: SKScene {
         }
         compass.name = CompassNodeName
         addChild(compass)
+        
+        let distanceText = SKLabelNode(fontNamed: "AvenirNext-Bold")
+        distanceText.position = CGPoint(x: size.width/2.0, y: (size.height/2.0 - compass.size.height))
+        distanceText.fontSize = 20.0
+        distanceText.fontColor = SKColor.black
+        distanceText.name = DistanceTextNodeName
+        distanceText.text = "Distance:"
+        
+        addChild(distanceText)
+        
+        distanceValue = SKLabelNode(fontNamed: "AvenirNext-Bold")
+        distanceValue.position = CGPoint(x: size.width/2.0, y: (size.height/2.0 - (compass.size.height + 25)))
+        distanceValue.fontSize = 20.0
+        distanceValue.fontColor = SKColor.black
+        distanceValue.name = DistanceValNodeName
+        distanceValue.text = "0 Meters"
+        
+        addChild(distanceValue)
+        
+        
+        
+        
+        
+        
+    }
+    
+    func updateDistance(_ distance: Double) {
+        
+        
+        
+        distanceValue.text = "\(Int(floor(distance))) Meters"
         
     }
     
