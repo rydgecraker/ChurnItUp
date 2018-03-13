@@ -10,15 +10,15 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import CoreMotion
+import CoreData
 
-class MainScreenViewController: UIViewController {
-    
+class MainScreenViewController: UIViewController, NSFetchedResultsControllerDelegate{
+    var fetchedResultsController: NSFetchedResultsController<PlayerStats>!
     var motionManager = CMMotionManager()
     //MARK: removed all uses of numShakes replaces with player.churnsDone.
     //var numShakes: Int = 0
     var mainScene: MainGameScene!
-
-    
+    var playerData: PlayerStats?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,10 +54,54 @@ class MainScreenViewController: UIViewController {
     }
     
     func savePlayerToCoreData(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "PlayerStats", in: managedContext)
+        let playerData = NSManagedObject(entity: entity!, insertInto: managedContext)
+        
+        playerData.setValue("Player1", forKey: "player_name")
+        playerData.setValue(Player.player.butter, forKey: "butter")
+        playerData.setValue(Player.player.churnsDone, forKey: "churns_done")
+        playerData.setValue(Player.player.efficiencyLevel, forKey: "efficiency_level")
+        playerData.setValue(Player.player.luckLevel, forKey: "luck_level")
+        playerData.setValue(Player.player.maxMilk, forKey: "max_milk")
+        playerData.setValue(Player.player.milk, forKey: "milk")
+        playerData.setValue(Date(), forKey: "date_last_played")
+
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save: \(error), \(error.userInfo)")
+        }
         
     }
-    
+    func fetchPlayer() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<PlayerStats> = PlayerStats.fetchRequest()
+        let playerFilter = NSPredicate(format: "player_name == %@", "Player1")
+        fetchRequest.predicate = playerFilter
+        
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        do {
+            try controller.performFetch()
+        } catch let error as NSError{
+            print("Could not fetch: \(error), \(error.userInfo)")
+        }
+    }
+    //TODO: fix this method
     func loadPlayer(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "PlayerStats")
+        let predicate = NSPredicate(format: "player_name == %@", "Player1")
+        fetchRequest.predicate = predicate
+        do {
+             try managedContext.fetch(fetchRequest)
+            //Player.player.butter = Int(players[0].value(forKey: "butter"))
+        } catch let error as NSError {
+            print("Could not fetch: \(error), \(error.userInfo)")
+        }
         
     }
     
