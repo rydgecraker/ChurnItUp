@@ -33,17 +33,16 @@ class FindCowsScene: SKScene {
         addChild(compass)
         
         let distanceText = SKLabelNode(fontNamed: "AvenirNext-Bold")
-        distanceText.position = CGPoint(x: size.width/2.0, y: size.height/4.0)
+        distanceText.position = CGPoint(x: size.width/2.0, y: (size.height/2.0 - compass.size.height))
         distanceText.fontSize = 20.0
         distanceText.fontColor = SKColor.black
         distanceText.name = DistanceTextNodeName
         distanceText.text = "Distance:"
-        //distanceText.zPosition = 5.0
         
         addChild(distanceText)
         
         distanceValue = SKLabelNode(fontNamed: "AvenirNext-Bold")
-        distanceValue.position = CGPoint(x: size.width/2.0, y: size.height/4.5)
+        distanceValue.position = CGPoint(x: size.width/2.0, y: (size.height/2.0 - (compass.size.height + 25)))
         distanceValue.fontSize = 20.0
         distanceValue.fontColor = SKColor.black
         distanceValue.name = DistanceValNodeName
@@ -60,7 +59,9 @@ class FindCowsScene: SKScene {
     
     func updateDistance(_ distance: Double) {
         
-        distanceValue.text = "\(distance) Meters"
+        
+        
+        distanceValue.text = "\(Int(floor(distance))) Meters"
         
     }
     

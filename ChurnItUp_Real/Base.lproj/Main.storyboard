@@ -299,7 +299,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4Xo-TK-l1Q"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Upgrades" id="y99-tN-ERv"/>
+                    <tabBarItem key="tabBarItem" title="Upgrades" image="upgradeIcon" id="y99-tN-ERv"/>
                     <connections>
                         <outlet property="butterForEfficiency" destination="RYS-ok-bDV" id="LP0-LH-jy9"/>
                         <outlet property="butterForLuck" destination="BV0-0e-gLb" id="qgZ-Lm-A8H"/>
@@ -327,7 +327,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="PZC-dO-vgc"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Churn Butter" id="iLi-7X-lG6"/>
+                    <tabBarItem key="tabBarItem" title="Churn Butter" image="churnIcon" id="iLi-7X-lG6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZl-xf-9Jb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -362,7 +362,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0S-gf-bfL">
-                                <rect key="frame" x="16" y="40" width="343" height="585"/>
+                                <rect key="frame" x="16" y="40" width="343" height="536"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -379,7 +379,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8mM-Uc-Lk6"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Info" id="rga-ys-6Kt"/>
+                    <tabBarItem key="tabBarItem" title="Info" image="infoIcon" id="rga-ys-6Kt"/>
                     <connections>
                         <outlet property="webView" destination="O0S-gf-bfL" id="g3q-kX-M5X"/>
                     </connections>
@@ -398,7 +398,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="VyM-o8-KTx"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Find Cows" id="Fzb-IK-uvW"/>
+                    <tabBarItem key="tabBarItem" title="Find Cows" image="cowIcon" id="Fzb-IK-uvW"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="BPI-a4-f2H" kind="showDetail" identifier="CowCapture" id="h02-qi-Z5b"/>
@@ -454,13 +454,17 @@
     </scenes>
     <resources>
         <image name="basicCow" width="696" height="425"/>
+        <image name="churnIcon" width="24" height="24"/>
+        <image name="cowIcon" width="24" height="24"/>
         <image name="cuteButter" width="1280" height="1020"/>
+        <image name="infoIcon" width="24" height="24"/>
         <image name="pasture" width="1280" height="989"/>
         <image name="tool_shed" width="310" height="432"/>
+        <image name="upgradeIcon" width="24" height="24"/>
         <image name="upgradePlusActive" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yfc-XO-k9x"/>
+        <segue reference="gTw-OY-5qD"/>
         <segue reference="w6F-4L-1uL"/>
     </inferredMetricsTieBreakers>
 </document>
