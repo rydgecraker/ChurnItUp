@@ -22,8 +22,12 @@ class GetLocationViewController: UIViewController {
     var latChanged: Bool = false
     var lonChanged: Bool = false
     var performingSegue: Bool = false
+    var distance: Double = 6.0
     var compass: SKSpriteNode!
+    var distanceToNumber: SKLabelNode!
+    var distanceToText: SKLabelNode!
     
+    var findCowScene: FindCowsScene!
     //Whenver the latitude and lognitude change, call update location.
     var latitude: Double = 0.0 {
         
@@ -73,7 +77,11 @@ class GetLocationViewController: UIViewController {
         let distXMeters = distanceXtoCow / getOneMeterInLongitudeDegrees(latitudeDegrees: latitude)
         let distYMeters = distanceYtoCow / oneMeterInLatitudeDegrees
         
-        var distance = ((distYMeters * distYMeters) + (distXMeters * distXMeters)).squareRoot()
+        distance = ((distYMeters * distYMeters) + (distXMeters * distXMeters)).squareRoot()
+        
+        //TODO: Update distance number in meters.
+        
+        findCowScene.updateDistance(distance)
         
         //If the cow is within 5 meters of the player, show the cow and get rid of this screen.
         if(distance < 5 && !performingSegue){
@@ -100,7 +108,7 @@ class GetLocationViewController: UIViewController {
     //This funciton should be removed in the final product. It skips this screen entirely and jumps right to the cow screen. The reason it's here is because we're testing on devices without locaiton services so we can't get accurate data to find the cow.
     override func viewDidAppear(_ bool: Bool) {
         super.viewDidAppear(bool)
-        goToCowScreen()
+        //goToCowScreen()
     }
     
     override func viewDidLoad() {
@@ -109,7 +117,7 @@ class GetLocationViewController: UIViewController {
         //Create a spriteKit screen and overlay it to show the beardArrow and the distance
         let skView = self.view as! SKView
         
-        let findCowScene = FindCowsScene(size: skView.bounds.size)
+        findCowScene = FindCowsScene(size: skView.bounds.size)
         
         findCowScene.scaleMode = .aspectFill
         

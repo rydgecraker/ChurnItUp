@@ -13,6 +13,10 @@ import GameplayKit
 class FindCowsScene: SKScene {
     
     private let CompassNodeName = "compass"
+    private let DistanceTextNodeName = "distanceText"
+    private let DistanceValNodeName = "distanceValue"
+    
+    var distanceValue: SKLabelNode!
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -27,6 +31,36 @@ class FindCowsScene: SKScene {
         }
         compass.name = CompassNodeName
         addChild(compass)
+        
+        let distanceText = SKLabelNode(fontNamed: "AvenirNext-Bold")
+        distanceText.position = CGPoint(x: size.width/2.0, y: size.height/4.0)
+        distanceText.fontSize = 20.0
+        distanceText.fontColor = SKColor.black
+        distanceText.name = DistanceTextNodeName
+        distanceText.text = "Distance:"
+        //distanceText.zPosition = 5.0
+        
+        addChild(distanceText)
+        
+        distanceValue = SKLabelNode(fontNamed: "AvenirNext-Bold")
+        distanceValue.position = CGPoint(x: size.width/2.0, y: size.height/4.5)
+        distanceValue.fontSize = 20.0
+        distanceValue.fontColor = SKColor.black
+        distanceValue.name = DistanceValNodeName
+        distanceValue.text = "0 Meters"
+        
+        addChild(distanceValue)
+        
+        
+        
+        
+        
+        
+    }
+    
+    func updateDistance(_ distance: Double) {
+        
+        distanceValue.text = "\(distance) Meters"
         
     }
     

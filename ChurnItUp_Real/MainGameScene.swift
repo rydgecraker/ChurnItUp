@@ -20,7 +20,9 @@ class MainGameScene: SKScene {
     private let ButterImageNodeName = "butterImage"
     private let ButterValueNodeName = "butterValue"
     private let ChurnsNumberNodeName = "churnsNumber"
+    private let ChurnsTextNodeName = "churnsText"
     var staffIsUp = true
+    var churnsText: SKLabelNode!
     var churnsNumber: SKLabelNode!
     var butterText: SKLabelNode!
     var milk: SKSpriteNode!
@@ -100,12 +102,21 @@ class MainGameScene: SKScene {
         //Show the amount of churns done.
         churnsNumber = SKLabelNode(fontNamed: "AvenirNext-Bold")
         churnsNumber.fontSize = 20.0
-        churnsNumber.position = CGPoint(x: base.position.x, y: base.position.y)
+        churnsNumber.position = CGPoint(x: base.position.x, y: base.position.y - (base.size.height/4))
         churnsNumber.name = ChurnsNumberNodeName
         churnsNumber.zPosition = 5.0
-        churnsNumber.text = "0"
+        churnsNumber.text = String(Player.player.churnsDone)
         
         addChild(churnsNumber)
+        
+        churnsText = SKLabelNode(fontNamed: "AvenirNext-Bold")
+        churnsText.fontSize = 20.0
+        churnsText.position = CGPoint(x: base.position.x, y: base.position.y)
+        churnsText.zPosition = 5.0
+        churnsText.name = ChurnsTextNodeName
+        churnsText.text = "Churns"
+        
+        addChild(churnsText)
         
         
     }
@@ -129,11 +140,14 @@ class MainGameScene: SKScene {
             
         }
         
+        churnsNumber.text = String(Player.player.churnsDone)
+        
     }
     
     // Update string values of variables that could have changed.
     func updateHUD() {
     
+        churnsNumber.text = String(Player.player.churnsDone)
         
         butterText.text = String(Player.player.butter)
         
