@@ -371,7 +371,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0S-gf-bfL">
-                                <rect key="frame" x="16" y="40" width="343" height="536"/>
+                                <rect key="frame" x="16" y="40" width="343" height="585"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -469,7 +469,7 @@
         <image name="upgradePlusActive" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gTw-OY-5qD"/>
-        <segue reference="7z8-MB-f8e"/>
+        <segue reference="yfc-XO-k9x"/>
+        <segue reference="w6F-4L-1uL"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -5,6 +5,7 @@
 //  Created by Jon Vollmer on 2/20/18.
 //  Copyright © 2018 Craker, Rydge. All rights reserved.
 //
+//This class handles player information.
 
 import UIKit
 
@@ -31,6 +32,7 @@ class Player {
     let maxEfficiencyLevel = 10
     let maxMilkLevel = 9
     
+    //Create a new player
     init(milkVal: Double, butterVal: Int, luckLevelVal: Double, efficiencyVal: Double, churnsDoneVal: Int, maximumMilk: Double){
         milk = milkVal
         butter = butterVal
@@ -42,6 +44,7 @@ class Player {
         churnsNeeded = initialChurns - Int(Double(initialChurns) * efficiencyLevel)
     }
     
+    //Upgrade luck. it can never be more than +0.5
     func upgradeLuck(){
         luckLevel += 0.1
         if(luckLevel > 0.5){
@@ -49,6 +52,7 @@ class Player {
         }
     }
     
+    //Upgrade milk capacity. It can never be more than 100
     func upgradeMilkCapacity(){
         maxMilk += 10
         if(maxMilk > 100){
@@ -56,6 +60,7 @@ class Player {
         }
     }
     
+    //Upgrade efficiency. It can never be more than +1.0. If it would cause you to earn an extra butter, do so.
     func upgradeEfficiencyLevel(){
         efficiencyLevel += 0.1
         if(efficiencyLevel > 1.0){
@@ -70,6 +75,7 @@ class Player {
         }
     }
     
+    //Add milk that can never be more than max milk
     func addMilk(_ milk: Double){
         self.milk += milk
         if(self.milk > maxMilk){
@@ -77,6 +83,7 @@ class Player {
         }
     }
     
+    //Return the ratio of current amount of milk vs the max amount of milk.
     func getMilkPercent() -> CGFloat {
         return CGFloat(milk / maxMilk)
     }
@@ -84,6 +91,8 @@ class Player {
 }
 
 
+
+//The following code isn't being used anymore. It was for using the userDefaults. We're using coreData now.
 extension UserDefaults {
     
     func setAllValues(player: Player) {
