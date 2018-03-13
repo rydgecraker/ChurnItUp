@@ -46,7 +46,6 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
             //savePlayerToCoreData()
         } else {
             //Load it from core data
-            playerLoaded 
             loadPlayer()
         }
     }
@@ -107,8 +106,8 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
             playerStats.max_milk = maxMilk
         }
         
-        do {
-            try managedContext.save()
+        do { //was managedContext.save()
+            try appDelegate.saveContext()
         } catch let error as NSError {
             print("Could not save: \(error), \(error.userInfo)")
         }
