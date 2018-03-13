@@ -12,18 +12,20 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import CoreMotion
+import CoreData
 
-class MainScreenViewController: UIViewController {
-    
-    //Create a new instance of the CMMotionManager object to keep track of accelerometer data
+class MainScreenViewController: UIViewController, NSFetchedResultsControllerDelegate{
+    var controller: NSFetchedResultsController<PlayerStats>!
+  //Create a new instance of the CMMotionManager object to keep track of accelerometer data
     var motionManager = CMMotionManager()
-    //Storing a SpriteKit scene for drawing the movable sprites to the screen (Such as the shaft of the curn or the amount of milk in the container)
+    //MARK: removed all uses of numShakes replaces with player.churnsDone.
+    //var numShakes: Int = 0
+    public static var playerLoaded: PlayerStats?
+  //Storing a SpriteKit scene for drawing the movable sprites to the screen (Such as the shaft of the curn or the amount of milk in the container)
     var mainScene: MainGameScene!
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        fetchPlayer()
         loadPlayerFromCoreData()
         
         let skView = self.view as! SKView
@@ -38,7 +40,10 @@ class MainScreenViewController: UIViewController {
         //Update anything on the spriteKit scene that changes when varibales change (Such as player milk level)
         mainScene.updateHUD()
         churnButter()
-
+        print("First")
+        print(controller.fetchedObjects?.first! ?? "")
+        print("Last")
+        print(controller.fetchedObjects?.last! ?? "")
     }
     
     /*
@@ -53,7 +58,8 @@ class MainScreenViewController: UIViewController {
     private func loadPlayerFromCoreData() {
         let playerExistsInCoreData = doesPlayerExistInCoreData()
         if(!playerExistsInCoreData) {
-            Player.player = Player(milkVal: 10.0, butterVal: 0, luckLevelVal: 0.0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 10.0)
+            Player.player = Player(milkVal: 10.0, butterVal: 8000, luckLevelVal: 0.0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 10.0)
+            //need to check for new records
             savePlayerToCoreData()
         } else {
             //Load it from core data
@@ -62,15 +68,84 @@ class MainScreenViewController: UIViewController {
     }
     
     func doesPlayerExistInCoreData() -> Bool {
-        return false
+        if let stats = controller.fetchedObjects?.first, stats.player_name == "Player1" {
+            MainScreenViewController.playerLoaded = stats
+            print(stats)
+            return true
+        } else {
+            return false
+        }
     }
-    
     func savePlayerToCoreData(){
         
-    }
-    
-    func loadPlayer(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "PlayerStats", in: managedContext)
+        /*let playerData = NSManagedObject(entity: entity!, insertInto: managedContext)
+        playerData.setValue("Player1", forKey: "player_name")
+        playerData.setValue(Player.player.butter, forKey: "butter")
+        playerData.setValue(Player.player.churnsDone, forKey: "churns_done")
+        playerData.setValue(Player.player.efficiencyLevel, forKey: "efficiency_level")
+        playerData.setValue(Player.player.luckLevel, forKey: "luck_level")
+        playerData.setValue(Player.player.maxMilk, forKey: "max_milk")
+        playerData.setValue(Player.player.milk, forKey: "milk")
+        playerData.setValue(Date(), forKey: "date_last_played")
+*/
+        var playerStats: PlayerStats!
         
+        if MainScreenViewController.playerLoaded == nil {
+            playerStats = NSManagedObject(entity: entity!, insertInto: managedContext) as! PlayerStats
+            
+        }else {
+            playerStats = MainScreenViewController.playerLoaded
+        }
+
+        playerStats.player_name = "Player1"
+        playerStats.date_last_played = Date()
+        playerStats.butter = Int32(Player.player.butter)
+        playerStats.churns_done = Int16(Player.player.churnsDone)
+        playerStats.efficiency_level = Player.player.efficiencyLevel
+        playerStats.luck_level = Player.player.luckLevel
+        playerStats.milk = Player.player.milk
+        playerStats.max_milk = Int16(Player.player.maxMilk)
+        /*
+        playerStats.setValue("Player1", forKey: "player_name")
+        playerStats.setValue(Player.player.butter, forKey: "butter")
+        playerStats.setValue(Player.player.churnsDone, forKey: "churns_done")
+        playerStats.setValue(Player.player.efficiencyLevel, forKey: "efficiency_level")
+        playerStats.setValue(Player.player.luckLevel, forKey: "luck_level")
+        playerStats.setValue(Player.player.maxMilk, forKey: "max_milk")
+        playerStats.setValue(Player.player.milk, forKey: "milk")
+        playerStats.setValue(Date(), forKey: "date_last_played")
+        */
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save: \(error), \(error.userInfo)")
+        }
+        
+    }
+    func fetchPlayer() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<PlayerStats> = PlayerStats.fetchRequest()
+        let playerFilter = NSPredicate(format: "player_name == %@", "Player1")
+        fetchRequest.predicate = playerFilter
+        let sort: NSSortDescriptor = NSSortDescriptor(key: "player_name", ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.controller = controller
+        do {
+            try self.controller.performFetch()
+        } catch let error as NSError{
+            print("Could not fetch: \(error), \(error.userInfo)")
+        }
+    }
+
+    func loadPlayer(){
+        if let stats = controller.fetchedObjects?.first{
+            Player.player = Player(milkVal: stats.milk, butterVal: Int(stats.butter), luckLevelVal: Double(stats.luck_level), efficiencyVal: Double(stats.efficiency_level), churnsDoneVal: Int(stats.churns_done), maximumMilk: Double(stats.max_milk))
+        }
     }
     
     //This function sets up the motionManager and creates the listener methods that are called when the accelerometer is shaken.

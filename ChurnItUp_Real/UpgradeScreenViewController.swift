@@ -54,7 +54,6 @@ class UpgradeScreenViewController: UIViewController {
 
     func checkUpgrades(){
         //Get the player's current upgrade level for each stat and show the next upgrade level if avaliable. Also, enable the button if the player has enough butter to purchase it, otherwise disable the button.
-        
         getStats()
         
         //Luck upgrades

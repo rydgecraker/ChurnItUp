@@ -218,6 +218,9 @@
                                                                 <state key="normal" image="upgradePlusActive">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="increaseLuck:" destination="RyT-A7-P77" eventType="touchUpInside" id="PZJ-df-rq6"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -246,6 +249,9 @@
                                                                 <state key="normal" image="upgradePlusActive">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="increaseEfficiency:" destination="RyT-A7-P77" eventType="touchUpInside" id="s7o-hU-qCB"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -274,6 +280,9 @@
                                                                 <state key="normal" image="upgradePlusActive">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="increaseMilkCanSize:" destination="RyT-A7-P77" eventType="touchUpInside" id="KDX-Vo-4zX"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -302,15 +311,15 @@
                     <tabBarItem key="tabBarItem" title="Upgrades" id="y99-tN-ERv"/>
                     <connections>
                         <outlet property="butterForEfficiency" destination="RYS-ok-bDV" id="LP0-LH-jy9"/>
-                        <outlet property="butterForLuck" destination="BV0-0e-gLb" id="qgZ-Lm-A8H"/>
+                        <outlet property="butterForLuck" destination="BV0-0e-gLb" id="L0S-4v-gHN"/>
                         <outlet property="butterForMilkCan" destination="Bvu-Ch-HFZ" id="7km-hl-RhZ"/>
-                        <outlet property="butterLevel" destination="cOj-hQ-AfN" id="Bf9-eM-luG"/>
+                        <outlet property="butterLevel" destination="cOj-hQ-AfN" id="4tT-nA-F0i"/>
                         <outlet property="efficiencyButton" destination="4JJ-sD-JjL" id="VjT-aO-tTk"/>
-                        <outlet property="efficiencyLevel" destination="zGY-IE-BB7" id="fwn-za-2Uf"/>
-                        <outlet property="luckButton" destination="yeh-D9-XyB" id="cFa-Ds-rz1"/>
-                        <outlet property="luckLevel" destination="IeQ-Wh-nh3" id="Q54-2y-a2K"/>
+                        <outlet property="efficiencyLevel" destination="zGY-IE-BB7" id="hAM-SN-b8v"/>
+                        <outlet property="luckButton" destination="yeh-D9-XyB" id="w8V-X2-QCL"/>
+                        <outlet property="luckLevel" destination="IeQ-Wh-nh3" id="qC1-59-88d"/>
                         <outlet property="milkCanButton" destination="Jvi-fw-FcJ" id="D0D-Te-0Yo"/>
-                        <outlet property="milkCanLevel" destination="T5Y-RW-Afr" id="p4G-HN-wOf"/>
+                        <outlet property="milkCanLevel" destination="T5Y-RW-Afr" id="HKC-5N-mON"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxs-mG-arR" userLabel="First Responder" sceneMemberID="firstResponder"/>
