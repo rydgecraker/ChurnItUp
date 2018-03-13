@@ -94,6 +94,7 @@ class UpgradeScreenViewController: UIViewController {
                 disableButton(milkCanButton)
             }
         }
+        MainScreenViewController.mainScene.updateHUD()
     }
     
     
