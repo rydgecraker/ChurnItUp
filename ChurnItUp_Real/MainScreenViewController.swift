@@ -22,7 +22,7 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
     //var numShakes: Int = 0
     public static var playerLoaded: PlayerStats?
   //Storing a SpriteKit scene for drawing the movable sprites to the screen (Such as the shaft of the curn or the amount of milk in the container)
-    var mainScene: MainGameScene!
+    public static var mainScene: MainGameScene!
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchPlayer()
@@ -31,19 +31,15 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
         let skView = self.view as! SKView
         
         //Set up the spriteKit scene and start it's mathimatical calculations, and present the scene.
-        mainScene = MainGameScene(size: skView.bounds.size)
-        mainScene.start()
-        mainScene.scaleMode = .aspectFill
+        MainScreenViewController.mainScene = MainGameScene(size: skView.bounds.size)
+        MainScreenViewController.mainScene.start()
+        MainScreenViewController.mainScene.scaleMode = .aspectFill
         
-        skView.presentScene(mainScene)
+        skView.presentScene(MainScreenViewController.mainScene)
         
         //Update anything on the spriteKit scene that changes when varibales change (Such as player milk level)
-        mainScene.updateHUD()
+        MainScreenViewController.mainScene.updateHUD()
         churnButter()
-        print("First")
-        print(controller.fetchedObjects?.first! ?? "")
-        print("Last")
-        print(controller.fetchedObjects?.last! ?? "")
     }
     
     /*
@@ -56,9 +52,10 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
      -Creates a new Player object with default values set (If there is no saved player in coreData)
      */
     private func loadPlayerFromCoreData() {
+
         let playerExistsInCoreData = doesPlayerExistInCoreData()
         if(!playerExistsInCoreData) {
-            Player.player = Player(milkVal: 10.0, butterVal: 8000, luckLevelVal: 0.0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 10.0)
+            Player.player = Player(milkVal: 10.0, butterVal: 7, luckLevelVal: 0.0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 10.0)
             //need to check for new records
             savePlayerToCoreData()
         } else {
@@ -70,7 +67,6 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
     func doesPlayerExistInCoreData() -> Bool {
         if let stats = controller.fetchedObjects?.first, stats.player_name == "Player1" {
             MainScreenViewController.playerLoaded = stats
-            print(stats)
             return true
         } else {
             return false
@@ -120,6 +116,7 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
         */
         do {
             try managedContext.save()
+            MainScreenViewController.playerLoaded = playerStats
         } catch let error as NSError {
             print("Could not save: \(error), \(error.userInfo)")
         }
@@ -162,15 +159,15 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
                       Player.player.churnsDone += 1 //Increment the number of curns done by the player
                         
                       if (Player.player.churnsDone < Player.player.churnsNeeded) { //The player still requires more churns before they make a stick of butter
-                          self.mainScene.moveStaff() //Animates the movement of the staff.
+                          MainScreenViewController.mainScene.moveStaff() //Animates the movement of the staff.
 
                       } else { //The player has enough churns to make a stick of butter
                         //Subtrack a milk from the player's total milk and add a butter to their total butter supply. Reset the number of churns to zero and then update the UI so that the changes appear on screen.
                           Player.player.milk -= 1
                           Player.player.churnsDone = 0
                           Player.player.butter += 1
-                          self.mainScene.moveStaff()
-                          self.mainScene.updateHUD()
+                          MainScreenViewController.mainScene.moveStaff()
+                          MainScreenViewController.mainScene.updateHUD()
                       }
                     } else { //Player doesn't have enough milk to begin churning butter
                         // Display "out of milk, find more" message
