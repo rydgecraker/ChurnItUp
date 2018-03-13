@@ -120,6 +120,7 @@ class MainGameScene: SKScene {
     func updateHUD() {
     
         
+        
         //butterText.text = String(player.butter)
         
         //milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * player.getMilkPercent())
