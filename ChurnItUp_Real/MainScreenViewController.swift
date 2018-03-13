@@ -17,6 +17,7 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
     var motionManager = CMMotionManager()
     //MARK: removed all uses of numShakes replaces with player.churnsDone.
     //var numShakes: Int = 0
+    var playerLoaded: PlayerStats?
     var mainScene: MainGameScene!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +42,11 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
         let playerExistsInCoreData = doesPlayerExistInCoreData()
         if(!playerExistsInCoreData) {
             Player.player = Player(milkVal: 10.0, butterVal: 0, luckLevelVal: 0.0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 10.0)
-            savePlayerToCoreData()
+            //need to check for new records
+            //savePlayerToCoreData()
         } else {
             //Load it from core data
+            playerLoaded 
             loadPlayer()
         }
     }
@@ -51,6 +54,7 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
     func doesPlayerExistInCoreData() -> Bool {
         let stats = controller.object(at: 0)
         if stats.player_name == "Player1" {
+            playerLoaded = stats
             return true
         } else {
             return false
@@ -58,11 +62,11 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
     }
     
     func savePlayerToCoreData(){
+        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "PlayerStats", in: managedContext)
-        let playerData = NSManagedObject(entity: entity!, insertInto: managedContext)
-        
+        /*let playerData = NSManagedObject(entity: entity!, insertInto: managedContext)
         playerData.setValue("Player1", forKey: "player_name")
         playerData.setValue(Player.player.butter, forKey: "butter")
         playerData.setValue(Player.player.churnsDone, forKey: "churns_done")
@@ -71,7 +75,38 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
         playerData.setValue(Player.player.maxMilk, forKey: "max_milk")
         playerData.setValue(Player.player.milk, forKey: "milk")
         playerData.setValue(Date(), forKey: "date_last_played")
-
+*/
+        var playerStats: PlayerStats!
+        
+        if playerLoaded == nil {
+            playerStats = PlayerStats(context: managedContext)
+        }else {
+            playerStats = playerLoaded
+        }
+        playerStats.player_name = "Player1"
+        playerStats.date_last_played = Date()
+        if let butter = Player.player.butter {
+            playerStats.butter = butter
+        }
+        
+        if let churnsDone = Player.player.churnsDone {
+            playerStats.churns_done = churnsDone
+        }
+        
+        if let efficiencyLevel = Player.player.efficiencyLevel {
+            playerStats.efficiency_level = efficiencyLevel
+        }
+        
+        if let luckLevel = Player.player.luckLevel {
+            playerStats.luck_level = luckLevel
+        }
+        if let milk = Player.player.milk {
+            playerStats.milk = milk
+        }
+        if let maxMilk = Player.player.maxMilk {
+            playerStats.max_milk = maxMilk
+        }
+        
         do {
             try managedContext.save()
         } catch let error as NSError {
