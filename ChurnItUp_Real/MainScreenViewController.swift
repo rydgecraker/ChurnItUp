@@ -13,15 +13,14 @@ import CoreMotion
 import CoreData
 
 class MainScreenViewController: UIViewController, NSFetchedResultsControllerDelegate{
-    var fetchedResultsController: NSFetchedResultsController<PlayerStats>!
+    var controller: NSFetchedResultsController<PlayerStats>!
     var motionManager = CMMotionManager()
     //MARK: removed all uses of numShakes replaces with player.churnsDone.
     //var numShakes: Int = 0
     var mainScene: MainGameScene!
-    var playerData: PlayerStats?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        fetchPlayer()
         loadPlayerFromCoreData()
         
         let skView = self.view as! SKView
@@ -50,7 +49,12 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
     }
     
     func doesPlayerExistInCoreData() -> Bool {
-        return false
+        let stats = controller.object(at: 0)
+        if stats.player_name == "Player1" {
+            return true
+        } else {
+            return false
+        }
     }
     
     func savePlayerToCoreData(){
@@ -83,26 +87,22 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
         fetchRequest.predicate = playerFilter
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.controller = controller
         do {
             try controller.performFetch()
         } catch let error as NSError{
             print("Could not fetch: \(error), \(error.userInfo)")
         }
     }
-    //TODO: fix this method
+
     func loadPlayer(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "PlayerStats")
-        let predicate = NSPredicate(format: "player_name == %@", "Player1")
-        fetchRequest.predicate = predicate
-        do {
-             try managedContext.fetch(fetchRequest)
-            //Player.player.butter = Int(players[0].value(forKey: "butter"))
-        } catch let error as NSError {
-            print("Could not fetch: \(error), \(error.userInfo)")
-        }
-        
+        let stats = controller.object(at: 0)
+        Player.player.butter = stats.butter
+        Player.player.churnsDone = stats.churns_done
+        Player.player.efficiencyLevel = stats.efficiency_level
+        Player.player.luckLevel = stats.luck_level
+        Player.player.maxMilk = stats.max_milk
+        Player.player.milk = stats.milk
     }
     
     func churnButter() {
