@@ -21,9 +21,14 @@ class GetLocationViewController: UIViewController {
     var latChanged: Bool = false
     var lonChanged: Bool = false
     var performingSegue: Bool = false
+    var distance: Double = 0.0
     var compass: SKSpriteNode!
+    var distanceToNumber: SKLabelNode!
+    var distanceToText: SKLabelNode!
     
-    var latitude: Double = 0.0 {
+    var findCowScene: FindCowsScene!
+    
+    var latitude: Double = 6.0 {
         
         didSet {
             
@@ -67,10 +72,14 @@ class GetLocationViewController: UIViewController {
         let distXMeters = distanceXtoCow / getOneMeterInLongitudeDegrees(latitudeDegrees: latitude)
         let distYMeters = distanceYtoCow / oneMeterInLatitudeDegrees
         
-        var distance = ((distYMeters * distYMeters) + (distXMeters * distXMeters)).squareRoot()
+        distance = ((distYMeters * distYMeters) + (distXMeters * distXMeters)).squareRoot()
+        
+        //TODO: Update distance number in meters.
+        
+        findCowScene.updateDistance(distance)
         
         //TODO: Remove this
-        distance = 0
+        //distance = 0
         
         if(distance < 5 && !performingSegue){
             goToCowScreen()
@@ -92,7 +101,7 @@ class GetLocationViewController: UIViewController {
     
     override func viewDidAppear(_ bool: Bool) {
         super.viewDidAppear(bool)
-        goToCowScreen()
+        //goToCowScreen()
     }
     
     override func viewDidLoad() {
@@ -101,7 +110,7 @@ class GetLocationViewController: UIViewController {
         
         let skView = self.view as! SKView
         
-        let findCowScene = FindCowsScene(size: skView.bounds.size)
+        findCowScene = FindCowsScene(size: skView.bounds.size)
         
         findCowScene.scaleMode = .aspectFill
         
