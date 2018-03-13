@@ -48,6 +48,7 @@ class UpgradeScreenViewController: UIViewController {
     }
 
     func checkUpgrades(){
+        print(Player.player.butter)
         getStats()
         //Check luck
         if luck == Player.player.maxLuckLevel {

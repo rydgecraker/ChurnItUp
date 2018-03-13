@@ -17,7 +17,7 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
     var motionManager = CMMotionManager()
     //MARK: removed all uses of numShakes replaces with player.churnsDone.
     //var numShakes: Int = 0
-    var playerLoaded: PlayerStats?
+    public static var playerLoaded: PlayerStats?
     var mainScene: MainGameScene!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +35,18 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
         mainScene.updateHUD()
         
         churnButter()
-
+        print("First")
+        print(controller.fetchedObjects?.first! ?? "")
+        print("Last")
+        print(controller.fetchedObjects?.last! ?? "")
     }
     
     private func loadPlayerFromCoreData() {
         let playerExistsInCoreData = doesPlayerExistInCoreData()
         if(!playerExistsInCoreData) {
-            Player.player = Player(milkVal: 10.0, butterVal: 0, luckLevelVal: 0.0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 10.0)
+            Player.player = Player(milkVal: 10.0, butterVal: 8000, luckLevelVal: 0.0, efficiencyVal: 0.0, churnsDoneVal: 0, maximumMilk: 10.0)
             //need to check for new records
-            //savePlayerToCoreData()
+            savePlayerToCoreData()
         } else {
             //Load it from core data
             loadPlayer()
@@ -51,15 +54,14 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
     }
     
     func doesPlayerExistInCoreData() -> Bool {
-        let stats = controller.object(at: 0)
-        if stats.player_name == "Player1" {
-            playerLoaded = stats
+        if let stats = controller.fetchedObjects?.first, stats.player_name == "Player1" {
+            MainScreenViewController.playerLoaded = stats
+            print(stats)
             return true
         } else {
             return false
         }
     }
-    
     func savePlayerToCoreData(){
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -77,37 +79,33 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
 */
         var playerStats: PlayerStats!
         
-        if playerLoaded == nil {
-            playerStats = PlayerStats(context: managedContext)
+        if MainScreenViewController.playerLoaded == nil {
+            playerStats = NSManagedObject(entity: entity!, insertInto: managedContext) as! PlayerStats
+            
         }else {
-            playerStats = playerLoaded
+            playerStats = MainScreenViewController.playerLoaded
         }
+
         playerStats.player_name = "Player1"
         playerStats.date_last_played = Date()
-        if let butter = Player.player.butter {
-            playerStats.butter = butter
-        }
-        
-        if let churnsDone = Player.player.churnsDone {
-            playerStats.churns_done = churnsDone
-        }
-        
-        if let efficiencyLevel = Player.player.efficiencyLevel {
-            playerStats.efficiency_level = efficiencyLevel
-        }
-        
-        if let luckLevel = Player.player.luckLevel {
-            playerStats.luck_level = luckLevel
-        }
-        if let milk = Player.player.milk {
-            playerStats.milk = milk
-        }
-        if let maxMilk = Player.player.maxMilk {
-            playerStats.max_milk = maxMilk
-        }
-        
-        do { //was managedContext.save()
-            try appDelegate.saveContext()
+        playerStats.butter = Int32(Player.player.butter)
+        playerStats.churns_done = Int16(Player.player.churnsDone)
+        playerStats.efficiency_level = Player.player.efficiencyLevel
+        playerStats.luck_level = Player.player.luckLevel
+        playerStats.milk = Player.player.milk
+        playerStats.max_milk = Int16(Player.player.maxMilk)
+        /*
+        playerStats.setValue("Player1", forKey: "player_name")
+        playerStats.setValue(Player.player.butter, forKey: "butter")
+        playerStats.setValue(Player.player.churnsDone, forKey: "churns_done")
+        playerStats.setValue(Player.player.efficiencyLevel, forKey: "efficiency_level")
+        playerStats.setValue(Player.player.luckLevel, forKey: "luck_level")
+        playerStats.setValue(Player.player.maxMilk, forKey: "max_milk")
+        playerStats.setValue(Player.player.milk, forKey: "milk")
+        playerStats.setValue(Date(), forKey: "date_last_played")
+        */
+        do {
+            try managedContext.save()
         } catch let error as NSError {
             print("Could not save: \(error), \(error.userInfo)")
         }
@@ -119,24 +117,21 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
         let fetchRequest: NSFetchRequest<PlayerStats> = PlayerStats.fetchRequest()
         let playerFilter = NSPredicate(format: "player_name == %@", "Player1")
         fetchRequest.predicate = playerFilter
-        
+        let sort: NSSortDescriptor = NSSortDescriptor(key: "player_name", ascending: false)
+        fetchRequest.sortDescriptors = [sort]
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
         self.controller = controller
         do {
-            try controller.performFetch()
+            try self.controller.performFetch()
         } catch let error as NSError{
             print("Could not fetch: \(error), \(error.userInfo)")
         }
     }
 
     func loadPlayer(){
-        let stats = controller.object(at: 0)
-        Player.player.butter = stats.butter
-        Player.player.churnsDone = stats.churns_done
-        Player.player.efficiencyLevel = stats.efficiency_level
-        Player.player.luckLevel = stats.luck_level
-        Player.player.maxMilk = stats.max_milk
-        Player.player.milk = stats.milk
+        if let stats = controller.fetchedObjects?.first{
+            Player.player = Player(milkVal: stats.milk, butterVal: Int(stats.butter), luckLevelVal: Double(stats.luck_level), efficiencyVal: Double(stats.efficiency_level), churnsDoneVal: Int(stats.churns_done), maximumMilk: Double(stats.max_milk))
+        }
     }
     
     func churnButter() {

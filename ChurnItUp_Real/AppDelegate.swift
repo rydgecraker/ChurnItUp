@@ -46,6 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        
+        self.saveStats()
         self.saveContext()
     }
 
@@ -91,6 +93,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
+        }
+    }
+    func saveStats(){
+        var playerStats: PlayerStats!
+        playerStats = MainScreenViewController.playerLoaded
+        playerStats.player_name = "Player1"
+        playerStats.date_last_played = Date()
+        playerStats.butter = Int32(Player.player.butter)
+        playerStats.churns_done = Int16(Player.player.churnsDone)
+        playerStats.efficiency_level = Player.player.efficiencyLevel
+        playerStats.luck_level = Player.player.luckLevel
+        playerStats.milk = Player.player.milk
+        playerStats.max_milk = Int16(Player.player.maxMilk)
+        do {
+            try self.persistentContainer.viewContext.save()
+        } catch let error as NSError {
+            print("Could not save: \(error), \(error.userInfo)")
         }
     }
 
