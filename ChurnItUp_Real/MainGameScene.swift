@@ -87,7 +87,7 @@ class MainGameScene: SKScene {
         //Show the amount of milk label
         milkText = SKLabelNode(fontNamed: "AvenirNext-Bold")
         milkText.fontSize = 15.0
-        milkText.position = CGPoint(x: milk.size.width, y: milk.position.y-(milk.size.height/4.0))
+        milkText.position = CGPoint(x: jar.size.width, y: jar.position.y-(jar.size.height/4.0))
         milkText.text = "Milk: \(Int(Player.player.milk))/\(Int(Player.player.maxMilk))"
         milkText.name = MilkTextNodeName
         
