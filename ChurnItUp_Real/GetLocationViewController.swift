@@ -108,7 +108,7 @@ class GetLocationViewController: UIViewController {
     //This funciton should be removed in the final product. It skips this screen entirely and jumps right to the cow screen. The reason it's here is because we're testing on devices without locaiton services so we can't get accurate data to find the cow.
     override func viewDidAppear(_ bool: Bool) {
         super.viewDidAppear(bool)
-        //goToCowScreen()
+        goToCowScreen()
     }
     
     override func viewDidLoad() {

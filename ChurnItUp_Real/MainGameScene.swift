@@ -85,8 +85,12 @@ class MainGameScene: SKScene {
         
         //Show the amount of milk label
         milkText = SKLabelNode(fontNamed: "AvenirNext-Bold")
-        milkText.fontSize = 20.0
-        milkText.position = CGPoint(x: )
+        milkText.fontSize = 15.0
+        milkText.position = CGPoint(x: milk.size.width, y: milk.position.y-(milk.size.height/4.0))
+        milkText.text = "Milk: \(Int(Player.player.milk))/\(Int(Player.player.maxMilk))"
+        milkText.name = MilkTextNodeName
+        
+        addChild(milkText)
         
         //Show the butter icon
         let butter = SKSpriteNode(imageNamed: "cuteButter.png")
@@ -156,10 +160,10 @@ class MainGameScene: SKScene {
     
         churnsNumber.text = String(Player.player.churnsDone)
         
-
         butterText.text = "Butter: \(Player.player.butter)"
-
         
+        milkText.text = "Milk: \(Int(Player.player.milk))/\(Int(Player.player.maxMilk))"
+
         milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * Player.player.getMilkPercent())
     
     }
