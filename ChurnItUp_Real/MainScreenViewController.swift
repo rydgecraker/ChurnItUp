@@ -48,10 +48,11 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchPlayer()
-        loadPlayerFromCoreData()
-        
+        if !MainScreenViewController.playerAlreadyLoaded {
+            fetchPlayer()
+            loadPlayerFromCoreData()
             MainScreenViewController.playerAlreadyLoaded = true
+        }
         
         let skView = self.view as! SKView
         
