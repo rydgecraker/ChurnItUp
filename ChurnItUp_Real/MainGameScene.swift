@@ -22,6 +22,7 @@ class MainGameScene: SKScene {
     private let ChurnsNumberNodeName = "churnsNumber"
     private let ChurnsTextNodeName = "churnsText"
     private let MilkTextNodeName = "milkText"
+    
     var staffIsUp = true
     var churnsText: SKLabelNode!
     var churnsNumber: SKLabelNode!

@@ -6,8 +6,15 @@ target 'ChurnItUp_Real' do
   use_frameworks!
 
   # Pods for ChurnItUp_Real
+<<<<<<< HEAD
   pod 'Google-Mobile-Ads-SDK'
 
+=======
+  # pod 'Google-Mobile-Ads-SDK'
+
+  pod 'Firebase'
+  pod 'Firebase/AdMob'
+>>>>>>> origin/Jen3
   pod 'Firebase/Core'
 
 end

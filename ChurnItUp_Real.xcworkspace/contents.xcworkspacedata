@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+<<<<<<< HEAD
+=======
+      location = "group:ToolTip.swift">
+   </FileRef>
+   <FileRef
+>>>>>>> origin/Jen3
       location = "group:ChurnItUp_Real.xcodeproj">
    </FileRef>
    <FileRef

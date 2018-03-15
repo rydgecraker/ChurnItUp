@@ -31,6 +31,8 @@ class UpgradeScreenViewController: UIViewController {
     @IBOutlet weak var efficiencyButton: UIButton!
     @IBOutlet weak var milkCanButton: UIButton!
     
+    @IBOutlet weak var upgradeTypeLabel: UILabel!
+    @IBOutlet weak var butterNeededLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,10 @@ class UpgradeScreenViewController: UIViewController {
         efficiencyLevel.text = String(efficiency)
         milkCanLevel.text = String(Int(Player.player.maxMilk))
         butterLevel.text = String(Player.player.butter)
+        
+        upgradeTypeLabel.addBottomBorderWithColor(color: UIColor.gray, width: 2.5)
+        
+        butterNeededLabel.addBottomBorderWithColor(color: UIColor.gray, width: 2.5)
 
     }
   
@@ -138,5 +144,16 @@ class UpgradeScreenViewController: UIViewController {
     
     func updateLabels(label: UILabel,value:Int){
 
+    }
+    
+}
+
+
+extension UIView {
+    func addBottomBorderWithColor(color: UIColor, width: CGFloat) {
+        let border = CALayer()
+        border.backgroundColor = color.cgColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: frame.size.width, height: width)
+        self.layer.addSublayer(border)
     }
 }

@@ -13,8 +13,17 @@ import SpriteKit
 import GameplayKit
 import CoreMotion
 import CoreData
+import Firebase
 
-class MainScreenViewController: UIViewController, NSFetchedResultsControllerDelegate{
+class MainScreenViewController: UIViewController, NSFetchedResultsControllerDelegate, GADRewardBasedVideoAdDelegate {
+    
+
+    
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
+                            didRewardUserWith reward: GADAdReward) {
+        print("Reward received with currency: butter, amount \(reward.amount).")
+        earnButter(NSInteger(reward.amount))
+    }
     var controller: NSFetchedResultsController<PlayerStats>!
   //Create a new instance of the CMMotionManager object to keep track of accelerometer data
     var motionManager = CMMotionManager()
@@ -26,14 +35,24 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
     
     public static var playerAlreadyLoaded: Bool = false
     
+        
+//Storing a SpriteKit scene for drawing the movable sprites to the screen (Such as the shaft of the curn or the amount of milk in the container)
+    
+    
+    var rewardBasedVideo: GADRewardBasedVideoAd?
+    
+    let reward: Int = 7
+    
+    @IBOutlet weak var watchAdButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if !MainScreenViewController.playerAlreadyLoaded {
-            fetchPlayer()
-            loadPlayerFromCoreData()
+        fetchPlayer()
+        loadPlayerFromCoreData()
+        
             MainScreenViewController.playerAlreadyLoaded = true
-        }
-            
+        
         let skView = self.view as! SKView
         
         //Set up the spriteKit scene and start it's mathimatical calculations, and present the scene.
@@ -46,7 +65,14 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
         //Update anything on the spriteKit scene that changes when varibales change (Such as player milk level)
         MainScreenViewController.mainScene.updateHUD()
         churnButter()
+        
+        rewardBasedVideo = GADRewardBasedVideoAd.sharedInstance()
+        rewardBasedVideo?.delegate = self
+        rewardBasedVideo?.load(GADRequest(),
+                               withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+        
     }
+    
     
     /*
      This function either:
@@ -189,5 +215,21 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
             }
         }
     }
-
+    
+    
+    
+    
+    @IBAction func showAd(_ sender: Any) {
+        if rewardBasedVideo?.isReady == true {
+        rewardBasedVideo?.present(fromRootViewController: self)
+            
+        }
+    }
+    
+    func earnButter(_ reward: NSInteger) {
+        Player.player.butter += reward
+        MainScreenViewController.mainScene.updateHUD()
+        print("im here")
+    }
+    
 }

@@ -23,6 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HappyAmishMan" translatesAutoresizingMaskIntoConstraints="NO" id="l3q-oi-ivC">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -32,12 +33,32 @@
                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="50"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+=======
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HappyAmishMan" translatesAutoresizingMaskIntoConstraints="NO" id="l3q-oi-ivC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AMISH APPS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSU-9K-kxt">
+                                <rect key="frame" x="27" y="511" width="321" height="63"/>
+                                <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="50"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+>>>>>>> origin/Jen3
                             </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+<<<<<<< HEAD
                             <constraint firstItem="ZSU-9K-kxt" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="pHG-l9-JXU"/>
                             <constraint firstItem="ZSU-9K-kxt" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="t8V-At-Btq"/>
+=======
+                            <constraint firstItem="l3q-oi-ivC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6G8-7f-bAN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZSU-9K-kxt" secondAttribute="bottom" constant="93" id="M28-dJ-Cdb"/>
+                            <constraint firstItem="l3q-oi-ivC" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="RjD-aq-xyV"/>
+                            <constraint firstItem="l3q-oi-ivC" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="T7n-w0-4Zp"/>
+                            <constraint firstItem="ZSU-9K-kxt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="491" id="jtj-R1-dtu"/>
+                            <constraint firstItem="ZSU-9K-kxt" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="t8V-At-Btq"/>
+                            <constraint firstItem="l3q-oi-ivC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xPr-Nm-mLE"/>
+>>>>>>> origin/Jen3
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
