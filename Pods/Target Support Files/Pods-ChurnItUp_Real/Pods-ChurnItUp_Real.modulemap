@@ -1,0 +1,6 @@
+framework module Pods_ChurnItUp_Real {
+  umbrella header "Pods-ChurnItUp_Real-umbrella.h"
+
+  export *
+  module * { export * }
+}

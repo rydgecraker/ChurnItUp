@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Didot.ttc">
+            <string>Didot</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--TitleScreen-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="TitleScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcQ-25-FzA">
+                                <rect key="frame" x="310.5" y="564.5" width="147" height="359.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <size key="titleShadowOffset" width="1" height="3"/>
+                                <state key="normal" title="START">
+                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2Sr-r3-1Og" kind="showDetail" action="showViewController:sender:" id="w6F-4L-1uL"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="0FG-9M-G9x">
+                                <rect key="frame" x="20" y="105" width="728" height="305.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="Churn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEe-Kh-c4W">
+                                        <rect key="frame" x="283" y="0.0" width="162" height="68.5"/>
+                                        <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="55"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="It" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aP7-zb-25S">
+                                        <rect key="frame" x="344" y="118.5" width="40" height="68.5"/>
+                                        <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="55"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPt-5Y-ecH">
+                                        <rect key="frame" x="327" y="237" width="74.5" height="68.5"/>
+                                        <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="55"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0FG-9M-G9x" secondAttribute="trailing" constant="20" id="3g4-d9-bP4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dcQ-25-FzA" secondAttribute="bottom" constant="100" id="Fv2-ST-Uld"/>
+                            <constraint firstItem="dcQ-25-FzA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Knm-Cx-EVJ"/>
+                            <constraint firstItem="0FG-9M-G9x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="NTs-ha-xAc"/>
+                            <constraint firstItem="dcQ-25-FzA" firstAttribute="top" secondItem="0FG-9M-G9x" secondAttribute="bottom" constant="154" id="P8X-O1-rap"/>
+                            <constraint firstItem="0FG-9M-G9x" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="85" id="RBQ-gj-wob"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="v3Q-T4-V8n"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1714" y="-427"/>
+        </scene>
+        <!--Upgrades-->
+        <scene sceneID="AmL-kD-OGi">
+            <objects>
+                <viewController id="RyT-A7-P77" customClass="UpgradeScreenViewController" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DBg-E5-czK">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Oxj-Ny-pTC">
+                                <rect key="frame" x="131" y="328" width="637" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="dBE-aa-CCP">
+                                <rect key="frame" x="0.0" y="20" width="768" height="955"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FmY-Sl-K43" userLabel="Butter Value Stack">
+                                        <rect key="frame" x="324" y="0.0" width="120" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOj-hQ-AfN" userLabel="Butter Val">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
+                                                <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="highlightedColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cuteButter" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACQ-9P-dMp" userLabel="Butter">
+                                                <rect key="frame" x="70" y="0.0" width="50" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="iDE-VD-SWr"/>
+                                                    <constraint firstAttribute="width" constant="50" id="zBk-fn-D2I"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="3Kb-0x-AVh">
+                                        <rect key="frame" x="20" y="192.5" width="728" height="178.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" alignment="bottom" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Fsg-T9-JSm" userLabel="Label Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="728" height="25"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upgarde Type / Level" textAlignment="natural" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ce4-oA-bTb">
+                                                        <rect key="frame" x="0.0" y="0.0" width="432" height="25"/>
+                                                        <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="9" trailing="8"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="highlightedColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Butter Needed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="r5R-8c-u4u">
+                                                        <rect key="frame" x="457" y="0.0" width="271" height="25"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="highlightedColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="N6g-za-GGA"/>
+                                                    <constraint firstItem="ce4-oA-bTb" firstAttribute="centerY" secondItem="r5R-8c-u4u" secondAttribute="centerY" id="V95-WT-Maf"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="ztj-tO-jpC" userLabel="Center Upgrade List Stack">
+                                                <rect key="frame" x="0.0" y="25" width="728" height="153.5"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DpN-8y-Mum" userLabel="Value Stack">
+                                                        <rect key="frame" x="0.0" y="1" width="407" height="151"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Daa-C3-X22" userLabel="Luck">
+                                                                <rect key="frame" x="0.0" y="0.0" width="407" height="56.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luck:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vJ4-IM-kJc">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="369" height="56.5"/>
+                                                                        <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                        <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="highlightedColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IeQ-Wh-nh3" userLabel="Luck Level">
+                                                                        <rect key="frame" x="377" y="0.0" width="30" height="56.5"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="lLG-cY-BRx"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jQC-3R-zQM" userLabel="Butter">
+                                                                <rect key="frame" x="0.0" y="47" width="407" height="56.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of Churns:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Juj-Fj-P5h">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="369" height="56.5"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                        <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="highlightedColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zGY-IE-BB7" userLabel="Efficiency ">
+                                                                        <rect key="frame" x="377" y="0.0" width="30" height="56.5"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="aVX-30-zqf"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Kuk-wQ-vlF" userLabel="Milk">
+                                                                <rect key="frame" x="0.0" y="94.5" width="407" height="56.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Milk Can Size:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zfK-fu-iww">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="369" height="56.5"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                        <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T5Y-RW-Afr" userLabel="Milk Level">
+                                                                        <rect key="frame" x="377" y="0.0" width="30" height="56.5"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="R65-DA-yvo"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="IeQ-Wh-nh3" firstAttribute="width" secondItem="zGY-IE-BB7" secondAttribute="width" id="vX0-6g-hUb"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9co-f2-Bv3" userLabel="Button Stack">
+                                                        <rect key="frame" x="457" y="8.5" width="271" height="136"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="center" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DCf-xZ-I9s" userLabel="LuckButtonView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="271" height="40"/>
+                                                                <subviews>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kDV-TH-i7L">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="85" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BV0-0e-gLb">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                                <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <color key="shadowColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                <size key="shadowOffset" width="3" height="1"/>
+                                                                            </label>
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cuteButter" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dSI-tb-kvw" userLabel="Butter">
+                                                                                <rect key="frame" x="40" y="0.0" width="40" height="40"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="CAP-Lv-QN5"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeh-D9-XyB">
+                                                                        <rect key="frame" x="241" y="0.0" width="30" height="40"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="30" id="9dG-qD-o0Q"/>
+                                                                            <constraint firstAttribute="width" constant="30" id="bfg-23-M5k"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="upgradePlusActive">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="increaseLuck:" destination="RyT-A7-P77" eventType="touchUpInside" id="PZJ-df-rq6"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qjH-2B-vtb" userLabel="Butter Button">
+                                                                <rect key="frame" x="0.0" y="48" width="271" height="40"/>
+                                                                <subviews>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Lei-mS-w6t">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="85" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RYS-ok-bDV">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                                <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </label>
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cuteButter" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vZn-et-TPR" userLabel="Butter">
+                                                                                <rect key="frame" x="40" y="0.0" width="40" height="40"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="8Ov-64-E31"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JJ-sD-JjL">
+                                                                        <rect key="frame" x="241" y="0.0" width="30" height="40"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="30" id="wWR-tO-hys"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="upgradePlusActive">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="increaseEfficiency:" destination="RyT-A7-P77" eventType="touchUpInside" id="s7o-hU-qCB"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="kP0-J9-OSI" userLabel="Milk Button">
+                                                                <rect key="frame" x="0.0" y="96" width="271" height="40"/>
+                                                                <subviews>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="TpK-eo-46U">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="85" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvu-Ch-HFZ">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                                <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </label>
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cuteButter" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e2y-Lf-o4g" userLabel="Butter">
+                                                                                <rect key="frame" x="40" y="0.0" width="40" height="40"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="Yxa-cZ-xrB"/>
+                                                                                    <constraint firstAttribute="height" constant="40" id="dGE-E9-jNr"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jvi-fw-FcJ">
+                                                                        <rect key="frame" x="241" y="0.0" width="30" height="40"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="30" id="ltp-zS-VTv"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="upgradePlusActive">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="increaseMilkCanSize:" destination="RyT-A7-P77" eventType="touchUpInside" id="KDX-Vo-4zX"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="2Gr-dq-Wd2"/>
+                                                    <constraint firstItem="DpN-8y-Mum" firstAttribute="width" secondItem="9co-f2-Bv3" secondAttribute="width" multiplier="60:40" id="Fkw-EA-mf5"/>
+                                                    <constraint firstItem="kP0-J9-OSI" firstAttribute="centerY" secondItem="Kuk-wQ-vlF" secondAttribute="centerY" id="viY-gV-RTQ"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Fsg-T9-JSm" firstAttribute="width" secondItem="ztj-tO-jpC" secondAttribute="width" id="5kx-bk-P2n"/>
+                                            <constraint firstItem="r5R-8c-u4u" firstAttribute="width" secondItem="9co-f2-Bv3" secondAttribute="width" id="jJ2-lk-Yac"/>
+                                        </constraints>
+                                    </stackView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tool_shed" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V28-HZ-AqZ">
+                                        <rect key="frame" x="20" y="523" width="728" height="432"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES"/>
+                                        </accessibility>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="3Kb-0x-AVh" firstAttribute="leading" secondItem="dBE-aa-CCP" secondAttribute="leading" constant="20" id="07P-dO-ppi"/>
+                                    <constraint firstItem="V28-HZ-AqZ" firstAttribute="leading" secondItem="dBE-aa-CCP" secondAttribute="leading" constant="20" id="2yw-dc-kqf"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Kb-0x-AVh" secondAttribute="trailing" constant="20" id="CxX-em-LS3"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="V28-HZ-AqZ" secondAttribute="trailing" constant="20" id="Sc5-sB-FvL"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dBE-aa-CCP" firstAttribute="leading" secondItem="4Xo-TK-l1Q" secondAttribute="leading" id="Vfk-NX-cd7"/>
+                            <constraint firstItem="4Xo-TK-l1Q" firstAttribute="trailing" secondItem="dBE-aa-CCP" secondAttribute="trailing" id="a9U-H2-lmw"/>
+                            <constraint firstItem="4Xo-TK-l1Q" firstAttribute="bottom" secondItem="dBE-aa-CCP" secondAttribute="bottom" id="cwH-Yt-uat"/>
+                            <constraint firstItem="dBE-aa-CCP" firstAttribute="top" secondItem="4Xo-TK-l1Q" secondAttribute="top" id="uKg-R5-ANy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4Xo-TK-l1Q"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Upgrades" image="upgradeIcon" id="Wm2-oU-WB4"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="UpgradeTypeLabel" destination="ce4-oA-bTb" id="q89-Ym-4Pr"/>
+                        <outlet property="butterForEfficiency" destination="RYS-ok-bDV" id="LP0-LH-jy9"/>
+                        <outlet property="butterForLuck" destination="BV0-0e-gLb" id="L0S-4v-gHN"/>
+                        <outlet property="butterForMilkCan" destination="Bvu-Ch-HFZ" id="7km-hl-RhZ"/>
+                        <outlet property="butterLevel" destination="cOj-hQ-AfN" id="4tT-nA-F0i"/>
+                        <outlet property="butterNeededLabel" destination="r5R-8c-u4u" id="Wp3-As-FbM"/>
+                        <outlet property="efficiencyButton" destination="4JJ-sD-JjL" id="VjT-aO-tTk"/>
+                        <outlet property="efficiencyLevel" destination="zGY-IE-BB7" id="hAM-SN-b8v"/>
+                        <outlet property="luckButton" destination="yeh-D9-XyB" id="w8V-X2-QCL"/>
+                        <outlet property="luckLevel" destination="IeQ-Wh-nh3" id="qC1-59-88d"/>
+                        <outlet property="milkCanButton" destination="Jvi-fw-FcJ" id="D0D-Te-0Yo"/>
+                        <outlet property="milkCanLevel" destination="T5Y-RW-Afr" id="HKC-5N-mON"/>
+                        <outlet property="upgradeTypeLabel" destination="ce4-oA-bTb" id="EhU-dk-YDI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dxs-mG-arR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-897.65625" y="741.796875"/>
+        </scene>
+        <!--Churn Butter-->
+        <scene sceneID="bYy-4n-qpK">
+            <objects>
+                <viewController id="ud6-Z3-Yyo" customClass="MainScreenViewController" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="3Ld-zw-6RZ" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="vlE-jQ-zAe">
+                                <rect key="frame" x="20" y="888" width="66" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="WatchIcon2"/>
+                                <connections>
+                                    <action selector="showAd:" destination="ud6-Z3-Yyo" eventType="touchUpInside" id="NJ1-YG-Y3R"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="PZC-dO-vgc"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Churn Butter" image="churnIcon" id="iLi-7X-lG6"/>
+                    <connections>
+                        <outlet property="watchAdButton" destination="vlE-jQ-zAe" id="R0T-Ld-b31"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XZl-xf-9Jb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26.086956521739133" y="-79.076086956521749"/>
+        </scene>
+        <!--Tab Bar View Controller-->
+        <scene sceneID="oRC-LK-yHA">
+            <objects>
+                <tabBarController id="2Sr-r3-1Og" customClass="TabBarViewController" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z5l-hv-eW7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ud6-Z3-Yyo" kind="relationship" relationship="viewControllers" id="LwQ-Kr-RE8"/>
+                        <segue destination="izU-HC-8OM" kind="relationship" relationship="viewControllers" id="U7n-NX-bYi"/>
+                        <segue destination="RyT-A7-P77" kind="relationship" relationship="viewControllers" id="qq4-6Z-eFt"/>
+                        <segue destination="S6R-AP-QMs" kind="relationship" relationship="viewControllers" id="gTw-OY-5qD"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9mT-eX-Fgp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-897" y="-427"/>
+        </scene>
+        <!--INFO-->
+        <scene sceneID="KZj-MY-FpN">
+            <objects>
+                <viewController title="INFO" id="S6R-AP-QMs" customClass="InfoViewController" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hjt-s3-Wfw">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0S-gf-bfL">
+                                <rect key="frame" x="16" y="40" width="736" height="893"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8mM-Uc-Lk6" firstAttribute="bottom" secondItem="O0S-gf-bfL" secondAttribute="bottom" constant="42" id="3zY-ko-zsd"/>
+                            <constraint firstItem="O0S-gf-bfL" firstAttribute="top" secondItem="8mM-Uc-Lk6" secondAttribute="top" constant="20" id="7e7-dv-LYS"/>
+                            <constraint firstItem="O0S-gf-bfL" firstAttribute="leading" secondItem="8mM-Uc-Lk6" secondAttribute="leading" constant="16" id="AsR-kV-3Rh"/>
+                            <constraint firstItem="O0S-gf-bfL" firstAttribute="centerX" secondItem="8mM-Uc-Lk6" secondAttribute="centerX" id="T5l-3O-fmU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8mM-Uc-Lk6"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Info" image="infoIcon" id="rga-ys-6Kt"/>
+                    <connections>
+                        <outlet property="webView" destination="O0S-gf-bfL" id="g3q-kX-M5X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dyq-YF-5aI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1714" y="742"/>
+        </scene>
+        <!--FIND COWS!-->
+        <scene sceneID="pcY-an-OZI">
+            <objects>
+                <viewController title="FIND COWS!" id="izU-HC-8OM" customClass="GetLocationViewController" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0mM-kf-GuD" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="VyM-o8-KTx"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Find Cows" image="cowIcon" id="Fzb-IK-uvW"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="BPI-a4-f2H" kind="showDetail" identifier="CowCapture" id="h02-qi-Z5b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zbr-vW-tkV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26" y="-757"/>
+        </scene>
+        <!--CAPTURE COWS!-->
+        <scene sceneID="aKN-Fe-gP5">
+            <objects>
+                <viewController title="CAPTURE COWS!" id="BPI-a4-f2H" customClass="CaptureCows" customModule="ChurnItUp_Real" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ptp-9L-w8D">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pasture" translatesAutoresizingMaskIntoConstraints="NO" id="i8S-eq-f3k">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvF-VQ-I8R">
+                                <rect key="frame" x="38" y="288" width="714" height="616"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wvF-VQ-I8R" secondAttribute="height" multiplier="321:277" id="mkG-4a-vNv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" backgroundImage="basicCow"/>
+                                <connections>
+                                    <segue destination="2Sr-r3-1Og" kind="showDetail" id="7z8-MB-f8e"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="i8S-eq-f3k" firstAttribute="top" secondItem="ptp-9L-w8D" secondAttribute="top" id="4Hk-fe-iAB"/>
+                            <constraint firstItem="i8S-eq-f3k" firstAttribute="leading" secondItem="mqR-S5-FKV" secondAttribute="leading" id="I7O-IC-MzI"/>
+                            <constraint firstItem="mqR-S5-FKV" firstAttribute="bottom" secondItem="wvF-VQ-I8R" secondAttribute="bottom" constant="120" id="NFd-Lf-Yei"/>
+                            <constraint firstItem="mqR-S5-FKV" firstAttribute="trailing" secondItem="wvF-VQ-I8R" secondAttribute="trailing" constant="16" id="PqP-PQ-kKc"/>
+                            <constraint firstItem="i8S-eq-f3k" firstAttribute="bottom" secondItem="mqR-S5-FKV" secondAttribute="bottom" id="c3a-GR-TCb"/>
+                            <constraint firstItem="i8S-eq-f3k" firstAttribute="trailing" secondItem="mqR-S5-FKV" secondAttribute="trailing" id="fuK-K3-zek"/>
+                            <constraint firstItem="wvF-VQ-I8R" firstAttribute="leading" secondItem="mqR-S5-FKV" secondAttribute="leading" constant="38" id="iaS-tf-NW7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mqR-S5-FKV"/>
+                    </view>
+                    <connections>
+                        <outlet property="cowButton" destination="wvF-VQ-I8R" id="bLm-ra-WCa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="26B-4v-a3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-919" y="-1658"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="WatchIcon2" width="155" height="157"/>
+        <image name="basicCow" width="696" height="425"/>
+        <image name="churnIcon" width="24" height="24"/>
+        <image name="cowIcon" width="24" height="24"/>
+        <image name="cuteButter" width="1280" height="1020"/>
+        <image name="infoIcon" width="24" height="24"/>
+        <image name="pasture" width="1280" height="989"/>
+        <image name="tool_shed" width="310" height="432"/>
+        <image name="upgradeIcon" width="24" height="24"/>
+        <image name="upgradePlusActive" width="400" height="400"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="w6F-4L-1uL"/>
+    </inferredMetricsTieBreakers>
+</document>
