@@ -21,11 +21,13 @@ class MainGameScene: SKScene {
     private let ButterValueNodeName = "butterValue"
     private let ChurnsNumberNodeName = "churnsNumber"
     private let ChurnsTextNodeName = "churnsText"
+    private let MilkTextNodeName = "milkText"
     var staffIsUp = true
     var churnsText: SKLabelNode!
     var churnsNumber: SKLabelNode!
     var butterText: SKLabelNode!
     var milk: SKSpriteNode!
+    var milkText: SKLabelNode!
     var oneHundredPercent: CGFloat!
     var staff: SKSpriteNode!
     
@@ -81,6 +83,11 @@ class MainGameScene: SKScene {
         milk.name = MilkNodeName
         addChild(milk)
         
+        //Show the amount of milk label
+        milkText = SKLabelNode(fontNamed: "AvenirNext-Bold")
+        milkText.fontSize = 20.0
+        milkText.position = CGPoint(x: )
+        
         //Show the butter icon
         let butter = SKSpriteNode(imageNamed: "cuteButter.png")
         butter.size = CGSize(width: size.width/5.0, height: (size.width/5.0)*0.79)
@@ -93,8 +100,8 @@ class MainGameScene: SKScene {
         //Show the amount of butter label
         butterText = SKLabelNode(fontNamed: "AvenirNext-Bold")
         butterText.fontSize = 20.0
-        butterText.position = CGPoint(x: size.width-butter.size.width, y: butter.position.y-(butter.size.height*1.5))
-        butterText.text = String(Player.player.butter)
+        butterText.position = CGPoint(x: size.width - butter.size.width, y: butter.position.y-(butter.size.height*1.5))
+        butterText.text = "Butter: \(Player.player.butter)"
         butterText.name = ButterValueNodeName
         
         addChild(butterText)
@@ -150,7 +157,7 @@ class MainGameScene: SKScene {
         churnsNumber.text = String(Player.player.churnsDone)
         
 
-        butterText.text = String(Player.player.butter)
+        butterText.text = "Butter: \(Player.player.butter)"
 
         
         milk.size = CGSize(width: size.width/5.0, height: oneHundredPercent * Player.player.getMilkPercent())
