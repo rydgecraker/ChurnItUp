@@ -23,11 +23,17 @@ class MainScreenViewController: UIViewController, NSFetchedResultsControllerDele
     public static var playerLoaded: PlayerStats?
   //Storing a SpriteKit scene for drawing the movable sprites to the screen (Such as the shaft of the curn or the amount of milk in the container)
     public static var mainScene: MainGameScene!
+    
+    public static var playerAlreadyLoaded: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchPlayer()
-        loadPlayerFromCoreData()
-        
+        if !MainScreenViewController.playerAlreadyLoaded {
+            fetchPlayer()
+            loadPlayerFromCoreData()
+            MainScreenViewController.playerAlreadyLoaded = true
+        }
+            
         let skView = self.view as! SKView
         
         //Set up the spriteKit scene and start it's mathimatical calculations, and present the scene.

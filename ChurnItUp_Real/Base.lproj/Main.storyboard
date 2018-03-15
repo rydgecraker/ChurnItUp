@@ -512,7 +512,6 @@
         <image name="upgradePlusActive" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gTw-OY-5qD"/>
-        <segue reference="w6F-4L-1uL"/>
+        <segue reference="7z8-MB-f8e"/>
     </inferredMetricsTieBreakers>
 </document>
