@@ -44,14 +44,21 @@ class Cow {
         }
         
         //Check to see if the sasquatch appears.
-        cow.cowType = cowSasquatchRoll(cow: cow)
+        cow.cowType = cowSasquatchRoll(cow: cow, luckValueMultiplier: luckValueMultiplier)
         
         //return the cow.
         return cow
     }
     
-    static func cowSasquatchRoll(cow: Cow) -> String {
+    static func cowSasquatchRoll(cow: Cow, luckValueMultiplier: Double) -> String {
         //Roll to see if sasquatch appears.
+        
+        let squatchRoll = (Double(arc4random_uniform(100)) + 1.0) * (1 + luckValueMultiplier)
+        
+        if squatchRoll <= 10 {
+            cow.cowType = "sasquatch"
+        }
+        
         return cow.cowType
     }
     
@@ -72,7 +79,7 @@ class Cow {
         case "C":
             return #imageLiteral(resourceName: "basicCow")
         case "sasquatch":
-            return #imageLiteral(resourceName: "basicCow")
+            return #imageLiteral(resourceName: "squatchFind")
         default:
             return #imageLiteral(resourceName: "basicCow")
         }
